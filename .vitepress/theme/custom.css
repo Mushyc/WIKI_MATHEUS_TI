@@ -1,0 +1,60 @@
+:root {
+  --vp-c-brand-1: #00f3ff;
+  --vp-c-brand-2: #bc13fe;
+  --vp-c-brand-3: #8a2be2;
+  --vp-c-brand-soft: rgba(0, 243, 255, 0.1);
+
+  --vp-c-bg: #050510;
+  --vp-c-bg-soft: #0a0a1a;
+  --vp-c-bg-mute: #0f0f2d;
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #00f3ff 0%, #bc13fe 100%);
+
+  --vp-c-purple: #bc13fe;
+  --vp-c-cyan: #00f3ff;
+}
+
+/* Background Image */
+.VPHome {
+  background-image: url('/logo.png');
+  background-repeat: no-repeat;
+  background-position: center 150px;
+  background-size: 400px auto;
+  background-attachment: fixed;
+  opacity: 1;
+}
+
+/* Overlay para legibilidade */
+.VPHome::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(188, 19, 254, 0.08), transparent 400px),
+    radial-gradient(circle at bottom left, rgba(0, 243, 255, 0.08), transparent 400px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.VPHome>* {
+  position: relative;
+  z-index: 1;
+}
+
+.vp-doc h2 {
+  border-bottom: 1px solid var(--vp-c-brand-soft);
+  color: var(--vp-c-cyan);
+}
+
+.vp-doc h3 {
+  color: var(--vp-c-purple);
+}
+
+.image-container img {
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-brand-soft);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
