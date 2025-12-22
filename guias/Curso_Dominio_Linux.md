@@ -1,124 +1,88 @@
 # 🐧 Curso: Domínio do Linux
 
-Este curso ensina os fundamentos e técnicas avançadas para você dominar sistemas Linux no trabalho.
+![Banner Linux](/banner_linux.png)
+
+Transforme-se em um mestre do terminal. O Linux não é apenas um sistema; é o superpoder de qualquer técnico de elite.
 
 ---
 
-## 📚 Módulo 1: Comandos Essenciais
+## 📂 Arquitetura do Sistema
 
-### Navegação e Arquivos
-```bash
-pwd               # Mostra o diretório atual
-ls -lha           # Lista arquivos detalhados (incluindo ocultos)
-cd /caminho       # Muda de diretório
-mkdir pasta       # Cria diretório
-rm -rf pasta      # Remove diretório e conteúdo
-cp origem destino # Copia arquivo
-mv origem destino # Move/renomeia arquivo
-```
+Entenda para onde cada arquivo vai. No Linux, "Tudo é um arquivo".
 
-### Gerenciamento de Processos
-```bash
-ps aux            # Lista todos os processos
-top               # Monitor em tempo real
-htop              # Monitor interativo (precisa instalar)
-kill -9 PID       # Força encerramento de processo
-killall nome      # Mata processo por nome
-```
-
-### Permissões e Propriedade
-```bash
-chmod 755 arquivo # Altera permissões (rwxr-xr-x)
-chown user:group arquivo # Altera dono
-ls -l             # Mostra permissões atuais
+```mermaid
+graph TD
+    Root["/ (Root)"] --> bin["/bin (Comandos Essenciais)"]
+    Root --> etc["/etc (Arquivos de Configuração)"]
+    Root --> home["/home (Pastas de Usuários)"]
+    Root --> var["/var (Logs e Variáveis)"]
+    Root --> tmp["/tmp (Temporários)"]
+    
+    style Root fill:#1a1a1a,stroke:#00ff00,stroke-width:2px
 ```
 
 ---
 
-## 🔧 Módulo 2: Administração de Sistema
+## 📚 Módulo 1: Comandos Salva-Vidas
 
-### Gerenciamento de Pacotes (Debian/Ubuntu)
-```bash
-sudo apt update           # Atualiza lista de pacotes
-sudo apt upgrade          # Atualiza pacotes instalados
-sudo apt install pacote   # Instala novo pacote
-sudo apt remove pacote    # Remove pacote
-sudo apt autoremove       # Remove dependências não utilizadas
+### O Poder das Permissões (chmod)
+Muitas vezes, um script não roda apenas porque falta permissão de execução.
+
+```mermaid
+graph LR
+    P["Permissão: 755"] --> R["Dono: Ler/Ver/Executar (7)"]
+    P --> G["Grupo: Ler/Executar (5)"]
+    P --> O["Outros: Ler/Executar (5)"]
 ```
 
-### Serviços e Systemd
-```bash
-systemctl status nome     # Verifica status do serviço
-systemctl start nome      # Inicia serviço
-systemctl stop nome       # Para serviço
-systemctl enable nome     # Habilita no boot
-systemctl restart nome    # Reinicia serviço
-```
-
-### Rede e Conectividade
-```bash
-ip a                      # Mostra interfaces de rede
-ping 8.8.8.8             # Testa conectividade
-netstat -tunlp           # Mostra portas abertas
-ss -tunlp                # Versão moderna do netstat
-curl ifconfig.me         # Mostra IP público
-```
+::: tip 💡 Dica de Mestre
+Decore este código: `chmod +x script.sh`. Ele transforma qualquer arquivo de texto em um programa executável instantaneamente.
+:::
 
 ---
 
-## 💻 Módulo 3: Troubleshooting Avançado
+## 🔧 Módulo 2: Administração de Elite
 
-### Análise de Logs
-```bash
-journalctl -xe           # Logs do sistema (últimos)
-tail -f /var/log/syslog  # Monitora log em tempo real
-grep "erro" /var/log/*   # Busca erros nos logs
-dmesg | tail             # Mensagens do kernel
-```
+### Gerenciamento de Serviços (Systemd)
+O comando mais importante para um administrador de servidores:
 
-### Uso de Recursos
-```bash
-df -h                    # Espaço em disco
-du -sh /caminho          # Tamanho de diretório
-free -m                  # Memória RAM disponível
-uptime                   # Tempo ligado e carga
-```
+| Comando | Função | Quando Usar |
+| :--- | :--- | :--- |
+| `systemctl status X` | Ver se está rodando | Primeiro passo do diagnóstico |
+| `systemctl restart X` | Reiniciar serviço | Após mudar uma configuração |
+| `systemctl enable X` | Ligar no boot | Garantir que o serviço volte após queda de luz |
 
-### SSH e Acesso Remoto
-```bash
-ssh user@servidor        # Conecta remotamente
-scp arquivo user@host:/destino # Transfere arquivo
-ssh-keygen               # Gera chave SSH
-ssh-copy-id user@host    # Copia chave pública
-```
+::: warning ⚠️ Cuidado com o Root
+O comando `rm -rf /` pode destruir todo o sistema em segundos. Sempre use o `ls` no caminho antes de usar o `rm` para ter certeza do que está apagando.
+:::
+
+---
+
+## 🔍 Módulo 3: Troubleshooting de Monitoramento
+
+::: info 🛡️ Na Trincheira: Caso Real
+Um servidor parou de responder. Usei o comando `top` e vi que um processo estava usando **99% da CPU**. Identifiquei o **PID (8245)** e usei o `kill -9 8245` para liberar o sistema. O servidor voltou ao normal sem precisar reiniciar.
+:::
 
 ---
 
 ## 🎯 Exercícios Práticos
 
-### Prática 1: Criar Script de Backup
-Crie um script que faz backup da pasta home para `/backup`:
-```bash
-#!/bin/bash
-tar -czf /backup/home-$(date +%Y%m%d).tar.gz /home/usuario
-```
-
-### Prática 2: Monitorar Disco Cheio
-Configure alerta quando disco atingir 80%:
-```bash
-df -h | grep -E '8[0-9]%|9[0-9]%|100%' && echo "Disco cheio!"
-```
-
-### Prática 3: Automatizar com Cron
-Agende um script para rodar todo dia às 3h da manhã:
-```bash
-crontab -e
-# Adicione: 0 3 * * * /caminho/script.sh
-```
+::: details 🛠️ Laboratório: Criando seu primeiro Robô (Scripts)
+1. Crie um arquivo: `nano monitor.sh`
+2. Cole este código:
+   ```bash
+   #!/bin/bash
+   echo "--- Status da Memória ---"
+   free -h
+   ```
+3. Salve e saia (Ctrl+O, Ctrl+X).
+4. Dê permissão: `chmod +x monitor.sh`
+5. Rode seu robô: `./monitor.sh`
+:::
 
 ---
 
-## 📖 Referências Visuais
-Consulte também a [Galeria de Imagens](/referencias/Galeria_Imagens) para ver:
-- Comandos Básicos Linux (Cheat Sheet Visual)
-- Comandos Avançados Linux (Administração)
+### Links Relacionados
+- [🌐 Curso de Redes](/guias/Curso_Redes_Computadores)
+- [🛠️ Ferramentas Pen-drive](/guias/Curso_Ferramentas_Pendrive)
