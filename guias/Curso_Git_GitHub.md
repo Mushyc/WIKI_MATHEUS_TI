@@ -1,211 +1,81 @@
 # 🔀 Curso: Git e GitHub Profissional
 
-Controle de versão que TODO desenvolvedor PRECISA dominar.
+![Banner Git](/banner_git.png)
+
+A máquina do tempo do desenvolvedor. Aprenda a controlar versões, colaborar em equipe e manter seu código seguro contra desastres.
 
 ---
 
-## 🎯 Por Que Git é Obrigatório?
+## 📂 O Fluxo de Trabalho do Git
 
-- ✅ 99% das empresas usam
-- ✅ Obrigatório para trabalho em equipe
-- ✅ Portfólio público (GitHub)
-- ✅ Salva seu código de desastres
+Como seus arquivos viajam do computador para o servidor?
 
----
-
-## 📚 Módulo 1: Fundamentos
-
-### Instalação
-```bash
-# Windows
-winget install Git.Git
-
-# Linux
-sudo apt install git
-
-# Configuração inicial
-git config --global user.name "Seu Nome"
-git config --global user.email "seuemail@gmail.com"
-```
-
-### Comandos Essenciais
-```bash
-# Iniciar repositório
-git init
-
-# Ver status
-git status
-
-# Adicionar arquivos
-git add arquivo.txt        # Um arquivo
-git add .                  # Todos os arquivos
-
-# Commit (salvar)
-git commit -m "Mensagem descritiva"
-
-# Ver histórico
-git log
-git log --oneline  # Resumido
+```mermaid
+graph LR
+    WD["Working Directory (Seus Arquivos)"] --> SA["Staging Area (O Carrinho)"]
+    SA --> LR["Local Repo (Seu PC)"]
+    LR --> RR["Remote Repo (GitHub)"]
+    
+    style WD fill:#333,stroke:#ccc
+    style SA fill:#d35400,stroke:#fff
+    style LR fill:#27ae60,stroke:#fff
+    style RR fill:#2980b9,stroke:#fff
 ```
 
 ---
 
-## 🌿 Módulo 2: Branches
+## 🛠️ Módulo 1: Comandos do Dia a Dia
 
-### O Que São?
-Linhas paralelas de desenvolvimento.
-
+### Iniciando a Jornada
 ```bash
-# Criar branch
-git branch feature-login
-
-# Mudar para branch
-git checkout feature-login
-# OU (comando novo)
-git switch feature-login
-
-# Criar E mudar
-git checkout -b feature-cadastro
-
-# Listar branches
-git branch
-
-# Deletar branch
-git branch -d feature-login
+git init                # Começa um novo projeto
+git add .               # Adiciona tudo ao "carrinho" (Staging Area)
+git commit -m "Mensagem" # Salva as mudanças no seu histórico
+git push origin main    # Envia tudo para a nuvem
 ```
 
-### Workflow Padrão
-```
-main (produção)
-  └── develop (desenvolvimento)
-        ├── feature-login
-        └── feature-cadastro
-```
+::: tip 💡 Dica do Matheus
+Nunca faça um `git push` sem antes fazer um `git status`. Isso evita que você envie arquivos temporários ou configurações pessoais por engano para o servidor!
+:::
 
 ---
 
-## 🔄 Módulo 3: Merge e Rebase
+## 🔀 Módulo 2: Branches e Colaboração
 
-### Merge (Juntar branches)
-```bash
-git checkout main
-git merge feature-login
+### Trabalhando em Equipe
+Branches permitem que você mexa no código sem quebrar a versão principal que está online.
+
+```mermaid
+gitGraph
+    commit
+    commit
+    branch feature-login
+    checkout feature-login
+    commit
+    commit
+    checkout main
+    merge feature-login
+    commit
 ```
 
-### Resolver Conflitos
-```bash
-# 1. Git avisa do conflito
-# 2. Abra arquivo conflitante:
-<<<<<<< HEAD
-código da branch atual
-=======
-código da outra branch
->>>>>>> feature-login
-
-# 3. Edite manualmente
-# 4. Adicione e commite
-git add arquivo.txt
-git commit -m "Resolvido conflito"
-```
+::: info 🛡️ Na Trincheira: Caso Real
+Fui contratado para corrigir um bug urgente, mas eu estava no meio de uma funcionalidade nova. Se eu continuasse na mesma branch, enviaria código incompleto. **Solução:** Criei uma branch `fix-bug`, corrigi, dei o push e depois voltei para a minha `feature-nova`. O site não parou e meu trabalho continuou salvo.
+:::
 
 ---
 
-## ☁️ Módulo 4: GitHub
+## 📝 Procedimento Profissional: O arquivo .gitignore
 
-### Conectar Repositório Local ao GitHub
-```bash
-# Adicionar remoto
-git remote add origin https://github.com/usuario/repo.git
-
-# Enviar código
-git push -u origin main
-
-# Baixar alterações
-git pull origin main
-```
-
-### Clone
-```bash
-git clone https://github.com/usuario/repo.git
-```
+::: details 🚫 O que NÃO enviar para o GitHub (Clique para expandir)
+Sempre configure seu `.gitignore` para ignorar:
+1. [ ] `node_modules/` (Milhares de arquivos pesados)
+2. [ ] `.env` (Suas senhas e chaves secretas)
+3. [ ] `dist/` ou `build/` (Arquivos gerados automaticamente)
+4. [ ] `*.log` (Arquivos de log gigantes)
+:::
 
 ---
 
-## 🎯 Módulo 5: Workflow Profissional
-
-### GitFlow
-```bash
-# Branches principais
-main          # Produção
-develop       # Desenvolvimento
-
-# Branches temporárias
-feature/nome  # Nova funcionalidade
-hotfix/nome   # Correção urgente
-release/v1.0  # Preparação de release
-```
-
-### Commits Semânticos
-```bash
-git commit -m "feat: adiciona login com Google"
-git commit -m "fix: corrige bug no cadastro"
-git commit -m "docs: atualiza README"
-git commit -m "refactor: melhora estrutura do código"
-git commit -m "test: adiciona testes unitários"
-```
-
----
-
-## 🔧 Comandos Avançados
-
-```bash
-# Desfazer último commit (mantém alterações)
-git reset --soft HEAD~1
-
-# Desfazer último commit (descarta alterações)
-git reset --hard HEAD~1
-
-# Ver diferenças
-git diff
-
-# Salvar trabalho temporariamente
-git stash
-git stash pop  # Restaurar
-
-# Reescrever histórico
-git rebase -i HEAD~3
-```
-
----
-
-## 🎓 Boas Práticas
-
-1. **Commits pequenos e frequentes**
-2. **Mensagens descritivas**
-3. **Nunca commitar senhas/chaves**
-4. **Use .gitignore**
-5. **Pull antes de Push**
-
----
-
-### Exemplo .gitignore
-```
-# Python
-__pycache__/
-*.py[cod]
-venv/
-
-# Node
-node_modules/
-.env
-
-# IDEs
-.vscode/
-.idea/
-```
-
----
-
-**Veja também:**
-- [Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web)
-- [Python para Automação](/guias/Curso_Python_Automacao)
+### Links Relacionados
+- [💻 Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web)
+- [🗄️ Bancos de Dados Avançados](/guias/Curso_Banco_Dados_Avancado)

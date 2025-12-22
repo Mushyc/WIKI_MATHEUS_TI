@@ -1,213 +1,65 @@
 # 🗄️ Curso: Bancos de Dados Avançado
 
-SQL + NoSQL + Performance + Design de Esquemas.
+![Banner DB](/banner_db.png)
+
+Onde os dados ganham vida. Aprenda a modelar, consultar e otimizar bancos de dados para aplicações de alta performance.
 
 ---
 
-## 📚 Módulo 1: SQL Avançado
+## 📂 Arquitetura da Informação
 
-### Joins
-```sql
--- INNER JOIN (apenas registros com correspondência)
-SELECT usuarios.nome, pedidos.total
-FROM usuarios
-INNER JOIN pedidos ON usuarios.id = pedidos.usuario_id;
+Como os dados se relacionam? Entenda a estrutura de uma tabela profissional.
 
--- LEFT JOIN (todos da esquerda + correspondências)
-SELECT usuarios.nome, pedidos.total
-FROM usuarios
-LEFT JOIN pedidos ON usuarios.id = pedidos.usuario_id;
-
--- RIGHT JOIN
-SELECT usuarios.nome, pedidos.total
-FROM usuarios
-RIGHT JOIN pedidos ON usuarios.id = pedidos.usuario_id;
-```
-
-### Subqueries
-```sql
--- Encontrar usuários com pedidos acima da média
-SELECT nome
-FROM usuarios
-WHERE id IN (
-    SELECT usuario_id
-    FROM pedidos
-    WHERE total > (SELECT AVG(total) FROM pedidos)
-);
-```
-
-### Funções de Agregação
-```sql
-SELECT 
-    categoria,
-    COUNT(*) as total_produtos,
-    AVG(preco) as preco_medio,
-    MAX(preco) as mais_caro,
-    MIN(preco) as mais_barato
-FROM produtos
-GROUP BY categoria
-HAVING AVG(preco) > 100;
+```mermaid
+erDiagram
+    USUARIO ||--o{ PEDIDO : realiza
+    USUARIO {
+        string nome
+        string email
+        string cpf
+    }
+    PEDIDO {
+        int id
+        float valor
+        date data
+    }
 ```
 
 ---
 
-## 📋 Módulo 2: Normalização
+## 🛠️ Módulo 1: O Poder do SQL
 
-### Formas Normais
-
-**1NF:** Sem grupos repetidos
+### Consultas que Salvam o Dia
 ```sql
--- ❌ Errado
-CREATE TABLE pedidos (
-    id INT,
-    produtos TEXT  -- "Arroz, Feijão, Macarrão"
-);
-
--- ✅ Correto
-CREATE TABLE pedidos_itens (
-    pedido_id INT,
-    produto_id INT
-);
+-- Buscar clientes que não compram há mais de 30 dias
+SELECT nome, email 
+FROM usuarios 
+WHERE ultima_compra < DATE_SUB(NOW(), INTERVAL 30 DAY);
 ```
 
-**2NF:** Sem dependências parciais
-**3NF:** Sem dependências transitivas
-
-### Desnormalização (Quando usar)
-Para **performance**, às vezes quebrar normalização é OK.
+::: tip 💡 Dica do Matheus
+Sempre use **Índices** em colunas que você usa muito no `WHERE`. Isso pode fazer uma busca que demorava 10 segundos passar a demorar 0.01 segundos!
+:::
 
 ---
 
-## 🚀 Módulo 3: Performance e Índices
+## 🔧 Módulo 2: Administração e Segurança
 
-### Criar Índices
-```sql
-CREATE INDEX idx_email ON usuarios(email);
-CREATE INDEX idx_categoria_preco ON produtos(categoria, preco);
-```
-
-### Explain (Ver plano de execução)
-```sql
-EXPLAIN SELECT * FROM usuarios WHERE email = 'teste@email.com';
-```
-
-### Otimização
-```sql
--- ❌ Lento
-SELECT * FROM produtos WHERE YEAR(data_criacao) = 2024;
-
--- ✅ Rápido
-SELECT * FROM produtos 
-WHERE data_criacao >= '2024-01-01' 
-  AND data_criacao < '2025-01-01';
-```
+### Backup e Recuperação
+::: danger ⚠️ Alerta Crítico
+Backup que não foi testado não é backup. Pelo menos uma vez por mês, tente restaurar seu banco de dados em um servidor de teste para garantir que os arquivos não estão corrompidos.
+:::
 
 ---
 
-## 🔐 Módulo 4: Transações e ACID
+## 🔍 Módulo 3: Troubleshooting de Performance
 
-### Transações
-```sql
-START TRANSACTION;
-
-UPDATE contas SET saldo = saldo - 100 WHERE id = 1;
-UPDATE contas SET saldo = saldo + 100 WHERE id = 2;
-
-COMMIT;  -- Confirma
--- OU
-ROLLBACK;  -- Desfaz
-```
-
-### ACID
-- **A**tomicidade: Tudo ou nada
-- **C**onsistência: Regras mantidas
-- **I**solamento: Transações independentes
-- **D**urabilidade: Dados persistidos
+::: info 🛡️ Na Trincheira: Caso Real
+Um sistema de vendas estava travando ao gerar o relatório mensal. Usei o comando `EXPLAIN ANALYZE` e descobri que o banco estava fazendo uma busca completa na tabela (Table Scan) em vez de usar o índice. **Solução:** Criei um índice composto e o relatório que demorava 5 minutos passou a ser instantâneo.
+:::
 
 ---
 
-## 📦 Módulo 5: NoSQL (MongoDB)
-
-### Quando Usar NoSQL?
-- Dados não-estruturados
-- Escalabilidade horizontal
-- Flexibilidade de esquema
-
-### MongoDB Básico
-```javascript
-// Inserir
-db.usuarios.insertOne({
-    nome: "João",
-    email: "joao@email.com",
-    idade: 25,
-    interesses: ["programação", "games"]
-});
-
-// Buscar
-db.usuarios.find({ idade: { $gt: 18 } });
-
-// Atualizar
-db.usuarios.updateOne(
-    { email: "joao@email.com" },
-    { $set: { idade: 26 } }
-);
-
-// Deletar
-db.usuarios.deleteOne({ email: "joao@email.com" });
-```
-
----
-
-## 🎯 SQL vs NoSQL
-
-| Aspecto | SQL | NoSQL |
-|---------|-----|-------|
-| Estrutura | Rígida (tabelas) | Flexível (documentos) |
-| Escalabilidade | Vertical | Horizontal |
-| Transações | Forte | Eventual |
-| Uso | Financeiro, ERP | Redes sociais, Big Data |
-
----
-
-## 🔧 Projeto Prático: E-commerce
-
-```sql
-CREATE TABLE usuarios (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
-    senha_hash VARCHAR(255),
-    criado_em TIMESTAMP DEFAULT NOW()
-);
-
-CREATE TABLE produtos (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(200),
-    preco DECIMAL(10,2),
-    estoque INT,
-    categoria_id INT REFERENCES categorias(id)
-);
-
-CREATE TABLE pedidos (
-    id SERIAL PRIMARY KEY,
-    usuario_id INT REFERENCES usuarios(id),
-    total DECIMAL(10,2),
-    status VARCHAR(20),
-    criado_em TIMESTAMP DEFAULT NOW()
-);
-
-CREATE TABLE pedidos_itens (
-    pedido_id INT REFERENCES pedidos(id),
-    produto_id INT REFERENCES produtos(id),
-    quantidade INT,
-    preco_unitario DECIMAL(10,2),
-    PRIMARY KEY (pedido_id, produto_id)
-);
-```
-
----
-
-**Veja também:**
-- [Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web)
-- [Python para Automação](/guias/Curso_Python_Automacao)
-- [Windows Server](/guias/Curso_Windows_Server_AD)
+### Links Relacionados
+- [💻 Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web)
+- [🐍 Python para Automação](/guias/Curso_Python_Automacao)

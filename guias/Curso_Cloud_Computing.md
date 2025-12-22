@@ -1,292 +1,74 @@
 # ☁️ Curso: Cloud Computing Essentials
 
-Fundamentos de computação em nuvem para entrar no mercado que mais cresce em TI.
+![Banner Cloud](/banner_cloud.png)
+
+O céu não é o limite, é o seu novo data center. Aprenda os fundamentos da computação em nuvem e como as maiores empresas do mundo operam.
 
 ---
 
-## 📚 Módulo 1: O que é Cloud Computing?
+## 📂 O Modelo de Responsabilidade Compartilhada
 
-### Definição
-**Cloud Computing** = Usar recursos de TI (servidores, storage, bancos de dados) através da internet, pagando apenas pelo que usar.
+O que é responsabilidade sua e o que é da nuvem? Entenda antes de configurar seu servidor.
 
-### Vantagens vs Data Center Próprio
-| Tradicional | Cloud |
-|------------|-------|
-| Compra de servidores | Aluguel por demanda |
-| Manutenção física | Provedor cuida |
-| Capacidade fixa | Escalável |
-| Custo inicial alto | Pague conforme usa |
-| Demora para provisionar | Instantâneo |
-
-### Modelos de Serviço
-
-**IaaS (Infrastructure as a Service)**
-- Você gerencia: SO, apps, dados
-- Provedor gerencia: Hardware, rede, storage
-- Exemplo: AWS EC2, Azure Virtual Machines
-
-**PaaS (Platform as a Service)**
-- Você gerencia: Só os apps e dados
-- Provedor gerencia: SO, runtime, middleware
-- Exemplo: AWS Elastic Beanstalk, Azure App Service
-
-**SaaS (Software as a Service)**
-- Você usa pronto
-- Provedor gerencia TUDO
-- Exemplo: Gmail, Office 365, Salesforce
+```mermaid
+graph TD
+    User["Sua Responsabilidade (Dados/Apps)"] --- Provider["Responsabilidade do Provider (Hardware/Rede)"]
+    
+    subgraph SaaS [Software as a Service]
+        S["App Pronta (Gmail/Office 365)"]
+    end
+    
+    subgraph PaaS [Platform as a Service]
+        P["Plataforma (Heroku/Vercel)"]
+    end
+    
+    subgraph IaaS [Infrastructure as a Service]
+        I["Servidores Crus (AWS EC2/Azure VM)"]
+    end
+    
+    style User fill:#e74c3c,stroke:#fff
+    style Provider fill:#3498db,stroke:#fff
+```
 
 ---
 
-## ☁️ Módulo 2: AWS (Amazon Web Services)
+## 🛠️ Módulo 1: Os 3 Pilares da Nuvem
 
-### Principais Serviços
-
-**EC2 (Elastic Compute Cloud)**
-- Máquinas virtuais na nuvem
-- Escolhe: CPU, RAM, Disco, SO
-- Pague por hora/segundo de uso
-
-**S3 (Simple Storage Service)**
-- Armazenamento de objetos (arquivos)
-- Alta disponibilidade (99.999999999%)
-- Casos de uso: Backup, hospedagem de imagens
-
-**RDS (Relational Database Service)**
-- Banco de dados gerenciado
-- PostgreSQL, MySQL, SQL Server, Oracle
-- Backup automático, alta disponibilidade
-
-**Lambda**
-- Código serverless (sem gerenciar servidor)
-- Pague apenas quando o código executar
-- Exemplo: Processar imagem quando uploadada no S3
-
-**VPC (Virtual Private Cloud)**
-- Rede virtual isolada
-- Definir sub-redes, firewalls, VPNs
+| Conceito | O que significa na prática? | Analogia |
+| :--- | :--- | :--- |
+| **Escalabilidade** | Aumentar recursos conforme o site cresce | Comprar mais mesas para um restaurante cheio |
+| **Elasticidade** | Diminuir recursos quando não há uso | Mandar garçons embora quando o restaurante esvazia |
+| **Alta Disponibilidade** | O site nunca cai | Ter um gerador de energia caso a luz acabe |
 
 ---
 
-## 🔷 Módulo 3: Azure (Microsoft)
+## 🔧 Módulo 2: Provedores e Regiões
 
-### Principais Serviços
-
-**Virtual Machines**
-- Equivalente ao EC2 da AWS
-- Integração com Windows Server/Active Directory
-
-**App Service**
-- Hospedar aplicações web (Node, Python, .NET)
-- Auto-scaling, SSL, CI/CD integrado
-
-**Azure SQL Database**
-- Banco SQL Server gerenciado
-- Backup automático, geo-replicação
-
-**Storage Account**
-- Blob Storage (equivalente ao S3)
-- File Share (compartilhamento SMB na nuvem)
-
-**Active Directory (Azure AD)**
-- Gerenciamento de identidade na cloud
-- SSO para aplicações SaaS
+::: tip 💡 Dica do Matheus
+Ao criar um servidor na nuvem (AWS/Azure), sempre escolha a região **"São Paulo"** (us-east-1) para clientes brasileiros. Isso reduz o "ping" e deixa o site muito mais rápido para eles.
+:::
 
 ---
 
-## 🎯 Módulo 4: Conceitos Fundamentais
+## 🔍 Módulo 3: Troubleshooting de Custos
 
-### Regiões e Zonas de Disponibilidade
-
-**Região**
-- Localização geográfica (ex: US East, Brazil South)
-- Cada região tem múltiplos data centers
-
-**Zona de Disponibilidade (AZ)**
-- Data centers isolados dentro de uma região
-- Alta disponibilidade: Distribua recursos em múltiplas AZs
-
-**Latência**
-- Servidores nos EUA = ~200ms de latência do Brasil
-- Servidores no Brasil (São Paulo) = ~15ms
-
-### Auto-Scaling
-**O que é:** Adicionar/remover servidores automaticamente conforme demanda.
-
-**Exemplo:**
-- 10h-18h (horário comercial): 5 servidores
-- 18h-22h (baixa demanda): 2 servidores
-- Economia: Paga menos quando não precisa
-
-### Load Balancer
-**Função:** Distribui tráfego entre múltiplos servidores.
-
-**Vantagem:**
-- Se um servidor cair, o outro assume
-- Melhor performance (divide carga)
+::: info 🛡️ Na Trincheira: Caso Real
+Um aluno esqueceu uma máquina potente ligada na AWS por um mês e recebeu uma conta de **R$ 500,00**. **Solução:** Configure sempre um "Billing Alarm". O sistema te avisa por e-mail assim que o gasto passar de R$ 10,00. Segurança financeira é tudo!
+:::
 
 ---
 
-## 💰 Módulo 5: Precificação e Economia
+## 📝 Procedimento Profissional: Segurança na Nuvem
 
-### Modelos de Cobrança
-
-**On-Demand**
-- Pague por hora/segundo
-- Sem compromisso
-- Mais caro
-
-**Reserved Instances (RI)**
-- Compromisso de 1-3 anos
-- Desconto de até 75%
-- Para workloads previsíveis
-
-**Spot Instances (AWS)**
-- Leilão de capacidade ociosa
-- Desconto de até 90%
-- Pode ser interrompido a qualquer momento
-- Para jobs que podem parar/recomeçar
-
-### Free Tier (Camada Gratuita)
-
-**AWS Free Tier:**
-- 750h/mês de EC2 t2.micro (12 meses)
-- 5GB de S3 (para sempre)
-- 750h/mês de RDS (12 meses)
-
-**Azure Free:**
-- 750h/mês de VM B1S (12 meses)
-- 5GB de Blob Storage (12 meses)
-- $200 de crédito (30 dias)
+::: details 🔐 Checklist de Segurança Cloud (Clique para expandir)
+Siga estes passos antes de qualquer deploy:
+1. [ ] **MFA:** Ative a autenticação de dois fatores em todas as contas.
+2. [ ] **Roles:** NUNCA use a conta "Root" para o dia a dia.
+3. [ ] **Portas:** No Firewall (Security Group), abra apenas as portas estritamente necessárias (80, 443).
+:::
 
 ---
 
-## 🔐 Módulo 6: Segurança na Nuvem
-
-### Shared Responsibility Model
-
-**Provedor (AWS/Azure) é responsável por:**
-- Segurança física dos data centers
-- Hardware
-- Rede física
-- Infraestrutura de virtualização
-
-**Você é responsável por:**
-- Dados
-- Configuração de firewall
-- Criptografia
-- Gerenciamento de usuários/acessos
-- Patches do SO
-
-### IAM (Identity and Access Management)
-
-**Princípio do Menor Privilégio:**
-Dê apenas as permissões ESSENCIAIS.
-
-**Exemplo:**
-- Dev de frontend: Acesso ao S3 (upload de imagens)
-- Dev de backend: Acesso ao RDS (banco de dados)
-- Ninguém tem acesso admin sem necessidade
-
-**MFA (Multi-Factor Authentication)**
-Sempre habilite MFA na conta root!
-
----
-
-## 🛠️ Módulo 7: Casos de Uso Práticos
-
-### 1. Hospedar Site Estático
-**Serviço:** S3 + CloudFront (AWS) ou Storage + CDN (Azure)
-**Custo:** ~$1-5/mês para site pequeno
-**Vantagem:** Alta disponibilidade, performance global
-
-### 2. Aplicação Web com Banco
-**Arquitetura:**
-- Load Balancer
-- 2+ Servidores EC2/VMs (auto-scaling)
-- RDS/SQL Database (gerenciado)
-- S3/Blob para arquivos estáticos
-
-### 3. Backup na Nuvem
-**Cenário:** Empresa quer backup off-site seguro.
-**Solução:** S3 Glacier (AWS) ou Archive Storage (Azure)
-**Custo:** $0.004/GB/mês (muito barato)
-
-### 4. Ambiente de Desenvolvimento/Teste
-**Problema:** Montar lab é caro.
-**Solução:** Ligar VMs apenas quando estudar/testar.
-**Custo:** ~$20-50/mês vs $500+ de hardware
-
----
-
-## 📖 Labs Práticos (Grátis!)
-
-### Lab 1: Criar VM na AWS
-1. Crie conta na AWS (free tier)
-2. EC2 > Launch Instance
-3. Escolha Ubuntu (free tier eligible)
-4. Conecte via SSH
-5. Instale NGINX: `sudo apt install nginx`
-6. Acesse o IP público no navegador
-
-### Lab 2: Hospedar Site Estático no S3
-1. Crie bucket no S3
-2. Upload de arquivo HTML
-3. Habilite "Static Website Hosting"
-4. Acesse a URL do bucket
-
-### Lab 3: Criar Banco de Dados RDS
-1. RDS > Create Database
-2. Escolha PostgreSQL (free tier)
-3. Configure usuário/senha
-4. Anote o endpoint
-5. Conecte com DBeaver/pgAdmin
-
----
-
-## 🎓 Para a Faculdade
-
-Na faculdade você pode ver:
-- Arquiteturas distribuídas
-- Computação paralela
-- Sistemas de alto desempenho
-
-**Vantagem que você terá:**
-- Conhece cloud na prática
-- Sabe provisionar infraestrutura
-- Pode fazer projetos da faculdade na nuvem
-
----
-
-## 📜 Certificações Cloud
-
-**AWS:**
-- AWS Certified Cloud Practitioner (entrada)
-- AWS Certified Solutions Architect Associate (intermediário)
-
-**Azure:**
-- Azure Fundamentals (AZ-900)
-- Azure Administrator (AZ-104)
-
-**Google Cloud:**
-- Cloud Engineer Associate
-
-**Recomendação:** Comece com Cloud Practitioner (AWS) ou AZ-900 (Azure) = são básicas e baratas ($100).
-
----
-
-## 📖 Recursos de Estudo
-
-**Gratuitos:**
-- AWS Free Tier (12 meses de uso grátis)
-- Microsoft Learn (Azure fundamentals)
-- A Cloud Guru (trial grátis)
-
-**YouTube:**
-- Curso AWS para Iniciantes (Fabricio Veronez)
-- FreeCodeCamp AWS Certified Cloud Practitioner
-
----
-
-**Veja também:**
-- [Roadmap de Certificações](/guias/Guia_Roadmap_Certificacoes)
-- [Windows Server](/guias/Curso_Windows_Server_AD) (migração pra cloud)
+### Links Relacionados
+- [🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD)
+- [🖥️ Montagem e Manutenção](/guias/Curso_Montagem_Manutencao_PC)
