@@ -1,60 +1,53 @@
-# 💀 Kali Linux: Guia Técnico de Elite
+# ⚡ Kali Linux: Master Cheat Sheet
 
-Este guia foca no **Top 10** de ferramentas essenciais para começar seus estudos de segurança e pentest.
+![Banner Cheat Sheet](/banner_redes.png)
 
----
-
-## 1. Nmap (Network Mapper)
-- **O que é:** O rei da varredura de rede.
-- **Para que serve:** Descobrir máquinas ligadas e quais portas (serviços) estão abertas.
-- **Comando Básico:** `nmap -sV 192.168.1.1` (Descobre serviços e versões).
-
-## 2. Metasploit Framework
-- **O que é:** Uma plataforma completa de exploração.
-- **Para que serve:** Testar vulnerabilidades conhecidas e ganhar acesso (explorar).
-- **Comando Básico:** `msfconsole` (Inicia o console).
-
-## 3. Wireshark
-- **O que é:** Analisador de tráfego de rede.
-- **Para que serve:** "Ver" tudo o que passa pelo cabo ou Wi-Fi em tempo real.
-- **Ação:** Interface gráfica para capturar pacotes.
-
-## 4. Burp Suite
-- **O que é:** Proxy para testes em aplicações Web.
-- **Para que serve:** Interceptar e modificar requisições entre o navegador e o site.
-- **Foco:** Encontrar falhas em sites/sistemas online.
-
-## 5. John the Ripper
-- **O que é:** Quebrador de senhas.
-- **Para que serve:** Realizar ataques de força bruta ou dicionário contra arquivos de senhas.
-- **Comando Básico:** `john --wordlist=lista.txt hash.txt`
-
-## 6. Hydra
-- **O que é:** Quebrador de login remoto em tempo real.
-- **Para que serve:** Tentar senhas em serviços como SSH, FTP, Telnet.
-- **Comando Básico:** `hydra -l admin -P senhas.txt ssh://192.168.1.1`
-
-## 7. Aircrack-ng
-- **O que é:** Suíte de auditoria Wi-Fi.
-- **Para que serve:** Testar a segurança de senhas de redes Wi-Fi (WPA/WPA2).
-- **Foco:** Redes sem fio.
-
-## 8. SQLmap
-- **O que é:** Automatizador de SQL Injection.
-- **Para que serve:** Encontrar falhas em bancos de dados de sites automaticamente.
-- **Comando Básico:** `sqlmap -u "http://site.com/id=1" --dbs`
-
-## 9. Social Engineering Toolkit (SET)
-- **O que é:** Ferramenta para engenharia social.
-- **Para que serve:** Criar páginas falsas (phishing) para testar se usuários caem em golpes.
-- **Comando Básico:** `setoolkit`
-
-## 10. Gobuster
-- **O que é:** Localizador de diretórios ocultos.
-- **Para que serve:** Encontrar pastas "escondidas" em sites (ex: /admin, /config).
-- **Comando Básico:** `gobuster dir -u http://site.com -w lista.txt`
+Acesso rápido aos comandos mais potentes do Kali Linux. Tenha este guia aberto em uma segunda tela durante seus laboratórios.
 
 ---
 
-> [!TIP]
-> **Dica de Ouro:** O comando `man [ferramenta]` (ex: `man nmap`) dentro do terminal do Kali abre o manual completo de qualquer ferramenta.
+## 📶 Audiência Wi-Fi (Aircrack-ng)
+```bash
+airmon-ng start wlan0    # Coloca placa em modo monitor
+airodump-ng wlan0mon     # Lista redes próximas
+aireplay-ng --deauth 0   # Derruba dispositivos para capturar o Handshake
+```
+
+## 🌐 Ataque Web (Burp & SQLmap)
+| Ferramenta | Objetivo | Comando Pro |
+| :--- | :--- | :--- |
+| **SQLmap** | Invasão de DB | `sqlmap -u "url" --batch --dbs` |
+| **Gobuster** | Pastas ocultas | `gobuster dir -u url -w wordlist` |
+| **Burp Suite** | Interceptação | Abrir GUI e configurar Proxy 127.0.0.1:8080 |
+
+## 🔐 Quebra de Senhas (John & Hydra)
+::: tip 💡 Dica do Matheus
+O Kali já vem com a melhor wordlist do mundo: `/usr/share/wordlists/rockyou.txt.gz`. Use `gunzip` para descompactar antes de usar com o John ou Hydra!
+:::
+
+**John the Ripper (Offline):**
+`john --format=nt --wordlist=rockyou.txt minhas_senhas.txt`
+
+**Hydra (Online - Brute Force):**
+`hydra -L usuários.txt -P rockyou.txt [IP] ssh`
+
+---
+
+## 🎯 Metodologia Attacker vs Defender
+
+```mermaid
+graph LR
+    Red["🔴 Red Team (Atacante)"] -- "Encontra Falhas" --> Blue["🔵 Blue Team (Defensor)"]
+    Blue -- "Bloqueia e Fortalece" --> Red
+    
+    subgraph Lab_Seguro
+    Red
+    Blue
+    end
+```
+
+---
+
+### Links Relacionados
+- [💀 Kali Linux Mastery](/guias/Curso_Pratico_Kali_Expert)
+- [🔀 Git & GitHub](/guias/Curso_Git_GitHub)

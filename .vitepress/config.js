@@ -1,6 +1,9 @@
 export default {
   title: "Matheus TI",
   description: "Knowledge Base & Technical Study Center",
+  markdown: {
+    mermaid: true
+  },
   themeConfig: {
     nav: [
       { text: 'Início', link: '/' },
