@@ -1,7 +1,6 @@
-# 💀 Kali Linux: Do Zero ao Elite (Mastery)
+# 🛡️ Curso: Kali Linux - Do Zero ao Elite (Mastery)
 
-![Banner Kali](/banner_kali_hacking_expert.png)
-*(Banner em processamento - Visual Hacker/Matrix)*
+![Banner Kali](/banner_extra_1.jpg)
 
 Bem-vindo ao quartel-general da segurança ofensiva. Este guia não ensina apenas a usar ferramentas; ele ensina a mentalidade de um Pentester Profissional.
 
