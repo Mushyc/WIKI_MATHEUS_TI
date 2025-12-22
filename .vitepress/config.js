@@ -88,8 +88,7 @@ export default {
           items: [
             { text: '🔍 Troubleshooting Profissional', link: '/guias/Guia_Troubleshooting_Profissional' },
             { text: '📜 Roadmap de Certificações', link: '/guias/Guia_Roadmap_Certificacoes' },
-            { text: '💬 Atendimento Técnico de Elite', link: '/guias/Guia_Atendimento_Elite' },
-            { text: '🖨️ Guia Impressora Ricoh', link: '/guias/Guia_Solucao_Impressora_Ricoh' }
+            { text: '💬 Atendimento Técnico de Elite', link: '/guias/Guia_Atendimento_Elite' }
           ]
         }
       ],
