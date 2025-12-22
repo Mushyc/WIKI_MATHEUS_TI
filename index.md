@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Matheus TI"
   text: "Knowledge Base"
-  tagline: "Seu centro de estudos técnicos completo - Do iniciante ao expert"
+  tagline: "🔥 Wiki Premium Edition - Sua Central de Estudos de Elite"
   actions:
     - theme: brand
       text: 🎓 Começar Estudos
