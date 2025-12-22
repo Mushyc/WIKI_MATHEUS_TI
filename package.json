@@ -11,7 +11,7 @@
   "keywords": [],
   "author": "Matheus TI",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "vitepress": "^1.5.0"
   }
 }
