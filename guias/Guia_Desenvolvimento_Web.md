@@ -1,4 +1,4 @@
-# 💻 Guia: Desenvolvimento Web
+# 💻 Desenvolvimento Web
 
 ![Banner Web](/banner_web.png)
 

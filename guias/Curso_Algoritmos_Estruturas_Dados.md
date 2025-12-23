@@ -1,7 +1,6 @@
 # 📊 Curso: Algoritmos e Estruturas de Dados
 
 ![Banner Algoritmos](/banner_algoritmos.png)
-*(Banner em processamento - Logica e Dados)*
 
 Este é o alicerce de toda a computação. Se você entende a lógica e como organizar os dados, você domina qualquer linguagem.
 

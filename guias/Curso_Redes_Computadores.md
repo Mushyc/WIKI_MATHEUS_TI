@@ -1,4 +1,4 @@
-# 🌐 Curso: Redes de Computadores
+# 🌐 Redes de Computadores
 
 ![Banner Redes](/banner_redes.png)
 

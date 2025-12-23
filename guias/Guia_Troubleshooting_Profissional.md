@@ -1,6 +1,6 @@
-# 🔍 Guia: Troubleshooting Profissional
+# 🔍 Troubleshooting Profissional
 
-![Banner Troubleshooting](/banner_redes.png)
+![Banner Troubleshooting](/banner_troubleshooting.png)
 
 Diagnosticar é uma arte baseada em lógica. Este guia ensina o método científico para resolver qualquer erro de TI, do mais simples ao mais complexo.
 

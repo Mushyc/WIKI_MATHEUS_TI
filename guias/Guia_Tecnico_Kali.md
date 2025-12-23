@@ -1,4 +1,4 @@
-# ⚡ Kali Linux: Master Cheat Sheet
+# 🛡️ Kali Linux: Master Cheat Sheet
 
 ![Banner Cheat Sheet](/banner_redes.png)
 

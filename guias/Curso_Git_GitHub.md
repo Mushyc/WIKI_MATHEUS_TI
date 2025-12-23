@@ -1,4 +1,4 @@
-# 🔀 Curso: Git e GitHub Profissional
+# 🔀 Git e GitHub Profissional
 
 ![Banner Git](/banner_git.png)
 

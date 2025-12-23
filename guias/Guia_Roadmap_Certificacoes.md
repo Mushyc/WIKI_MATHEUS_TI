@@ -1,4 +1,4 @@
-# 📜 Guia: Roadmap de Certificações IT
+# 📜 Roadmap de Certificações IT
 
 ![Banner Certificações](/banner_extra_2.jpg)
 

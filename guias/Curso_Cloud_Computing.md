@@ -1,4 +1,4 @@
-# ☁️ Curso: Cloud Computing Essentials
+# ☁️ Cloud Computing Essentials
 
 ![Banner Cloud](/banner_cloud.png)
 

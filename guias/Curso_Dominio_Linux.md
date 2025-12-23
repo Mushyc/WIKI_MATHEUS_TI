@@ -1,4 +1,4 @@
-# 🐧 Curso: Domínio do Linux
+# 🐧 Domínio do Linux
 
 ![Banner Linux](/banner_linux.png)
 

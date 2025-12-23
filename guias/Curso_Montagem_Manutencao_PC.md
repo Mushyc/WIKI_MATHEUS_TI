@@ -1,4 +1,4 @@
-# 🖥️ Curso: Montagem e Manutenção de PCs
+# 🖥️ Montagem e Manutenção de PCs
 
 ![Banner Hardware](/banner_infra_hardware.png)
 

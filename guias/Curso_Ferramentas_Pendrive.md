@@ -1,4 +1,4 @@
-# 🛠️ Kit de Ferramentas do Técnico (Pen-drive)
+# 🛠️ Ferramentas do Pen-drive
 
 ![Banner Técnico](/banner_pendrive.png)
 

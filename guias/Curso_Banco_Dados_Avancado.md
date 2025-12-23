@@ -1,4 +1,4 @@
-# 🗄️ Curso: Bancos de Dados Avançado
+# 🗄️ Banco de Dados Avançado
 
 ![Banner DB](/banner_db.png)
 

@@ -1,7 +1,6 @@
 # 🎨 Curso: Programação Orientada a Objetos (POO)
 
 ![Banner POO](/banner_poo.png)
-*(Banner em processamento - Design e Modelagem)*
 
 Não apenas escreva código, desenhe sistemas. A POO é a arte de organizar a complexidade através de objetos que conversam entre si.
 

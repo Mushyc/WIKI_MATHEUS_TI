@@ -1,4 +1,4 @@
-# 🏢 Curso: Windows Server & Active Directory
+# 🏢 Windows Server & Active Directory
 
 ![Banner Windows Server](/banner_windows_server.png)
 

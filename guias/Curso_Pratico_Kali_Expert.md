@@ -1,4 +1,4 @@
-# 🛡️ Curso: Kali Linux - Do Zero ao Elite (Mastery)
+# 🛡️ Kali Linux - Do Zero ao Elite (Mastery)
 
 ![Banner Kali](/banner_extra_1.jpg)
 

@@ -1,4 +1,4 @@
-# 🐍 Curso: Python para Automação de TI
+# 🐍 Python para Automação de TI
 
 ![Banner Python](/banner_python.png)
 

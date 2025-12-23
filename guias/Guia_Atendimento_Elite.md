@@ -1,7 +1,6 @@
-# 💬 Guia: Atendimento Técnico de Elite
+# 💬 Atendimento Técnico de Elite
 
-![Banner Atendimento](/banner_web.png)
-*(Banner em processamento - Atendimento e Comunicação)*
+![Banner Atendimento](/banner_atendimento.png)
 
 Ser um técnico excelente é 50% habilidade manual e 50% habilidade humana. Este guia ensina como encantar o cliente e construir uma carreira de confiança.
 

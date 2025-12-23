@@ -1,7 +1,6 @@
-# 🧮 Curso: Fundamentos de Ciência da Computação
+# 🧮 Fundamentos de Ciência da Computação
 
-![Banner CS](/banner_pendrive.png)
-*(Banner em processamento - Ciência e Teoria)*
+![Banner CS](/banner_cs.png)
 
 A teoria que separa o programador do cientista. Entenda como os bits se tornam softwares complexos e como a faculdade enxerga o mundo digital.
 
