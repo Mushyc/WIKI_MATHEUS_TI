@@ -1,9 +1,9 @@
-# 🖼️ Galeria de Referências Técnicas
+# 🏙️ Central de Mídia Premium
 
-Use esta galeria para consultas visuais rápidas sobre comandos, arquiteturas e processos.
+Bem-vindo à sua biblioteca visual de elite. Aqui você encontra os banners temáticos e referências de alta fidelidade da Wiki.
 
-## 🌌 Banners Premium Edition
-Explore a nova identidade visual da Wiki:
+## 🌌 Identidade Visual (Banners)
+Explore a estética "Neon Purple & Cyan" aplicada em todos os módulos:
 
 ````carousel
 ![Algoritmos](/banner_algoritmos.png)
@@ -18,6 +18,8 @@ Explore a nova identidade visual da Wiki:
 <!-- slide -->
 ![Linux](/banner_linux.png)
 <!-- slide -->
+![Python](/banner_python.png)
+<!-- slide -->
 ![Troubleshooting](/banner_troubleshooting.png)
 <!-- slide -->
 ![Atendimento](/banner_atendimento.png)
@@ -25,28 +27,15 @@ Explore a nova identidade visual da Wiki:
 
 ---
 
-## 🐧 Linux e Infraestrutura
-### Comandos Básicos e Avançados
-![Comandos Básicos Linux](/assets/comandos_basicos_linux.jpeg)
-![Comandos Avançados Linux](/assets/comandos_avancados_linux.jpeg)
+## 🛠️ Utilitários e Roadmaps
+Guias visuais para suporte rápido e planejamento de carreira:
 
----
+| Categoria | Descrição | Link |
+| :--- | :--- | :--- |
+| **Certificações** | Mapa completo de carreira IT | [Ver Roadmap](/guias/Guia_Roadmap_Certificacoes) |
+| **Troubleshooting** | Ciclo de diagnóstico de elite | [Ver Guia](/guias/Guia_Troubleshooting_Profissional) |
+| **Comandos Kali** | Cheat-sheet de segurança | [Ver Comandos](/guias/Guia_Tecnico_Kali) |
 
-## 💻 Programação e Desenvolvimento
-### Roadmaps de Carreira
-![Roadmap Frontend](/assets/roadmap_frontend.jpeg)
-![Roadmap Backend](/assets/roadmap_backend.jpeg)
-
-### Tecnologias e Linguagens
-![Linguagens por Área](/assets/linguagens_por_area.jpeg)
-![Funções Python](/assets/funcoes_python.jpeg)
-![Git e GitHub Comandos](/assets/git_github_comandos.jpeg)
-
----
-
-## 🛡️ Segurança e Suporte
-### Troubleshooting e Redes
-![Firewall vs EDR](/assets/firewall_vs_edr.jpeg)
-![Troubleshooting Windows](/assets/troubleshooting_windows.jpeg)
-![Comandos Essenciais Suporte](/assets/comandos_essenciais_suporte.jpeg)
-![Solução de Problemas Básicos](/assets/solucao_problemas_basicos.jpeg)
+::: tip 💡 Dica de Estudo
+Use os banners para identificar rapidamente em qual módulo você está. Cada cor e símbolo foi pensado para facilitar sua memória visual!
+:::
