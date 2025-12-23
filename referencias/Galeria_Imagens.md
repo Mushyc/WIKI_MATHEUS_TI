@@ -20,9 +20,13 @@ Explore a estética "Neon Purple & Cyan" aplicada em todos os módulos:
 <!-- slide -->
 ![Python](/banner_python.png)
 <!-- slide -->
+![Web Dev](/banner_web_final.png)
+<!-- slide -->
 ![Troubleshooting](/banner_troubleshooting.png)
 <!-- slide -->
 ![Atendimento](/banner_atendimento.png)
+<!-- slide -->
+![Kali Elite](/banner_kali_final.png)
 ````
 
 ---

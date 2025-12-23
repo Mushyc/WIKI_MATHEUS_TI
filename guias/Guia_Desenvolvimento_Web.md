@@ -1,6 +1,6 @@
 # 💻 Desenvolvimento Web
 
-Construa o futuro da internet. Do HTML semântico aos frameworks modernos, este guia é o seu mapa para se tornar um Full Stack de respeito.
+![Banner Web](/banner_web_final.png)
 
 ---
 
