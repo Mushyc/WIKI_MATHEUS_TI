@@ -71,4 +71,4 @@ Siga estes passos antes de sair da casa/empresa do cliente:
 ### Links Relacionados
 - [🔍 Troubleshooting Profissional](/guias/Guia_Troubleshooting_Profissional)
 - [📜 Roadmap de Certificações](/guias/Guia_Roadmap_Certificacoes)
-- [🏢 Atendimento e Vendas](/guias/Guia_Troubleshooting_Carreira)
+- [🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD)
