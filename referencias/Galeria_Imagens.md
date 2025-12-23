@@ -2,6 +2,29 @@
 
 Use esta galeria para consultas visuais rápidas sobre comandos, arquiteturas e processos.
 
+## 🌌 Banners Premium Edition
+Explore a nova identidade visual da Wiki:
+
+````carousel
+![Algoritmos](/banner_algoritmos.png)
+<!-- slide -->
+![POO](/banner_poo.png)
+<!-- slide -->
+![Hardware](/banner_infra_hardware.png)
+<!-- slide -->
+![Computação](/banner_cs.png)
+<!-- slide -->
+![Redes](/banner_redes.png)
+<!-- slide -->
+![Linux](/banner_linux.png)
+<!-- slide -->
+![Troubleshooting](/banner_troubleshooting.png)
+<!-- slide -->
+![Atendimento](/banner_atendimento.png)
+````
+
+---
+
 ## 🐧 Linux e Infraestrutura
 ### Comandos Básicos e Avançados
 ![Comandos Básicos Linux](/assets/comandos_basicos_linux.jpeg)

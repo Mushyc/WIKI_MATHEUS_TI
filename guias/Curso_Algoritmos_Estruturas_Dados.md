@@ -1,4 +1,4 @@
-# 📊 Curso: Algoritmos e Estruturas de Dados
+# 📊 Algoritmos e Estruturas de Dados
 
 ![Banner Algoritmos](/banner_algoritmos.png)
 

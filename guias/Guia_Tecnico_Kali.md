@@ -1,6 +1,6 @@
 # 🛡️ Kali Linux: Master Cheat Sheet
 
-![Banner Cheat Sheet](/banner_redes.png)
+![Banner Kali Master](/banner_extra_1.jpg)
 
 Acesso rápido aos comandos mais potentes do Kali Linux. Tenha este guia aberto em uma segunda tela durante seus laboratórios.
 

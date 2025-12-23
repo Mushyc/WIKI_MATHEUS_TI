@@ -1,4 +1,4 @@
-# 🎨 Curso: Programação Orientada a Objetos (POO)
+# 🎨 Programação Orientada a Objetos (POO)
 
 ![Banner POO](/banner_poo.png)
 
