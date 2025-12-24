@@ -14,16 +14,16 @@ hero:
       link: /guias/Curso_Algoritmos_Estruturas_Dados
 
 features:
-  - title: 🐧 Domínio do Linux
-    details: Comandos essenciais, troubleshooting e administração de sistemas Linux para o dia a dia profissional.
-  - title: 🖥️ Montagem e Manutenção
-    details: Curso completo de hardware - montagem, diagnóstico e manutenção de computadores.
-  - title: 🛠️ Kit do Técnico
-    details: Aprenda a usar profissionalmente cada ferramenta do seu pen-drive organizado.
-  - title: 💀 Segurança e Hacking Ético
-    details: Kali Linux, Penetration Testing e ferramentas de segurança com guias práticos.
-  - title: 💻 Desenvolvimento Web
-    details: Roadmaps de Frontend e Backend para se tornar desenvolvedor Full Stack.
+  - title: 🐧 Linux Master Class
+    details: Domínio do terminal, automação Bash e administração de servidores de nível profissional.
+  - title: 🖥️ Hardware Master Class
+    details: Ciclo de boot, diagnóstico de componentes e montagem de computadores de alta performance.
+  - title: 🛠️ Rescue & Logic Mastery
+    details: Utilize ferramentas de forense e resgate para salvar qualquer sistema com seu pen-drive de elite.
+  - title: 💀 Kali Linux Expert Master
+    details: Metodologia PTES, hacking web e exploração de sistemas com foco em certificações.
+  - title: 💻 Fullstack Master Class
+    details: De arquiteturas web modernas a APIs robustas e escaláveis na nuvem.
 ---
 
 <style>

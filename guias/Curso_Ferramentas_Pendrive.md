@@ -1,103 +1,96 @@
-# 🛠️ Ferramentas do Pen-drive
+# 🛠️ Ferramentas do Pen-drive: Master Class Edition
 
 ![Banner Técnico](/banner_pendrive.png)
 
-Este guia transforma seu pen-drive em uma arma de diagnóstico de elite. Aprenda a usar profissionalmente cada ferramenta para resolver problemas em tempo recorde.
+Este guia transforma o seu simples pen-drive em uma arma de diagnóstico e resgate de elite. Aprenda a usar profissionalmente as ferramentas que salvam sistemas condenados e recuperam dados considerados perdidos. No mundo da TI, seu pen-drive é o seu kit de primeiros socorros.
 
 ---
 
-## 📂 Fluxo de Trabalho Multi-boot
+## 📂 Módulo 1: O Núcleo Multi-boot (Ventoy Avançado)
 
-O coração do seu pen-drive é o **Ventoy**. Ele permite que você simplesmente arraste e solte ISOs para o disco e elas apareçam no menu de boot automaticamente.
+O **Ventoy** é a base. Ele permite que você arraste ISOs para o pen-drive e dê boot nelas sem precisar formatar a cada novo sistema.
+
+### 1.1 Configuração de Elite
+- **Persistence (Persistência):** Crie um arquivo de persistência para o Ubuntu/Kali. Assim, as configurações e arquivos que você salvar dentro do Linux no pen-drive **não sumirão** ao desligar.
+- **Estrutura de Pastas:** Organize por `/Sistemas`, `/Diagnostico`, `/Recovery`. O Ventoy organiza o menu automaticamente.
 
 ```mermaid
 graph TD
-    A["Pen-drive Virgem"] --> B{"Instalar Ventoy"}
-    B --> C["Pasta Raiz (D:)"]
-    C --> D["Copiar Windows 10/11 .iso"]
-    C --> E["Copiar Linux (Ubuntu/Kali) .iso"]
-    C --> F["Copiar Hirens/Dism++ .iso"]
-    D & E & F --> G["Boot Multi-Sistemas ✅"]
+    USB["Pen-drive (Ventoy)"] --> ISO_W11["Windows 11 (Oficial)"]
+    USB --> ISO_KALI["Kali Linux (Forense)"]
+    USB --> ISO_WINPE["Sergei Strelec (WinPE Elite)"]
+    USB --> ISO_RESCUE["Kaspersky Rescue Disk (Antivírus)"]
+    
+    style USB fill:#27ae60,stroke:#fff,color:#fff
 ```
 
 ---
 
-## 🛠️ Categoria 01: Sistemas e ISOs
+## 🏗️ Módulo 2: Ambientes de Resgate (WinPE)
 
-### Ventoy (O Rei do Multi-boot)
-**O que é:** Transforma seu pen-drive em um repositório dinâmico de sistemas operacionais.
+Quando o Windows do cliente não sobe, você entra com um "Sistema Paralelo".
 
-::: tip 💡 Dica do Matheus
-Mantenha uma pasta chamada `ISOs` dentro do pen-drive para organizar por categorias (Windows, Linux, Diagnostic). O Ventoy vasculha todas as pastas automaticamente!
-:::
-
-**Como usar:**
-1. Execute `Ventoy2Disk.exe`.
-2. Selecione seu pen-drive e clique em **Install**.
-3. Copie as ISOs para a raiz. Pronto.
+### 2.1 Sergei Strelec vs Hiren's BootCD
+- **Hiren's BootCD PE:** Versão clássica e estável, baseada em Windows 10.
+- **Sergei Strelec (Recomendado):** O canivete suíço definitivo. Contém centenas de ferramentas de rede, discos, senhas e drivers já pré-instalados.
 
 ---
 
-## 🔍 Categoria 02: Diagnóstico de Hardware
+## 🔎 Módulo 3: Diagnóstico e Manutenção de Discos
 
-### CrystalDiskInfo (O Raio-X do HD)
-**O que é:** A primeira ferramenta que você deve abrir em QUALQUER atendimento.
+### 3.1 Victoria (O Mapeador de Bad Blocks)
+Diferente do CrystalDiskInfo (que só lê a saúde), o **Victoria** testa cada setor do disco.
+- **Remap:** Se achar um setor lento (verde/laranja), ele pode tentar "esconder" esse setor para o Windows não travar mais.
 
-::: danger ⚠️ Alerta Crítico
-Se o status aparecer como **"Cuidado" (Amarelo)** ou **"Crítico" (Vermelho)**, pare tudo! Faça o backup dos dados do cliente IMEDIATAMENTE antes de tentar qualquer reparo.
-:::
-
-| Status | Cor | Ação Recomendada |
-| :--- | :--- | :--- |
-| **Bom** | Azul | Disco saudável, pode prosseguir. |
-| **Atenção** | Amarelo | Backup imediato. Possível falha em breve. |
-| **Crítico** | Vermelho | Troque o disco. Risco iminente de perda total. |
+### 3.2 MiniTool Partition Wizard
+O mestre das partições.
+- **Uso:** Aumentar o drive C: pegando espaço do D:, converter MBR para GPT sem formatar, e clonar HD para SSD.
 
 ---
 
-## 🔧 Categoria 03: Manutenção de Sistema
+## 🔐 Módulo 4: Senhas e Segurança
 
-### Dism++ (A Canivete Suíço)
-**O que é:** Ferramenta indispensável para otimizar Windows e limpar gigabytes de lixo.
+### 4.1 bypass de Senha do Windows (NTPWEdit / Lazesoft)
+O cliente esqueceu a senha e não quer formatar?
+1. Dê boot pelo Pen-drive (WinPE).
+2. Abra o **NTPWEdit**.
+3. Aponte para o arquivo `SAM` do Windows do cliente.
+4. Clique em **Unlock** ou **Change Password**.
+5. Reinicie e entre sem senha.
 
-::: info 🛡️ Na Trincheira: Caso Real
-Um cliente reclamou de "Disco C Cheio" mesmo sem arquivos. Usei o **Dism++ > Limpeza de Disco > Windows Update Cleanup**. Recuperei **15GB** de espaço removendo sobras de atualizações antigas que o Windows padrão não apaga.
-:::
-
-### SDI (Drivers Offline)
-**O que é:** Salvação para PCs sem internet pós-formatação.
-
-::: warning ⚡ Atenção
-Sempre marque **apenas** os drivers que faltam ("Not Installed"). Atualizar drivers que já funcionam pode causar instabilidade em PCs antigos.
-:::
+### 4.2 Kaspersky Rescue Disk
+Se o antivírus dentro do Windows não consegue pegar o vírus (porque o vírus se "esconde" enquanto o sistema roda), o Rescue Disk mata o vírus **por fora**, com o Windows desligado.
 
 ---
 
-## 💾 Categoria 04: Recuperação de Dados
+## 💾 Módulo 5: Recuperação de Dados Forense
 
-### MiniTool Power Data Recovery
-**O que é:** Recupera arquivos deletados ou de discos formatados.
+### 5.1 TestDisk & PhotoRec
+- **TestDisk:** Recupera partições inteiras que sumiram (quando o disco vira "RAW").
+- **PhotoRec:** Ignora o sistema de arquivos e busca a "assinatura" dos arquivos direto nos clusters. Recupera fotos mesmo de discos onde a tabela de partição foi destruída.
 
-::: tip 🔍 Segredo Profissional
-Se o cliente deletou um arquivo, **NÃO INSTALE NADA** no disco dele. Rode o MiniTool direto do seu Pen-drive (versão portátil) para não sobrescrever os dados que você quer salvar.
+::: info 🛡️ Caso Real: O Pen-drive da Formatura
+Uma cliente formatou o cartão SD da câmera por engano. O Windows dizia "Disco precisa ser formatado". Usei o **PhotoRec** via Pen-drive de suporte e recuperei **1.200 fotos** de formatura. **A cliente chorou de emoção. Esse é o poder de um técnico de elite.**
 :::
 
 ---
 
-## 📝 Procedimento Padrão (SOP)
+## 📝 Módulo 6: O Ritual de Sobrevivência (Checklist)
 
-Siga este checklist em todo atendimento para garantir qualidade de elite:
-
-::: details 📋 Checklist do Técnico Profissional (Clique para expandir)
-1. [ ] **Anamnese:** Pergunte ao cliente EXATAMENTE quando o problema começou.
-2. [ ] **Saúde do Disco:** CrystalDiskInfo antes de qualquer instalação.
-3. [ ] **Temperaturas:** HWiNFO64 para checar superaquecimento.
-4. [ ] **Backup:** NUNCA formate sem confirmar o backup duas vezes.
-5. [ ] **Relatório:** Documente o que foi feito no arquivo `status_manutencao.md`.
+::: details 📋 O que ter no seu Pen-drive HOJE: (Clique para expandir)
+Siga este setup para estar pronto para 99% dos problemas:
+1. [ ] **Ventoy** instalado (GPT/Secure Boot support ON).
+2. [ ] **Windows 10 e 11** (ISOs oficiais da Microsoft).
+3. [ ] **Sergei Strelec WinPE** (O kit mais completo).
+4. [ ] **Dism++** (Para limpeza e backup de drivers).
+5. [ ] **CrystalDiskInfo** (Para diagnóstico inicial).
+6. [ ] **Kaspersky Rescue Disk** (Para desinfecção).
 :::
 
 ---
 
-### Links Relacionados
-- [🎓 Planejamento de Estudos](/estudos/Roadmap_Estudos)
-- [🖥️ Curso de Montagem PC](/guias/Curso_Montagem_Manutencao_PC)
+### Links de Referência Master
+- [🖥️ Montagem e Manutenção](/guias/Curso_Montagem_Manutencao_PC) - Teoria dos componentes.
+- [🔍 Troubleshooting Profissional](/guias/Guia_Troubleshooting_Profissional) - Como usar essas ferramentas com lógica.
+- [🐧 Domínio do Linux](/guias/Curso_Dominio_Linux) - Use o terminal no pen-drive.
+- [🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD) - Resgate de servidores.

@@ -1,65 +1,108 @@
-# 🗄️ Banco de Dados Avançado
+# 🗄️ Banco de Dados Avançado: Master Class Edition
 
 ![Banner DB](/banner_db.png)
 
-Onde os dados ganham vida. Aprenda a modelar, consultar e otimizar bancos de dados para aplicações de alta performance.
+Os dados são o novo petróleo. Aprenda a modelar, consultar, otimizar e proteger bancos de dados para aplicações de escala global. Este guia leva você do `SELECT` básico à arquitetura de dados de alta performance.
 
 ---
 
-## 📂 Arquitetura da Informação
+## 📂 Módulo 1: Arquitetura e Modelagem Relacional
 
-Como os dados se relacionam? Entenda a estrutura de uma tabela profissional.
+O design correto do banco de dados (DER) evita duplicidade e garante a integridade dos sistemas.
 
+### 1.1 O Modelo Entidade-Relacionamento (ERD)
 ```mermaid
 erDiagram
-    USUARIO ||--o{ PEDIDO : realiza
-    USUARIO {
+    CLIENTE ||--o{ PEDIDO : "faz"
+    PEDIDO ||--|{ ITEM : "contém"
+    PRODUTO ||--o{ ITEM : "é incluído"
+    
+    CLIENTE {
+        int id PK
         string nome
-        string email
-        string cpf
+        string email UK
     }
     PEDIDO {
-        int id
-        float valor
+        int id PK
         date data
+        float total
+    }
+    PRODUTO {
+        int id PK
+        string nome
+        int estoque
     }
 ```
 
+### 1.2 Normalização (As 3 Leis de Ouro)
+1.  **1ª Forma Normal (1NF):** Nada de valores repetidos na mesma célula. Cada campo é atômico.
+2.  **2ª Forma Normal (2NF):** Todos os campos devem depender da **Chave Primária** inteira.
+3.  **3ª Forma Normal (3NF):** Nada de campos que dependem de outros campos que não são a chave (ex: Cidade depende de CEP, não do ID do Usuário).
+
 ---
 
-## 🛠️ Módulo 1: O Poder do SQL
+## 🛠️ Módulo 2: Maestria em SQL (Buscas Complexas)
 
-### Consultas que Salvam o Dia
+### 2.1 O Poder dos JOINS
+| Tipo | O que faz? | Quando usar? |
+| :--- | :--- | :--- |
+| **INNER JOIN** | Retorna apenas o que existe em ambas. | Ver pedidos de clientes ativos. |
+| **LEFT JOIN**  | Retorna tudo da esquerda + correspondentes. | Ver TODOS os clientes, mesmo os sem pedidos. |
+| **UNION**     | Une resultados de duas tabelas diferentes. | Criar lista única de fornecedores e clientes. |
+
+### 2.2 Subconsultas e Agregações
 ```sql
--- Buscar clientes que não compram há mais de 30 dias
-SELECT nome, email 
-FROM usuarios 
-WHERE ultima_compra < DATE_SUB(NOW(), INTERVAL 30 DAY);
+-- Buscar o ticket médio de vendas por categoria
+SELECT categoria, AVG(preco) as media
+FROM produtos
+GROUP BY categoria
+HAVING media > 100;
 ```
 
-::: tip 💡 Dica do Matheus
-Sempre use **Índices** em colunas que você usa muito no `WHERE`. Isso pode fazer uma busca que demorava 10 segundos passar a demorar 0.01 segundos!
-:::
+---
+
+## ⚙️ Módulo 3: Performance e Otimização (O Segredo do DBA)
+
+Um banco de dados rápido não é sorte, é engenharia.
+
+### 3.1 Índices: A Agenda do Banco
+Sem índices, o banco faz um **Full Table Scan** (lê linha por linha). Com índices (B-Tree), ele vai direto no endereço do dado.
+- **Dica:** Indexe colunas usadas frequentemente no `WHERE` e no `JOIN`.
+
+### 3.2 Transações e ACID
+Garantem que os dados não corrompam se o sistema cair durante uma transferência bancária.
+- **Atomicity:** Ou tudo acontece, ou nada acontece.
+- **Consistency:** O banco sai de um estado válido para outro.
+- **Isolation:** Uma transação não interfere na outra.
+- **Durability:** Gravou? Está salvo mesmo se acabar a luz.
 
 ---
 
-## 🔧 Módulo 2: Administração e Segurança
+## 🛡️ Módulo 4: Segurança e Continuidade de Negócios
 
-### Backup e Recuperação
-::: danger ⚠️ Alerta Crítico
-Backup que não foi testado não é backup. Pelo menos uma vez por mês, tente restaurar seu banco de dados em um servidor de teste para garantir que os arquivos não estão corrompidos.
-:::
+### 4.1 Contra o Inimigo (SQL Injection)
+Nunca concatene strings no código! Use **Prepared Statements**.
+- **Ruim:** `"SELECT * FROM usus WHERE id = " + id_usuario`
+- **Bom:** `execute("SELECT * FROM usus WHERE id = ?", [id_usuario])`
 
----
-
-## 🔍 Módulo 3: Troubleshooting de Performance
-
-::: info 🛡️ Na Trincheira: Caso Real
-Um sistema de vendas estava travando ao gerar o relatório mensal. Usei o comando `EXPLAIN ANALYZE` e descobri que o banco estava fazendo uma busca completa na tabela (Table Scan) em vez de usar o índice. **Solução:** Criei um índice composto e o relatório que demorava 5 minutos passou a ser instantâneo.
-:::
+### 4.2 Backup Master
+1. **Cold Backup:** Banco desligado (mais seguro).
+2. **Hot Backup:** Banco rodando (produção).
+3. **Ponto de Restauração:** Use Logs de Transação para voltar o banco ao minuto exato antes de um erro.
 
 ---
 
-### Links Relacionados
-- [💻 Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web)
-- [🐍 Python para Automação](/guias/Curso_Python_Automacao)
+## 🔬 Módulo 5: SQL vs NoSQL (A Escolha de Arquitetura)
+
+| Característica | SQL (PostgreSQL/MySQL) | NoSQL (MongoDB/Redis) |
+| :--- | :--- | :--- |
+| **Estrutura** | Tabelas Rígidas | Documentos Flexíveis (JSON) |
+| **Escala** | Vertical (Mais RAM/CPU) | Horizontal (Mais Máquinas) |
+| **Uso Ideal** | E-commerce, Finanças, ERP | Redes Sociais, Logs, Big Data |
+
+---
+
+### Links de Referência Master
+- [💻 Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web) - APIs que consomem dados.
+- [🐍 Python para Automação](/guias/Curso_Python_Automacao) - Scripts de backup e insert.
+- [🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD) - Instalando SQL Server.

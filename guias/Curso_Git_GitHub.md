@@ -1,81 +1,101 @@
-# 🔀 Git e GitHub Profissional
+# 🔀 Git e GitHub Profissional: Master Class Edition
 
 ![Banner Git](/banner_git.png)
 
-A máquina do tempo do desenvolvedor. Aprenda a controlar versões, colaborar em equipe e manter seu código seguro contra desastres.
+A máquina do tempo do desenvolvedor. Aprenda a controlar versões, colaborar em equipes multinacionais e manter seu código seguro contra desastres. Este guia transforma você de um amador que dá `git add .` em um arquiteto de fluxos de trabalho distribuídos.
 
 ---
 
-## 📂 O Fluxo de Trabalho do Git
+## 📂 Módulo 1: A Anatomia do Git (O que acontece por baixo?)
 
-Como seus arquivos viajam do computador para o servidor?
+O Git não guarda "mudanças", ele guarda **Snapshots** (Fotos).
+
+### 1.1 Os Estados do Arquivo
+1.  **Working Directory:** Onde você edita o código. (Unstaged).
+2.  **Staging Area:** O "Carrinho de Compras". Você escolhe o que vai para o commit.
+3.  **Local Repo:** A versão salva no seu PC.
+4.  **Remote Repo:** A versão salva no GitHub.
 
 ```mermaid
 graph LR
-    WD["Working Directory (Seus Arquivos)"] --> SA["Staging Area (O Carrinho)"]
-    SA --> LR["Local Repo (Seu PC)"]
-    LR --> RR["Remote Repo (GitHub)"]
+    A["Modify"] --> B["Stage (git add)"]
+    B --> C["Commit (git commit)"]
+    C --> D["Push (git push)"]
     
-    style WD fill:#333,stroke:#ccc
-    style SA fill:#d35400,stroke:#fff
-    style LR fill:#27ae60,stroke:#fff
-    style RR fill:#2980b9,stroke:#fff
+    style B fill:#d35400,stroke:#fff,color:#fff
+    style C fill:#27ae60,stroke:#fff,color:#fff
 ```
 
 ---
 
-## 🛠️ Módulo 1: Comandos do Dia a Dia
+## 🛠️ Módulo 2: Maestria no Terminal (Comandos de Elite)
 
-### Iniciando a Jornada
-```bash
-git init                # Começa um novo projeto
-git add .               # Adiciona tudo ao "carrinho" (Staging Area)
-git commit -m "Mensagem" # Salva as mudanças no seu histórico
-git push origin main    # Envia tudo para a nuvem
-```
+### 2.1 Salvando o Trabalho Temporário (`git stash`)
+Você está no meio de um código, mas precisa mudar de branch urgente para corrigir um bug.
+- `git stash`: "Esconde" suas mudanças atuais.
+- `git checkout main`: Muda de branch.
+- `git stash pop`: Recupera seu trabalho de volta após o susto.
 
-::: tip 💡 Dica do Matheus
-Nunca faça um `git push` sem antes fazer um `git status`. Isso evita que você envie arquivos temporários ou configurações pessoais por engano para o servidor!
-:::
+### 2.2 O Resgatista (`git reflog`)
+"Deletei a branch errada e perdi tudo!". O `reflog` guarda o histórico de **todos** os movimentos de cabeçalho do seu PC. Você pode voltar no tempo mesmo se tiver deletado uma branch ou feito um rebase errado.
 
 ---
 
-## 🔀 Módulo 2: Branches e Colaboração
+## 🔀 Módulo 3: Fluxos de Trabalho (Merge vs Rebase)
 
-### Trabalhando em Equipe
-Branches permitem que você mexa no código sem quebrar a versão principal que está online.
+### 3.1 O Grande Dilema
+- **Merge:** Cria um "commit de mesclagem". Preserva a história real (incluindo as idas e vindas).
+- **Rebase:** "Reescreve" a história para parecer que tudo foi feito em linha reta. Deixa o gráfico do GitHub lindo, mas deve ser usado com cuidado em branches compartilhadas.
 
 ```mermaid
 gitGraph
-    commit
-    commit
-    branch feature-login
-    checkout feature-login
-    commit
-    commit
+    commit id: "Base"
+    branch feature
+    checkout feature
+    commit id: "F1"
+    commit id: "F2"
     checkout main
-    merge feature-login
-    commit
+    commit id: "M1"
+    merge feature id: "Merge Commit"
 ```
 
+---
+
+## 🆘 Módulo 4: Resolvendo Conflitos de Código
+
+Conflitos acontecem quando duas pessoas mexem na **mesma linha** do mesmo arquivo.
+1. O Git bloqueia o Merge.
+2. Você abre o arquivo e verá as marcações `<<<< HEAD` e `>>>> [branch]`.
+3. Você escolhe qual versão fica (ou as duas), salva e faz um novo commit.
+
+::: tip 💡 Dica de Mestre
+Para evitar conflitos gigantes, faça `git pull` todas as manhãs antes de começar a trabalhar. Pequenos conflitos são fáceis; conflitos de uma semana de trabalho são pesadelos.
+:::
+
+---
+
+## 🚀 Módulo 5: GitHub Profissional (Actions & Pull Requests)
+
+### 5.1 O Pull Request (PR) de Elite
+Não é apenas um botão. É um processo de qualidade:
+- **Code Review:** Outro desenvolvedor olha seu código antes de entrar no sistema principal.
+- **GitHub Actions:** Robôs que rodam seus testes automaticamente. Se o código quebrar, o robô bloqueia o Merge.
+
+### 5.2 Segurança de Chaves
+NUNCA envie senhas no código. Use variáveis de ambiente e segredos no GitHub (Settings > Secrets).
+
+---
+
+## 🧪 Módulo 6: O Caso do Commit Errado
+
 ::: info 🛡️ Na Trincheira: Caso Real
-Fui contratado para corrigir um bug urgente, mas eu estava no meio de uma funcionalidade nova. Se eu continuasse na mesma branch, enviaria código incompleto. **Solução:** Criei uma branch `fix-bug`, corrigi, dei o push e depois voltei para a minha `feature-nova`. O site não parou e meu trabalho continuou salvo.
+Um colega fez um commit com a senha do banco de dados e deu o push pro GitHub público. Deletar o arquivo e dar push de novo **não resolve**, pois a senha continua no histórico! **Solução:** Tivemos que usar o **BFG Repo-Cleaner** para varrer o histórico inteiro e remover todas as menções àquela senha antes que um bot a capturasse. **Cuidado com o que você commita!**
 :::
 
 ---
 
-## 📝 Procedimento Profissional: O arquivo .gitignore
-
-::: details 🚫 O que NÃO enviar para o GitHub (Clique para expandir)
-Sempre configure seu `.gitignore` para ignorar:
-1. [ ] `node_modules/` (Milhares de arquivos pesados)
-2. [ ] `.env` (Suas senhas e chaves secretas)
-3. [ ] `dist/` ou `build/` (Arquivos gerados automaticamente)
-4. [ ] `*.log` (Arquivos de log gigantes)
-:::
-
----
-
-### Links Relacionados
-- [💻 Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web)
-- [🗄️ Bancos de Dados Avançados](/guias/Curso_Banco_Dados_Avancado)
+### Links de Referência Master
+- [💻 Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web) - Use Git para seus deploys na Vercel.
+- [🐧 Domínio do Linux](/guias/Curso_Dominio_Linux) - Git no servidor via SSH.
+- [🐍 Python para Automação](/guias/Curso_Python_Automacao) - Versionando seus scripts de robôs.
+- [📊 Algoritmos e Estruturas de Dados](/guias/Curso_Algoritmos_Estruturas_Dados) - Entenda a estrutura de grafos do Git.

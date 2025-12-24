@@ -1,78 +1,110 @@
-# 🌐 Redes de Computadores
+# 🌐 Redes de Computadores: Master Class Edition
 
 ![Banner Redes](/banner_redes.png)
 
-Domine a espinha dorsal da internet. Do modelo OSI ao troubleshooting avançado, este é o conhecimento que separa curiosos de profissionais.
+Domine a espinha dorsal da internet. Do modelo OSI ao troubleshooting avançado, este é o conhecimento que separa curiosos de profissionais que mantêm o mundo conectado.
 
 ---
 
-## 📚 Módulo 1: Fundamentos Visuais
+## 📂 Módulo 1: Arquitetura de Redes (Modelo OSI & TCP/IP)
 
-### O Modelo OSI Desmistificado
-Entenda onde o problema está acontecendo com este mapa mental:
+O conhecimento de redes começa na compreensão de como os dados são empacotados e enviados.
 
 ```mermaid
 graph TD
-    Layer7[7. Aplicação HTTP/DNS] --> Layer6[6. Apresentação SSL/JPEG]
-    Layer6 --> Layer5[5. Sessão RPC/SQL]
-    Layer5 --> Layer4[4. Transporte TCP/UDP]
-    Layer4 --> Layer3[3. Rede IP/Roteamento]
-    Layer3 --> Layer2[2. Enlace MAC/Switch]
-    Layer2 --> Layer1[1. Física Cabos/Sinais]
+    Layer7[7. Aplicação: HTTP/DNS/SSH] --> Layer4[4. Transporte: TCP/UDP]
+    Layer4 --> Layer3[3. Rede: IPv4/IPv6/ICMP]
+    Layer3 --> Layer2[2. Enlace: MAC Address/Switch]
+    Layer2 --> Layer1[1. Física: Cabos/Sinais]
     
-    style Layer1 fill:#333,stroke:#666
-    style Layer2 fill:#333,stroke:#666
-    style Layer3 fill:#2c3e50,stroke:#3498db
-    style Layer4 fill:#2c3e50,stroke:#3498db
-    style Layer7 fill:#4a235a,stroke:#9b59b6
+    style Layer4 fill:#2c3e50,stroke:#3498db,color:#fff
+    style Layer3 fill:#2c3e50,stroke:#3498db,color:#fff
+    style Layer7 fill:#4a235a,stroke:#9b59b6,color:#fff
 ```
 
-::: tip 💡 Dica de Mestre
-Problemas de **Camada 1** (Cabo solto) e **Camada 3** (IP errado) representam 80% dos chamados de suporte. Sempre comece pelo físico!
+### 1.1 O Processo de Encapsulamento
+Imagine o envio de um e-mail:
+1.  **Aplicação:** O dado é gerado.
+2.  **Transporte:** O dado recebe uma "porta" (ex: 443).
+3.  **Rede:** O dado recebe o "IP de destino".
+4.  **Enlace:** O dado recebe o "MAC Address do roteador".
+5.  **Física:** O dado vira pulsos elétricos no cabo.
+
+---
+
+## 🔢 Módulo 2: Endereçamento e Subnetting (A Matemática da Rede)
+
+Calcular IPs e máscaras é a habilidade mais técnica de um administrador de redes.
+
+### 2.1 CIDR vs Máscara de Subrede
+| Típico | CIDR | Máscara | IPs Totais | Hosts Usáveis |
+| :--- | :--- | :--- | :--- | :--- |
+| Doméstico | `/24` | `255.255.255.0` | 256 | 254 |
+| Pequeno | `/25` | `255.255.255.128` | 128 | 126 |
+| Provedor | `/30` | `255.255.255.252` | 4 | 2 |
+
+::: tip 💡 Cálculo Rápido de Hosts
+Para saber quantos computadores cabem na rede, use a fórmula: **2^n - 2**. 
+Onde `n` é o número de bits restando no IP (ex: no `/24`, sobram 8 bits. 2^8 = 256. Menos 2 (Rede e Broadcast) = 254).
+:::
+
+### 2.2 IPs Privados (RFC 1918)
+Nunca use IPs públicos na sua rede local.
+- **Classe A:** 10.0.0.0 até 10.255.255.255
+- **Classe B:** 172.16.0.0 até 172.31.255.255
+- **Classe C:** 192.168.0.0 até 192.168.255.255
+
+---
+
+## ⚙️ Módulo 3: Protocolos Essenciais (DORA e DNS)
+
+### 3.1 DHCP: Como o IP chega no PC? (Processo DORA)
+1.  **Discover:** O PC grita na rede: "Alguém me dá um IP?"
+2.  **Offer:** O Roteador responde: "Eu tenho esse aqui: 192.168.1.10."
+3.  **Request:** O PC diz: "Eu aceito esse IP!"
+4.  **Acknowledge:** O Roteador confirma: "Beleza, agora ele é seu por 24h."
+
+### 3.2 DNS: A Agenda da Internet
+Sem o DNS, você teria que digitar `142.250.217.110` para abrir o Google.
+- **Porta:** 53 (UDP para consultas rápidas, TCP para transferências).
+- **Tipos de Registro:**
+    - `A`: Aponta para um IP.
+    - `CNAME`: Aponta para outro nome (apelido).
+    - `MX`: Servidor de E-mail.
+
+---
+
+## 🔍 Módulo 4: Troubleshooting Avançado (Wireshark & Netstat)
+
+### 4.1 Captura de Pacotes (Wireshark)
+O Wireshark é o "Raio-X" da rede. Use-o para ver se as senhas estão passando sem criptografia (Protocolos HTTP, FTP, Telnet).
+
+### 4.2 Comandos Indispensáveis no Terminal
+| Comando | O que revela? |
+| :--- | :--- |
+| `ipconfig /all` | Nome, MAC, DNS, IP - Tudo. |
+| `netstat -ano` | Lista todas as portas abertas e quem está usando. |
+| `tracert [IP]` | Mostra por onde o pacote está passando até o alvo. |
+| `arp -a` | Mostra a tabela de endereços físicos (MAC) conhecidos. |
+
+::: info 🛡️ Caso Real: O Gateway Fantasma
+Um técnico demorou 2 dias para consertar uma rede. O PC pegava IP, mas não navegava. Usei o `tracert 8.8.8.8` e vi que o pacote morria no primeiro salto. O culpado era o **Gateway Padrão** que estava configurado como `.2` mas o roteador real era o `.1`. Matamos o problema em 10 segundos.
 :::
 
 ---
 
-## 🔢 Módulo 2: Endereçamento IP
+## 🔐 Módulo 5: Segurança e Infraestrutura de Redes
 
-### Classes e Máscaras (Cheat Sheet)
+### 5.1 Switch vs Roteador
+- **Switch (Camada 2):** Une equipamentos na **mesma rede** através do MAC Address.
+- **Roteador (Camada 3):** Une **redes diferentes** através do IP.
 
-| Classe | Range de IP | Uso Típico | Máscara Padrão |
-| :--- | :--- | :--- | :--- |
-| **A** | 10.0.0.0 - 10.255.255.255 | Grandes Redes | 255.0.0.0 (/8) |
-| **B** | 172.16.0.0 - 172.31.255.255 | Médias Empresas | 255.255.0.0 (/16) |
-| **C** | 192.168.0.0 - 192.168.255.255 | Doméstico/Pequeno | 255.255.255.0 (/24) |
-
-::: warning ⚠️ Fique Esperto
-Nunca configure um IP estático dentro do range do DHCP. Se o DHCP vai de `.100` a `.200`, use `.10` a `.50` para impressoras e servidores.
-:::
+### 5.2 VLANs (Virtual LANs)
+Use VLANs para separar os departamentos. O Wi-fi de visitantes e os Computadores da Diretoria **não devem se enxergar**. Isso impede que um vírus em um computador infecte a empresa toda.
 
 ---
 
-## 🔍 Módulo 3: Troubleshooting de Elite
-
-### A "Santíssima Trindade" do Diagnóstico
-1. **Ping 8.8.8.8** (Tem internet?)
-2. **Ping 192.168.1.1** (Tem conexão local?)
-3. **Nslookup google.com** (O DNS está funcionando?)
-
-::: info 🛡️ Na Trincheira: Caso Real
-Cliente reportou "Internet Lenta". O `ping 8.8.8.8` estava normal (20ms), mas o `ping google.com` falhava aleatoriamente. **Diagnóstico:** Servidor DNS da operadora instável. **Solução:** Fixei o DNS do Google (8.8.8.8) no roteador e o problema sumiu.
-:::
-
----
-
-## 🔐 Módulo 4: Portas Essenciais
-
-| Porta | Protocolo | Função |
-| :--- | :--- | :--- |
-| **21** | FTP | Transferência de arquivos |
-| **22** | SSH | Acesso Remoto Seguro (Linux) |
-| **80/443** | HTTP/S | Navegação Web |
-| **3389** | RDP | Acesso Remoto Windows |
-
----
-
-### Links Relacionados
-- [🐧 Domínio do Linux](/guias/Curso_Dominio_Linux)
-- [🛠️ Ferramentas Pen-drive](/guias/Curso_Ferramentas_Pendrive)
+### Links de Referência Master
+- [🐧 Domínio do Linux](/guias/Curso_Dominio_Linux) - Redes no terminal Linux.
+- [💀 Kali Linux Expert](/guias/Curso_Pratico_Kali_Expert) - Ataques a redes.
+- [🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD) - Administração DHCP/DNS.

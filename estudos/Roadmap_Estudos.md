@@ -15,50 +15,51 @@
 
 ## 📅 Estrutura de Aprendizado (3 Fases)
 
-### 🗓️ Fase 1: Fundamentos Teóricos (4-6 semanas)
+### 🗓️ Fase 1: Fundamentos de Elite (4-6 semanas)
 
-**Objetivo:** Base sólida de teoria.
+**Objetivo:** Base teórica sólida de nível acadêmico.
 
 #### Semana 1-2: Pensamento Computacional
-- [ ] [Algoritmos & Estruturas de Dados](/guias/Curso_Algoritmos_Estruturas_Dados) - Módulos 1-4
+- [ ] [Algoritmos & Estruturas de Dados: Master Class](/guias/Curso_Algoritmos_Estruturas_Dados)
 - [ ] Prática: Implementar pilha, fila e lista ligada
 - [ ] Exercícios: LeetCode (20 problemas Easy)
 
-#### Semana 3-4: POO e Fundamentos CS
-- [ ] [POO na Prática](/guias/Curso_POO_Pratica) - Completo
-- [ ] [Fundamentos de Ciência da Computação](/guias/Curso_Fundamentos_CS) - Módulos 1-4
+#### Semana 3-4: POO e Ciências da Computação
+- [ ] [POO na Prática: Master Class](/guias/Curso_POO_Pratica)
+- [ ] [Fundamentos de Ciência da Computação: Master Class](/guias/Curso_Fundamentos_CS)
 - [ ] Projeto: Sistema de biblioteca (POO)
 
-#### Semana 5-6: Controle de Versão
-- [ ] [Git e GitHub](/guias/Curso_Git_GitHub) - Completo
+#### Semana 5-6: Controle de Versão Profissional
+- [ ] [Git e GitHub Profissional: Master Class](/guias/Curso_Git_GitHub)
 - [ ] Prática: Criar repositório e fazer pull requests
 - [ ] Projeto: Subir todos os projetos no GitHub
 
 ---
 
-### 🗓️ Fase 2: Desenvolvimento Prático (6-8 semanas)
+### 🗓️ Fase 2: Operações e Segurança (6-8 semanas)
 
-**Objetivo:** Construir coisas reais.
+**Objetivo:** Domínio da infraestrutura e ataques defensivos/ofensivos.
 
-#### Semana 1-2: Infraestrutura
-- [ ] [Domínio do Linux](/guias/Curso_Dominio_Linux) - Completo
-- [ ] [Redes de Computadores](/guias/Curso_Redes_Computadores) - Módulos 1-5
-- [ ] Prática: Configurar servidor Linux (VM)
+#### Semana 1-2: Infraestrutura de Elite
+- [ ] [Domínio do Linux: Master Class](/guias/Curso_Dominio_Linux)
+- [ ] [Redes de Computadores: Master Class](/guias/Curso_Redes_Computadores)
+- [ ] [Windows Server & AD: Master Class](/guias/Curso_Windows_Server_AD)
+- [ ] Prática: Lab Híbrido Windows/Linux
 
-#### Semana 3-4: Programação Backend
-- [ ] [Python para Automação](/guias/Curso_Python_Automacao) - Completo
-- [ ] [Banco de Dados Avançado](/guias/Curso_Banco_Dados_Avancado) - Módulos 1-3
-- [ ] Projeto: API REST com Python + PostgreSQL
+#### Semana 3-4: Programação e Dados
+- [ ] [Python para Automação: Master Class](/guias/Curso_Python_Automacao)
+- [ ] [Banco de Dados Avançado: Master Class](/guias/Curso_Banco_Dados_Avancado)
+- [ ] Projeto: Script de Backup Automático com Log de Erros
 
-#### Semana 5-6: Desenvolvimento Web
-- [ ] [Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web) - Completo
-- [ ] Projeto: Site pessoal (portfólio) com React
-- [ ] Deploy: Heroku ou Vercel
+#### Semana 5-6: Web e Segurança
+- [ ] [Desenvolvimento Web: Master Class](/guias/Guia_Desenvolvimento_Web)
+- [ ] [Kali Linux Expert: Master Class](/guias/Curso_Pratico_Kali_Expert)
+- [ ] Projeto: Site pessoal com auditoria de segurança básica
 
-#### Semana 7-8: Cloud e DevOps
-- [ ] [Cloud Computing](/guias/Curso_Cloud_Computing) - Módulos 1-5
-- [ ] Prática: Deploy de aplicação na AWS
-- [ ] Certificação (opcional): AWS Cloud Practitioner
+#### Semana 7-8: Cloud e Prática Final
+- [ ] [Cloud Computing: Master Class](/guias/Curso_Cloud_Computing)
+- [ ] [Troubleshooting Profissional: Master Class](/guias/Guia_Troubleshooting_Profissional)
+- [ ] Projeto: Deploy de aplicação escalável na AWS
 
 ---
 

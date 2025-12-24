@@ -1,88 +1,108 @@
-# 🐧 Domínio do Linux
+# 🐧 Domínio do Linux: Master Class Edition
 
 ![Banner Linux](/banner_linux.png)
 
-Transforme-se em um mestre do terminal. O Linux não é apenas um sistema; é o superpoder de qualquer técnico de elite.
+Transforme-se em um mestre do terminal. O Linux não é apenas um sistema operacional; é a fundação da infraestrutura tecnológica mundial. No final deste guia, você terá o controle total do kernel.
 
 ---
 
-## 📂 Arquitetura do Sistema
+## 📂 Módulo 1: O Esqueleto do Pinguim (Estrutura de Diretórios)
 
-Entenda para onde cada arquivo vai. No Linux, "Tudo é um arquivo".
+No Linux, **"Tudo é um arquivo"**. Entender onde cada engrenagem fica é vital para o troubleshooting.
 
 ```mermaid
 graph TD
-    Root["/ (Root)"] --> bin["/bin (Comandos Essenciais)"]
-    Root --> etc["/etc (Arquivos de Configuração)"]
-    Root --> home["/home (Pastas de Usuários)"]
-    Root --> var["/var (Logs e Variáveis)"]
-    Root --> tmp["/tmp (Temporários)"]
+    Root["/ (Root)"] --> bin["/bin (Comandos Básicos: ls, cp)"]
+    Root --> sbin["/sbin (Comandos Admin: fdisk, ifconfig)"]
+    Root --> etc["/etc (O Cérebro: Configurações de Rede, Usuários)"]
+    Root --> home["/home (Vida do Usuário: Documentos, Desktop)"]
+    Root --> root_dir["/root (Casa do Superusuário)"]
+    Root --> var["/var (Vida Variável: Logs do Sistema, Bases de Dados)"]
+    Root --> tmp["/tmp (Temporários: Deletados no Reboot)"]
+    Root --> mnt["/mnt /media (Montagem de Discos Externos)"]
     
-    style Root fill:#1a1a1a,stroke:#00ff00,stroke-width:2px
+    style Root fill:#1a1a1a,stroke:#00ff00,stroke-width:2px,color:#00ff00
 ```
 
 ---
 
-## 📚 Módulo 1: Comandos Salva-Vidas
+## 🔐 Módulo 2: Permissões e Segurança de Arquivos
 
-### O Poder das Permissões (chmod)
-Muitas vezes, um script não roda apenas porque falta permissão de execução.
+Muitas falhas em sistemas Linux ocorrem por permissões erradas. Dominar o `chmod` e o `chown` é obrigatório.
 
-```mermaid
-graph LR
-    P["Permissão: 755"] --> R["Dono: Ler/Ver/Executar (7)"]
-    P --> G["Grupo: Ler/Executar (5)"]
-    P --> O["Outros: Ler/Executar (5)"]
-```
-
-::: tip 💡 Dica de Mestre
-Decore este código: `chmod +x script.sh`. Ele transforma qualquer arquivo de texto em um programa executável instantaneamente.
-:::
-
----
-
-## 🔧 Módulo 2: Administração de Elite
-
-### Gerenciamento de Serviços (Systemd)
-O comando mais importante para um administrador de servidores:
-
-| Comando | Função | Quando Usar |
+### 2.1 A Matriz das Permissões (Octal)
+| Valor | Letra | Significado |
 | :--- | :--- | :--- |
-| `systemctl status X` | Ver se está rodando | Primeiro passo do diagnóstico |
-| `systemctl restart X` | Reiniciar serviço | Após mudar uma configuração |
-| `systemctl enable X` | Ligar no boot | Garantir que o serviço volte após queda de luz |
+| **4** | `r` | Read (Leitura) |
+| **2** | `w` | Write (Escrita) |
+| **1** | `x` | Execute (Execução) |
 
-::: warning ⚠️ Cuidado com o Root
-O comando `rm -rf /` pode destruir todo o sistema em segundos. Sempre use o `ls` no caminho antes de usar o `rm` para ter certeza do que está apagando.
+**Cálculo:** `777` = Tudo liberado (4+2+1 para Dono, Grupo e Outros).
+**Padrão Seguro:** `644` (Dono escreve, outros só leem) ou `755` (Dono faz tudo, outros leem e executam).
+
+### 2.2 Permissões Especiais (O Perigo)
+- **SUID (Set User ID):** Faz um arquivo rodar com as permissões do Dono (ex: o `passwd` tem SUID para poder mexer no arquivo de senhas do sistema).
+- **SGID:** O arquivo roda com permissões do grupo.
+- **Sticky Bit:** Apenas o dono pode deletar um arquivo dentro de uma pasta (usado no `/tmp`).
+
+---
+
+## 📦 Módulo 3: Gestão de Pacotes e Repositórios
+
+Linux é sobre saber onde buscar o seu software com segurança.
+
+### 3.1 O Ecossistema APT (Debian/Ubuntu/Kali)
+| Comando | O que faz? |
+| :--- | :--- |
+| `sudo apt update` | Baixa a lista de versões novas dos programas. |
+| `sudo apt upgrade` | Instala as atualizações de fato. |
+| `sudo apt install [nome]` | Instala um software novo. |
+| `apt search [termo]` | Procura se existe um programa nos repositórios. |
+
+::: tip 💡 Dica de Elite: Limpeza
+Use `sudo apt autoremove` e `sudo apt autoclean` regularmente para remover dependências antigas e lixo que sobra de instalações passadas.
 :::
 
 ---
 
-## 🔍 Módulo 3: Troubleshooting de Monitoramento
+## 🔬 Módulo 4: Diagnóstico e Monitoramento de Processos
 
-::: info 🛡️ Na Trincheira: Caso Real
-Um servidor parou de responder. Usei o comando `top` e vi que um processo estava usando **99% da CPU**. Identifiquei o **PID (8245)** e usei o `kill -9 8245` para liberar o sistema. O servidor voltou ao normal sem precisar reiniciar.
+### 4.1 "O Médico de Plantão"
+| Comando | O que revela? |
+| :--- | :--- |
+| `htop` | Versão visual e interativa dos processos (Memória, CPU, Cores). |
+| `journalctl -xe` | Mostra os logs mais recentes de erro do sistema (Salvador de vidas). |
+| `dmesg -T` | Mostra mensagens do Kernel (Hardware, USB conectada). |
+| `lsof -i :80` | Mostra qual programa está "sentado" na porta 80. |
+
+::: info 🛡️ Caso Real: O Processo Fantasma
+Um site parou de carregar. O Apache parecia ligado, mas o `status` dava erro de porta. Usei o `lsof -i :80` e vi que o Skype tinha subido antes do Apache e "roubado" a porta 80. Matei o Skype, reiniciei o Apache e tudo voltou. **Diagnóstico rápido salva a paz do administrador.**
 :::
 
 ---
 
-## 🎯 Exercícios Práticos
+## 🤖 Módulo 5: Automação com Bash Scripting (O Robô)
 
-::: details 🛠️ Laboratório: Criando seu primeiro Robô (Scripts)
-1. Crie um arquivo: `nano monitor.sh`
-2. Cole este código:
-   ```bash
-   #!/bin/bash
-   echo "--- Status da Memória ---"
-   free -h
-   ```
-3. Salve e saia (Ctrl+O, Ctrl+X).
-4. Dê permissão: `chmod +x monitor.sh`
-5. Rode seu robô: `./monitor.sh`
-:::
+Um mestre nunca faz a mesma coisa duas vezes manualmente.
+
+### 5.1 O Tridente de Ouro: Grep, Sed e Awk
+- **Grep:** Busca texto em arquivos. `grep "ERROR" /var/log/syslog`
+- **Sed:** Substitui texto na hora. `sed -i 's/antigo/novo/g' arquivo.txt`
+- **Awk:** Manipula colunas. `ls -l | awk '{print $9}'` (mostra só os nomes dos arquivos).
+
+### 5.2 Estrutura de Loop (Exemplo: Backup)
+```bash
+#!/bin/bash
+# Backup simples de todos os sites
+for site in /var/www/html/*; do
+    tar -czf backup_$(basename $site).tar.gz $site
+    echo "Backup de $site COMPLETO!"
+done
+```
 
 ---
 
-### Links Relacionados
-- [🌐 Curso de Redes](/guias/Curso_Redes_Computadores)
-- [🛠️ Ferramentas Pen-drive](/guias/Curso_Ferramentas_Pendrive)
+### Links de Referência Master
+- [🌐 Redes de Computadores](/guias/Curso_Redes_Computadores) - Configure SSH e Firewalls.
+- [🐍 Python para Automação](/guias/Curso_Python_Automacao) - Leve seus scripts para o próximo nível.
+- [🛠️ Ferramentas Pen-drive](/guias/Curso_Ferramentas_Pendrive) - Linux portáteis.
