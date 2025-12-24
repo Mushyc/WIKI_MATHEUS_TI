@@ -1,36 +1,4 @@
-/* ============================================================ */
-/* 🌞 TEMA CLARO: NEON LIGHT MASTER                             */
-/* ============================================================ */
 :root {
-  /* Cores Principais (Ajustadas para contraste no branco) */
-  --vp-c-brand-1: #9333ea;
-  /* Roxo Master */
-  --vp-c-brand-2: #0891b2;
-  /* Ciano Master */
-  --vp-c-brand-3: #7e22ce;
-  --vp-c-brand-soft: rgba(147, 51, 234, 0.1);
-
-  /* Fundo e Superfícies */
-  --vp-c-bg: #ffffff;
-  --vp-c-bg-soft: #f1f5f9;
-  --vp-c-bg-mute: #e2e8f0;
-
-  /* Texto */
-  --vp-c-text-1: #1e293b;
-  --vp-c-text-2: #475569;
-
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(135deg, #9333ea 0%, #0891b2 100%);
-
-  /* Variáveis de apoio */
-  --vp-c-purple: #9333ea;
-  --vp-c-cyan: #0891b2;
-}
-
-/* ============================================================ */
-/* 🌑 TEMA ESCURO: ORIGINAL (RESTAURADO 100%)                   */
-/* ============================================================ */
-.dark {
   --vp-c-brand-1: #00f3ff;
   --vp-c-brand-2: #bc13fe;
   --vp-c-brand-3: #8a2be2;
@@ -47,10 +15,7 @@
   --vp-c-cyan: #00f3ff;
 }
 
-/* ============================================================ */
-/* ESTILOS GLOBAIS (CONFORME ORIGINAL)                          */
-/* ============================================================ */
-
+/* Background Image */
 .VPHome {
   background-image: url('/logo.png');
   background-repeat: no-repeat;
@@ -60,6 +25,7 @@
   opacity: 1;
 }
 
+/* Overlay para legibilidade */
 .VPHome::before {
   content: '';
   position: absolute;
