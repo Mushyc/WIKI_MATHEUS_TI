@@ -1,36 +1,34 @@
 /* ============================================================ */
-/* 🌞 LIGHT THEME: PREMIUM MASTER EDITION                       */
+/* 🌞 TEMA CLARO: NEON LIGHT MASTER                             */
 /* ============================================================ */
 :root {
-  /* Brand Colors (Slightly deeper for readability on Light) */
-  --vp-c-brand-1: #6d28d9;
-  /* Master Purple */
+  /* Cores Principais (Ajustadas para contraste no branco) */
+  --vp-c-brand-1: #9333ea;
+  /* Roxo Master */
   --vp-c-brand-2: #0891b2;
-  /* Master Cyan */
-  --vp-c-brand-3: #4f46e5;
-  --vp-c-brand-soft: rgba(109, 40, 217, 0.1);
+  /* Ciano Master */
+  --vp-c-brand-3: #7e22ce;
+  --vp-c-brand-soft: rgba(147, 51, 234, 0.1);
 
-  /* Backgrounds */
+  /* Fundo e Superfícies */
   --vp-c-bg: #ffffff;
-  --vp-c-bg-soft: #f8fafc;
-  --vp-c-bg-mute: #f1f5f9;
-  --vp-c-bg-alt: #f1f5f9;
+  --vp-c-bg-soft: #f1f5f9;
+  --vp-c-bg-mute: #e2e8f0;
 
-  /* Text & Elements */
-  --vp-c-text-1: #0f172a;
-  /* Deep Slate */
-  --vp-c-text-2: #334155;
-  --vp-c-text-3: #64748b;
+  /* Texto */
+  --vp-c-text-1: #1e293b;
+  --vp-c-text-2: #475569;
 
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(135deg, #6d28d9 0%, #0891b2 100%);
+  --vp-home-hero-name-background: linear-gradient(135deg, #9333ea 0%, #0891b2 100%);
 
-  --vp-c-purple: #6d28d9;
+  /* Variáveis de apoio */
+  --vp-c-purple: #9333ea;
   --vp-c-cyan: #0891b2;
 }
 
 /* ============================================================ */
-/* 🌑 DARK THEME: NEON PURPLE & CYAN (MAINTAINED)               */
+/* 🌑 TEMA ESCURO: ORIGINAL (RESTAURADO 100%)                   */
 /* ============================================================ */
 .dark {
   --vp-c-brand-1: #00f3ff;
@@ -41,7 +39,6 @@
   --vp-c-bg: #050510;
   --vp-c-bg-soft: #0a0a1a;
   --vp-c-bg-mute: #0f0f2d;
-  --vp-c-bg-alt: #0a0a1a;
 
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(135deg, #00f3ff 0%, #bc13fe 100%);
@@ -51,19 +48,18 @@
 }
 
 /* ============================================================ */
-/* GLOBAL COMPONENTS & POLISH                                   */
+/* ESTILOS GLOBAIS (CONFORME ORIGINAL)                          */
 /* ============================================================ */
 
-/* Background Image Adjustments */
 .VPHome {
   background-image: url('/logo.png');
   background-repeat: no-repeat;
   background-position: center 150px;
   background-size: 400px auto;
   background-attachment: fixed;
+  opacity: 1;
 }
 
-/* Radical Gradients for depth */
 .VPHome::before {
   content: '';
   position: absolute;
@@ -71,8 +67,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at top right, rgba(188, 19, 254, 0.05), transparent 600px),
-    radial-gradient(circle at bottom left, rgba(0, 243, 255, 0.05), transparent 600px);
+  background: radial-gradient(circle at top right, rgba(188, 19, 254, 0.08), transparent 400px),
+    radial-gradient(circle at bottom left, rgba(0, 243, 255, 0.08), transparent 400px);
   pointer-events: none;
   z-index: 0;
 }
@@ -82,26 +78,17 @@
   z-index: 1;
 }
 
-/* Typographic Flourish */
 .vp-doc h2 {
-  border-bottom: 2px solid var(--vp-c-brand-soft);
-  color: var(--vp-c-brand-1);
-  padding-bottom: 8px;
-  font-weight: 700;
+  border-bottom: 1px solid var(--vp-c-brand-soft);
+  color: var(--vp-c-cyan);
 }
 
 .vp-doc h3 {
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-purple);
 }
 
-/* Image Premium Styling */
 .image-container img {
-  border-radius: 16px;
+  border-radius: 12px;
   border: 1px solid var(--vp-c-brand-soft);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.image-container img:hover {
-  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
