@@ -1,6 +1,7 @@
 export default {
   title: "Matheus TI",
   description: "Knowledge Base & Technical Study Center",
+  appearance: 'dark',
   ignoreDeadLinks: true,
   markdown: {
     mermaid: true
