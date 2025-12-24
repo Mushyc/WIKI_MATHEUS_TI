@@ -1,41 +1,8 @@
 /* ============================================================ */
-/* 🌞 LIGHT THEME: UNIVERSE GREY EDITION                         */
+/* 🌌 TEMA MASTER: ORIGINAL NEON PRESERVED                      */
 /* ============================================================ */
 :root {
-  /* Brand Colors (Balanced for Grey background) */
-  --vp-c-brand-1: #8b5cf6;
-  /* Soft Violet */
-  --vp-c-brand-2: #06b6d4;
-  /* Tech Cyan */
-  --vp-c-brand-3: #7c3aed;
-  --vp-c-brand-soft: rgba(139, 92, 246, 0.15);
-
-  /* Backgrounds: Not white, but a premium 'Cloud/Universe Grey' */
-  --vp-c-bg: #e2e8f0;
-  /* Slate 200 - Soft Grey */
-  --vp-c-bg-soft: #cbd5e1;
-  /* Slate 300 */
-  --vp-c-bg-mute: #94a3b8;
-  /* Slate 400 */
-  --vp-c-bg-alt: #f1f5f9;
-
-  /* Text & Elements */
-  --vp-c-text-1: #0f172a;
-  /* Deep Navy Slate */
-  --vp-c-text-2: #334155;
-  --vp-c-text-3: #475569;
-
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
-
-  --vp-c-purple: #8b5cf6;
-  --vp-c-cyan: #06b6d4;
-}
-
-/* ============================================================ */
-/* 🌑 DARK THEME: ORIGINAL NEON (DO NOT TOUCH)                  */
-/* ============================================================ */
-.dark {
+  /* DARK THEME (DEFAULT) - STEP 1458 VALUES */
   --vp-c-brand-1: #00f3ff;
   --vp-c-brand-2: #bc13fe;
   --vp-c-brand-3: #8a2be2;
@@ -45,6 +12,9 @@
   --vp-c-bg-soft: #0a0a1a;
   --vp-c-bg-mute: #0f0f2d;
 
+  --vp-c-text-1: #ffffff;
+  --vp-c-text-2: #cccccc;
+
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(135deg, #00f3ff 0%, #bc13fe 100%);
 
@@ -52,7 +22,30 @@
   --vp-c-cyan: #00f3ff;
 }
 
-/* Background Image */
+/* ============================================================ */
+/* 🌞 MODO CLARO MASTER: "MIDNIGHT SLATE" (SEM BRANCO)           */
+/* ============================================================ */
+/* Custom Dim Mode for the 'Light' toggle */
+html:not(.dark) {
+  --vp-c-bg: #1e1e2f;
+  /* Deep Slate - Mais claro que o preto, mas ainda 'Universo' */
+  --vp-c-bg-soft: #2d2d44;
+  --vp-c-bg-mute: #3f3f5a;
+  --vp-c-bg-alt: #1e1e2f;
+
+  /* Cores Neon mantidas porém levemente mais vibrantes para o fundo cinza */
+  --vp-c-brand-1: #00fbff;
+  --vp-c-brand-2: #cf3fff;
+
+  --vp-c-text-1: #ffffff;
+  /* Mantemos o texto branco para o estilo futurista */
+  --vp-c-text-2: #cbd5e1;
+}
+
+/* ============================================================ */
+/* GLOBAL COMPONENTS (RESTAURADOS 100%)                         */
+/* ============================================================ */
+
 .VPHome {
   background-image: url('/logo.png');
   background-repeat: no-repeat;
@@ -62,7 +55,6 @@
   opacity: 1;
 }
 
-/* Overlay para legibilidade */
 .VPHome::before {
   content: '';
   position: absolute;
