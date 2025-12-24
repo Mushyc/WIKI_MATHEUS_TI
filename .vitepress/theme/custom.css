@@ -1,4 +1,41 @@
+/* ============================================================ */
+/* 🌞 LIGHT THEME: UNIVERSE GREY EDITION                         */
+/* ============================================================ */
 :root {
+  /* Brand Colors (Balanced for Grey background) */
+  --vp-c-brand-1: #8b5cf6;
+  /* Soft Violet */
+  --vp-c-brand-2: #06b6d4;
+  /* Tech Cyan */
+  --vp-c-brand-3: #7c3aed;
+  --vp-c-brand-soft: rgba(139, 92, 246, 0.15);
+
+  /* Backgrounds: Not white, but a premium 'Cloud/Universe Grey' */
+  --vp-c-bg: #e2e8f0;
+  /* Slate 200 - Soft Grey */
+  --vp-c-bg-soft: #cbd5e1;
+  /* Slate 300 */
+  --vp-c-bg-mute: #94a3b8;
+  /* Slate 400 */
+  --vp-c-bg-alt: #f1f5f9;
+
+  /* Text & Elements */
+  --vp-c-text-1: #0f172a;
+  /* Deep Navy Slate */
+  --vp-c-text-2: #334155;
+  --vp-c-text-3: #475569;
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+
+  --vp-c-purple: #8b5cf6;
+  --vp-c-cyan: #06b6d4;
+}
+
+/* ============================================================ */
+/* 🌑 DARK THEME: ORIGINAL NEON (DO NOT TOUCH)                  */
+/* ============================================================ */
+.dark {
   --vp-c-brand-1: #00f3ff;
   --vp-c-brand-2: #bc13fe;
   --vp-c-brand-3: #8a2be2;
