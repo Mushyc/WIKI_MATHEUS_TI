@@ -35,15 +35,7 @@ export default {
           { text: '☁️ Cloud Computing', link: '/guias/Curso_Cloud_Computing' }
         ]
       },
-      {
-        text: 'Especialização',
-        items: [
-          { text: '💀 Kali Linux', link: '/guias/Curso_Pratico_Kali_Expert' },
-          { text: '🛠️ Ferramentas Pen-drive', link: '/guias/Curso_Ferramentas_Pendrive' },
-          { text: '🧮 Fundamentos CS', link: '/guias/Curso_Fundamentos_CS' }
-        ]
-      },
-      { text: 'Referências', link: '/referencias/Galeria_Imagens' }
+      { text: 'Especialização', items: [{ text: '💀 Kali Linux', link: '/guias/Curso_Pratico_Kali_Expert' }, { text: '🛠️ Ferramentas Pen-drive', link: '/guias/Curso_Ferramentas_Pendrive' }, { text: '🧮 Fundamentos CS', link: '/guias/Curso_Fundamentos_CS' }] }
     ],
     sidebar: {
       '/guias/': [
@@ -104,14 +96,6 @@ export default {
           text: '🔬 Laboratório',
           items: [
             { text: 'Workbook Kali Linux', link: '/estudos/Workbook_Estudo_Kali' }
-          ]
-        }
-      ],
-      '/referencias/': [
-        {
-          text: '🖼️ Biblioteca Visual',
-          items: [
-            { text: 'Galeria de Imagens', link: '/referencias/Galeria_Imagens' }
           ]
         }
       ]
