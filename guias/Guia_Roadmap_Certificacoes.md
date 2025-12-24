@@ -1,6 +1,6 @@
 # 📜 Roadmap de Certificações IT
 
-![Banner Roadmap](/banner_roadmap.png)
+![Banner Certificações](/banner_extra_2.jpg)
 
 No mundo da TI, o diploma abre portas, mas a certificação prova que você sabe atravessá-las. Planeje sua evolução para ganhar mais e trabalhar melhor.
 

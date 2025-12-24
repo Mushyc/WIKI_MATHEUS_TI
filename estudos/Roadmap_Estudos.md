@@ -1,6 +1,6 @@
 # 🎓 Roadmap de Estudos: Ciência da Computação & TI
 
-![Banner Roadmap](/banner_roadmap.png)
+Plano estruturado para dominar fundamentos técnicos e se destacar profissionalmente.
 
 ---
 
