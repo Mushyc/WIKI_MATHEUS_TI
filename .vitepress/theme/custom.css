@@ -1,12 +1,29 @@
+/* ============================================================ */
+/* 🌌 TEMA MASTER ABSOLUTO: NEON UNVERSO (RESTAURAÇÃO TOTAL)   */
+/* ============================================================ */
 :root {
+  /* Brand Colors */
   --vp-c-brand-1: #00f3ff;
   --vp-c-brand-2: #bc13fe;
   --vp-c-brand-3: #8a2be2;
   --vp-c-brand-soft: rgba(0, 243, 255, 0.1);
 
+  /* Backgrounds: O Preto Profundo Original */
   --vp-c-bg: #050510;
   --vp-c-bg-soft: #0a0a1a;
   --vp-c-bg-mute: #0f0f2d;
+  --vp-c-bg-alt: #050510;
+  --vp-c-bg-elv: #0a0a1a;
+  /* Resolve as janelinhas brancas */
+
+  /* Cores de Texto: Branco e Cinza Original */
+  --vp-c-text-1: #ffffff;
+  --vp-c-text-2: rgba(255, 255, 255, 0.82);
+  --vp-c-text-3: rgba(255, 255, 255, 0.6);
+
+  /* Divisores e Bordas */
+  --vp-c-divider: rgba(255, 255, 255, 0.1);
+  --vp-c-gutter: #050510;
 
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(135deg, #00f3ff 0%, #bc13fe 100%);
@@ -15,7 +32,19 @@
   --vp-c-cyan: #00f3ff;
 }
 
-/* Background Image */
+/* Forçamos o modo Dark a ser igual ao root para não ter erro */
+.dark {
+  --vp-c-bg: #050510;
+  --vp-c-bg-soft: #0a0a1a;
+  --vp-c-bg-mute: #0f0f2d;
+  --vp-c-text-1: #ffffff;
+}
+
+/* ============================================================ */
+/* COMPONENTES GLOBAIS (ESTILO ORIGINAL MATHEUS)               */
+/* ============================================================ */
+
+/* Background Image Fixed */
 .VPHome {
   background-image: url('/logo.png');
   background-repeat: no-repeat;
@@ -25,7 +54,7 @@
   opacity: 1;
 }
 
-/* Overlay para legibilidade */
+/* Efeito Galáxia/Overlay */
 .VPHome::before {
   content: '';
   position: absolute;
@@ -44,6 +73,7 @@
   z-index: 1;
 }
 
+/* Títulos Premium */
 .vp-doc h2 {
   border-bottom: 1px solid var(--vp-c-brand-soft);
   color: var(--vp-c-cyan);
@@ -53,13 +83,14 @@
   color: var(--vp-c-purple);
 }
 
+/* Estilo das Imagens */
 .image-container img {
   border-radius: 12px;
   border: 1px solid var(--vp-c-brand-soft);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Force Hidden Theme Toggle */
+/* Esconder o Botão de Troca de Tema (Para segurança total) */
 .VPSwitchAppearance {
   display: none !important;
 }
