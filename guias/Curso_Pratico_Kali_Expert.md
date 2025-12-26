@@ -28,6 +28,11 @@ O reconhecimento é 70% de um Pentest. Se você não conhece o alvo, não conseg
 *   `nmap -O [IP]`: Tenta descobrir qual o Sistema Operacional do alvo.
 *   **Stealth Scan (`-sS`):** Um scan mais silencioso que não completa a conexão TCP, dificultando a detecção pelo Firewall.
 
+> [!IMPORTANT]
+> **OSINT & Reconhecimento Avançado:**
+> ![30 Motores de Busca Cyber](/assets/academy/infografico_30_motores_busca_cyber.jpg)
+> *Além do Nmap, o uso de motores de busca especializados é vital para coletar informações sem tocar no alvo direto.*
+
 ---
 
 ## 🧨 Módulo 3: Exploração (Metasploit Framework)
@@ -41,6 +46,9 @@ O Metasploit é o maior banco de dados de falhas (exploits) do mundo.
 *   `use [caminho/do/exploit]`: Seleciona a arma.
 *   `set RHOSTS [IP_ALVO]`: Mira no alvo.
 *   `exploit`: Fogo!
+
+### ☣️ Entendendo o Inimigo: Tipos de Malware
+![Tipos de Malware](/assets/academy/infografico_tipos_malware.jpg)
 
 ---
 

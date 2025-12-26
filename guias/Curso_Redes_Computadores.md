@@ -16,15 +16,12 @@ Para que computadores de marcas diferentes se entendam, existe uma regra univers
 ### 📝 No seu Caderno (Anote isso!):
 A forma mais fácil de decorar é a frase: **"A APresentação de SESSÃO de TRANSPORTE de REDE em ENLACE FÍSICO"**.
 
-| Camada | Nome | Função Simples | Exemplo Real |
-| :--- | :--- | :--- | :--- |
-| **7** | Aplicação | Onde o usuário interage | Chrome, Outlook, WhatsApp |
-| **6** | Apresentação | Tradução e Criptografia | JPEG, MP4, SSL/TLS |
-| **5** | Sessão | Abre e fecha a conexão | Identificação de usuário |
-| **4** | Transporte | Como os dados viajam | **TCP** (Garante entrega) / **UDP** (Rápido) |
-| **3** | Rede | Onde o IP mora | Roteador (Caminho entre cidades) |
-| **2** | Enlace | Onde o MAC mora | Switch (Caminho entre casas) |
 | **1** | Física | Sinais puros | Cabos, Placa de Wi-Fi, Pulsos Elétricos |
+
+> [!TIP]
+> **Visão Técnica Avançada:**
+> ![Infográfico OSI e Ataques](/assets/academy/infografico_camadas_osi_ataques.jpg)
+> *Este infográfico mostra como cada camada do modelo OSI pode sofrer ataques específicos e quais as defesas recomendadas.*
 
 ---
 
@@ -70,10 +67,13 @@ Os computadores amam números (IPs), mas humanos amam nomes. O DNS traduz `googl
 
 Se o Wi-Fi parou, você precisa saber diagnosticar. Use estes comandos no Terminal (CMD ou PowerShell):
 
-1.  `ping 8.8.8.8`: Testa se você tem internet. Se responder, a conexão física está OK.
-2.  `ipconfig`: Mostra o SEU IP atual.
-3.  `nslookup google.com`: Testa se o seu DNS está funcionando.
 4.  `tracert google.com`: Mostra todos os roteadores pelos quais seu pacote passa até chegar no Google.
+
+### 🔌 Extra: Padronização de Cabos (Cat6/Cat6a)
+![Cores de Cabos RJ45](/assets/academy/infografico_cores_cabo_rede.jpg)
+
+### 📋 Guia de Referência Rápida (Cheat Sheet)
+![Cheat Sheet Redes](/assets/academy/infografico_cheatsheet_redes_br.jpg)
 
 ---
 
