@@ -1,104 +1,70 @@
 # 🏢 Windows Server & Active Directory: Master Class Edition
+> **Nível:** Intermediário ao Administrador | **Foco:** Governança e Infraestrutura
+---
 
-![Banner Windows Server](/banner_windows_server.png)
+## 📖 Introdução: O Cérebro da Empresa
 
-O cérebro da rede corporativa. Aprenda a gerenciar identidades, políticas de grupo e infraestrutura crítica de nível empresarial. Este guia transforma você em um administrador capaz de gerenciar redes de 10 a 10.000 usuários.
+Em uma casa, cada um cuida da sua senha. Em uma empresa com 500 funcionários, isso seria impossível. O **Windows Server** com o **Active Directory (AD)** serve para centralizar tudo. Você cria o usuário uma única vez, e ele pode logar em qualquer computador da empresa com as mesmas permissões.
 
 ---
 
-## 📂 Módulo 1: Arquitetura de Domínio (AD DS)
+## 🏗️ Módulo 1: O Diretório Ativo (Active Directory)
 
-O Active Directory Domain Services é o banco de dados que armazena objetos e gerencia a segurança da rede.
+O AD é um banco de dados que guarda "Objetos" (Usuários, Computadores, Impressoras).
 
-### 1.1 A Hierarquia de Confiança
-- **Floresta (Forest):** O limite máximo de segurança. Contém todas as árvores e domínios.
-- **Árvore (Tree):** Conjunto de domínios que compartilham o mesmo espaço de nome (ex: `matriz.local` e `filial.matriz.local`).
-- **Domínio (Domain):** Onde os objetos (Usuários, PCs) residem.
-- **Unidade Organizacional (OU):** Pastas para organizar objetos e aplicar GPOs específicas.
-
-```mermaid
-graph TD
-    Forest["Floresta (Empresa.local)"] --> Domain["Domínio Principal"]
-    Domain --> OU_Financeiro["OU Financeiro"]
-    Domain --> OU_TI["OU TI"]
-    OU_Financeiro --> Users["Usuários/Grupos"]
-    OU_TI --> Servers["Servidores/Privilégios"]
-    
-    style Forest fill:#0078d7,stroke:#fff,color:#fff
-```
+### 📝 No seu Caderno (A Hierarquia):
+- **Floresta:** O nível mais alto (A empresa toda).
+- **Domínio:** Uma unidade lógica (Ex: `empresa.local`).
+- **Árvore:** Um conjunto de domínios.
+- **Unidade Organizacional (OU):** Pastas para organizar por departamento (Ex: RH, TI, Vendas).
 
 ---
 
-## ⚙️ Módulo 2: Serviços de Infraestrutura (DNS e DHCP)
+## ⚙️ Módulo 2: GPO (Group Policy Object)
 
-O Windows Server não apenas autentica usuários; ele gerencia como as máquinas se acham na rede.
+É aqui que o administrador "manda" nos computadores. Através de uma GPO, você pode:
+*   Mudar o papel de parede de todos os PCs ao mesmo tempo.
+*   Bloquear o acesso ao Painel de Controle.
+*   Instalar um software automaticamente em 200 máquinas.
 
-### 2.1 DNS Integrado ao AD
-No Windows, o DNS é vital. Sem ele, o PC não acha o Controlador de Domínio (DC).
-- **Zonas de Pesquisa Direta:** Converte Nome -> IP.
-- **Zonas de Pesquisa Inversa:** Converte IP -> Nome.
-
-### 2.2 DHCP Server
-Gerenciamento centralizado de endereços.
-- **Escopos:** Defina o range de IPs.
-- **Reservas:** Garanta que a impressora sempre pegue o mesmo IP (`.10`) através do MAC Address.
+### 📝 Regra de Ouro (Herança):
+As políticas aplicadas no nível de **Domínio** descem para todas as **OUs** abaixo dele. Se você bloquear o USB na raiz, ninguém na empresa usa USB.
 
 ---
 
-## 🛠️ Módulo 3: GPO (Group Policy Objects)
+## 🌍 Módulo 3: Serviços de Infraestrutura (DNS e DHCP)
 
-A mágica da administração centralizada. Configure 1.000 máquinas com um clique.
-
-### 3.1 Ordem de Precedência (LSDOU)
-Se houver conflito de políticas, a ordem de aplicação é:
-1.  **L**ocal (PC Local)
-2.  **S**ite (Geográfico)
-3.  **D**omínio (Lógica Geral)
-4.  **OU** (Unidade Organizacional) - **A última aplicada é a que vale!**
-
-### 3.2 GPOs Indispensáveis
-- **Restrição de USB:** Bloqueia pen-drives não autorizados por segurança.
-- **Mapeamento de Drives:** Z: para Arquivos, Y: para Scans.
-- **Configuração de Proxy:** Garante que todos naveguem pelo Firewall da empresa.
+O Windows Server geralmente é o "mestre" desses serviços que vimos em Redes.
+*   **DNS no AD:** Sem ele, o herói do AD não funciona. Os computadores usam o DNS para achar o "Controlador de Domínio".
+*   **Escopo DHCP:** É onde você define a faixa de IPs que o servidor vai entregar.
 
 ---
 
-## 🔍 Módulo 4: Troubleshooting e PowerShell AD
+## 🛡️ Módulo 4: Permissões NTFS e Compartilhamento
 
-### 4.1 Comandos de Diagnóstico
-| Comando | O que faz? |
-| :--- | :--- |
-| `gpupdate /force` | Força a aplicação imediata das novas GPOs no PC. |
-| `gpresult /r` | Mostra quais GPOs estão realmente sendo aplicadas no usuário. |
-| `dcdiag` | Testa a saúde completa do Controlador de Domínio. |
-
-### 4.2 Automação com PowerShell
-Crie 50 usuários de uma vez a partir de uma planilha CSV:
-```powershell
-Import-Csv "usuarios.csv" | ForEach-Object {
-    New-ADUser -Name $_.Name -Path "OU=Users,DC=Empresa,DC=local" -Enabled $true
-}
-```
-
-::: info 🛡️ Caso Real: O Servidor que Parou no Tempo
-Servidores Windows que ficam muito tempo desligados perdem a "confiança" com o domínio. O erro é o clássico "The trust relationship between this workstation and the primary domain failed". **Solução:** Remova o servidor do domínio para um Grupo de Trabalho e adicione-o novamente. A conta de computador do AD será resetada e a confiança voltará.
-:::
+Como garantir que o estagiário não apague a planilha da diretoria?
+1.  **Compartilhamento:** Permissão para entrar na pasta pela rede.
+2.  **NTFS:** Permissão para o que ele pode fazer COM os arquivos (Ler, Gravar, Modificar).
+*   *Dica:* A permissão mais restritiva sempre vence!
 
 ---
 
-## 🚀 Módulo 5: Disaster Recovery e Backup do AD
+## 📝 Exercícios de Fixação (Para responder no caderno!)
 
-::: details 🛡️ Plano de Emergência: System State (Clique para expandir)
-Backup do AD não é copiar arquivos de pasta. É fazer o backup do **System State**:
-1. [ ] Use o `Windows Server Backup`.
-2. [ ] Selecione "System State" (inclui o Registry, Banco NTDS.dit e SYSVOL).
-3. [ ] Habilite a **Lixeira do Active Directory** (Server 2008 R2+), permitindo restaurar um usuário deletado em segundos sem precisar reiniciar o servidor.
-:::
+1.  O que é o **Active Directory** e qual sua principal vantagem para uma empresa?
+2.  Explique a diferença entre uma **Unidade Organizacional (OU)** e um **Grupo** no Windows Server.
+3.  O que é uma **GPO** e dê um exemplo real de como um técnico de TI a usaria.
+4.  Por que o serviço de **DNS** é vital para o funcionamento de um domínio Windows?
+5.  O que acontece se um usuário for movido de uma OU para outra com uma GPO diferente?
+6.  Qual a diferença entre a permissão de **Leitura** e a permissão de **Modificação** no NTFS?
+7.  Para que serve o comando `gpupdate /force` no prompt do Windows?
+8.  O que é um **Controlador de Domínio (DC)**?
+9.  Como o Windows Server ajuda na segurança cibernética de uma empresa?
+10. **Desafio:** Se um funcionário esqueceu a senha, em qual ferramenta do Windows Server você iria para resetá-la?
 
 ---
 
-### Links de Referência Master
-- [🌐 Redes de Computadores](/guias/Curso_Redes_Computadores) - Fundamentos de IP/DNS.
-- [☁️ Cloud Computing](/guias/Curso_Cloud_Computing) - Migração para Azure AD.
-- [🐧 Domínio do Linux](/guias/Curso_Dominio_Linux) - Integração com Samba/LDAP.
-- [🗄️ Banco de Dados Avançado](/guias/Curso_Banco_Dados_Avancado) - SQL Server em ambiente Windows.
+### 🚀 Próximos Passos
+- [☁️ Cloud Computing](/guias/Curso_Cloud_Computing) - Aprenda a levar esse servidor para a nuvem.
+- [🛠️ Troubleshooting](/guias/Guia_Troubleshooting_Profissional) - Resolva erros de login e permissão.
+- [🛂 Roadmap Certificações](/guias/Guia_Roadmap_Certificacoes) - Prepare-se para a prova MS-900 ou AZ-800.

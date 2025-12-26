@@ -1,123 +1,89 @@
-# 🐍 Python para Automação de TI: Master Class Edition
+# 🐍 Python para Automação: Master Class Edition
+> **Nível:** Iniciante ao Desenvolvedor | **Foco:** Lógica, Automação e APIs
+---
 
-![Banner Python](/banner_python.png)
+## 📖 Introdução: Por que Python?
 
-Aprenda a criar robôs que trabalham por você. No mundo da TI de elite, não trabalhamos duro, trabalhamos de forma inteligente. Este guia transforma você de um digitador em um arquiteto de automações.
+Python é a "linguagem canivete suíço". Ela é fácil de ler (parece inglês), poderosa e usada por gigantes como Google, NASA e Netflix. Na TI, o Python é seu maior aliado para **não ter que fazer tarefas repetitivas**. Se você gasta 3 horas por dia renomeando arquivos ou copiando dados de uma planilha, o Python faz isso em 3 segundos.
 
 ---
 
-## 📂 Módulo 1: O Ambiente de Desenvolvimento (Lab do Desenvolvedor)
+## 🏗️ Módulo 1: O Pensamento Computacional (A Lógica)
 
-Um profissional nunca polui o Python do sistema. Usamos Ambientes Virtuais (VENV).
+Programar não é decorar comandos, é aprender a **resolver problemas**. Antes de digitar código, você precisa do **Algoritmo** (o passo a passo).
 
-### 1.1 Isolamento de Projeto
-```bash
-python -m venv .venv        # Cria o ambiente
-source .venv/bin/activate  # Ativa (Linux)
-.venv\Scripts\activate     # Ativa (Windows)
-```
-
-### 1.2 Gestão de Ferramentas
-Use o `pip` para instalar bibliotecas de guerra:
-- `pip install requests`: O rei das requisições web.
-- `pip install pandas`: Manipulação de dados e planilhas.
-- `pip install selenium`: Automação de navegador (clicar em botões).
-- `pip install psutil`: Controle total dos recursos do Hardware.
+### 📝 No seu Caderno (O Tripé do Código):
+1.  **Entrada:** O dado que chega (ex: um nome).
+2.  **Processamento:** O que o computador faz (ex: colocar em maiúsculas).
+3.  **Saída:** O resultado final (ex: exibir na tela).
 
 ---
 
-## 🕸️ Módulo 2: Web Scraping e Consumo de APIs
+## 📂 Módulo 2: O Básico Essencial (Variáveis e Tipos)
 
-A internet é o seu banco de dados. Aprenda a extrair informações automaticamente.
+No Python, você guarda informações em "gavetas" chamadas **Variáveis**.
 
-### 2.1 Requisições com `Requests` e `JSON`
-A maioria das APIs modernas fornece dados em formato JSON.
+### 📝 Tipos de Dados (Anote!):
+*   `int` (Inteiro): Números sem vírgula (ex: 10, -5).
+*   `float` (Flutuante): Números com vírgula (ex: 1.50).
+*   `str` (String): Textos (sempre entre "Aspas").
+*   `bool` (Booleano): Verdadeiro (`True`) ou Falso (`False`).
+
+---
+
+## ⚡ Módulo 3: Tomada de Decisão (If, Else)
+
+A mágica acontece quando o código decide o que fazer.
 ```python
-import requests
+temperatura = 32
 
-response = requests.get("https://api.exemplo.com/dados")
-if response.status_code == 200:
-    dados = response.json()
-    print(f"Sucesso! Recebido: {dados['status']}")
+if temperatura > 30:
+    print("Está muito quente! Ligue o ar-condicionado.")
 else:
-    print(f"Erro {response.status_code}")
+    print("Temperatura está agradável.")
 ```
-
-### 2.2 Web Scraping com `BeautifulSoup`
-Quando o site não tem API, nós "raspamos" o HTML.
-- **Utilidade:** Monitorar preços de hardware, capturar notícias de segurança ou verificar mudanças em sites de clientes.
+**Analogia:** É como uma bifurcação na estrada. Se a condição for verdadeira, o código vai para um lado. Se não, vai para o outro.
 
 ---
 
-## 🤖 Módulo 3: Automação de Sistemas e Redes
+## 🔄 Módulo 4: Automação com Repetição (Loops)
 
-### 3.1 O "Canivete Suíço" das Funções de TI
-| Funcionalidade | Biblioteca | Comando Exemplo |
-| :--- | :--- | :--- |
-| **Mover Arquivos** | `shutil` | `shutil.move(origem, destino)` |
-| **Executar Comandos**| `subprocess` | `subprocess.run(["nmap", "-sT", ip])` |
-| **Monitoramento** | `psutil` | `psutil.cpu_percent(interval=1)` |
-| **E-mail Automático**| `smtplib` | Enviar relatórios de erro para o suporte. |
+Imagine que você precisa enviar 100 e-mails. Você não vai escrever o comando 100 vezes. Você usa o `for` (Para cada...).
 
----
-
-## 🛡️ Módulo 4: Scripts Robustos (Tratamento de Erros e Logs)
-
-Um script que trava sem dizer o porquê é um script inútil.
-
-### 4.1 Try / Except / Finally
 ```python
-try:
-    with open("configuracao.txt", "r") as f:
-        config = f.read()
-except FileNotFoundError:
-    print("❌ Erro: Arquivo de configuração não encontrado!")
-    # Aqui você poderia criar um arquivo padrão
-except Exception as e:
-    print(f"⚠️ Ocorreu um erro inesperado: {e}")
-finally:
-    print("🔚 Processamento finalizado.")
-```
+usuarios = ["Matheus", "Ana", "Lucas"]
 
-### 4.2 Logging (O Diário do Robô)
-Em vez de `print()`, use a biblioteca `logging` para salvar os erros em um arquivo `.log`. Isso permite que você saiba o que deu errado de madrugada sem precisar estar na frente do PC.
+for nome in usuarios:
+    print(f"Enviando e-mail de boas-vindas para: {nome}")
+```
 
 ---
 
-## 🚀 Módulo 5: Projeto Final - O Organizador de Servidores
+## 🕸️ Módulo 5: Bibliotecas (O Poder Extra)
 
-::: details 🛠️ Laboratório: Automação Total de Documentos (Clique para expandir)
-Este script monitora pastas e move arquivos para as categorias corretas, mantendo o servidor limpo.
-```python
-import os
-import shutil
-
-# Configurações
-DOWNLOADS_DIR = "C:/Gestao/Entrada"
-MAP_EXTENSOES = {
-    "PDFs": [".pdf"],
-    "Executaveis": [".exe", ".msi"],
-    "Imagens": [".jpg", ".png", ".webp"]
-}
-
-def organizar():
-    for arquivo in os.listdir(DOWNLOADS_DIR):
-        ext = os.path.splitext(arquivo)[1].lower()
-        for pasta, extensoes in MAP_EXTENSOES.items():
-            if ext in extensoes:
-                caminho_pasta = os.path.join(DOWNLOADS_DIR, pasta)
-                os.makedirs(caminho_pasta, exist_ok=True)
-                shutil.move(os.path.join(DOWNLOADS_DIR, arquivo), os.path.join(caminho_pasta, arquivo))
-
-if __name__ == "__main__":
-    organizar()
-    print("✨ Sistema Organizado!")
-```
-:::
+O Python sozinho é bom, mas com **Bibliotecas** ele fica imbatível. Bibliotecas são códigos prontos que outras pessoas fizeram.
+*   `os`: Para mexer em pastas e arquivos do Windows/Linux.
+*   `requests`: Para baixar dados de sites.
+*   `pandas`: Para ler e salvar planilhas de Excel.
 
 ---
 
-### Links de Referência Master
-- [🌐 Redes de Computadores](/guias/Curso_Redes_Computadores) - Integre Python com scans de rede.
-- [🐧 Domínio do Linux](/guias/Curso_Dominio_Linux) - Rode seus scripts em modo servidor.
-- [🗄️ Banco de Dados Avançado](/guias/Curso_Banco_Dados_Avancado) - Salve os dados da sua automação.
+## 📝 Exercícios de Fixação (Para responder no caderno!)
+
+1.  O que é um algoritmo e por que ele é importante antes de começar a programar?
+2.  Explique a diferença entre uma variável do tipo `int` e uma do tipo `str`.
+3.  Para que serve o comando `input()` em Python?
+4.  Escreva um pequeno código (no papel/caderno) que pergunte a idade do usuário e diga se ele é maior de idade (18 anos) ou não.
+5.  O que é uma **Lista** em Python e como você acessa o primeiro item dela?
+6.  Qual a função das bibliotecas (import) no Python?
+7.  Diferencie o comando `if` do comando `elif`.
+8.  O que acontece se você tentar somar um `int` com uma `str` (ex: `10 + "Matheus"`)? Por quê?
+9.  Como você faria um loop que conta de 1 até 10?
+10. **Desafio:** Imagine que você tem uma pasta com 500 fotos e quer colocar o nome \"foto_\" antes de todas. Qual biblioteca você usaria e qual a lógica básica desse script?
+
+---
+
+### 🚀 Próximos Passos
+- [🌐 Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web) - Use Python para criar sites (com Flask ou Django).
+- [🗄️ Bancos de Dados](/guias/Curso_Banco_Dados_Avancado) - Aprenda a salvar dados do Python em tabelas profissionais.
+- [💀 Kali Linux Expert](/guias/Curso_Pratico_Kali_Expert) - Crie seus próprios scripts de segurança.

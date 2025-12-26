@@ -1,201 +1,62 @@
-# 🎓 Roadmap de Estudos: Ciência da Computação & TI
+# 🗺️ Roadmap de Estudos: Elite Tech Career
+> **Objetivo:** Transformar você em um especialista em infraestrutura, automação e segurança.
+---
 
-![Banner Roadmap](/banner_roadmap_temp.jpg)
+## 📈 A Jornada do Especialista
+
+Este roadmap foi desenhado para ser seguido no seu ritmo, mas com foco total em **aprender anotando**. Use os exercícios ao final de cada guia para testar seu cérebro.
 
 ---
 
-## 🎯 Objetivo
+## 🟢 Nível 1: Fundamentos de Ferro (Base de Tudo)
+*Neste nível, você constrói os alicerces. Sem isso, você será apenas um "rodador de ferramentas".*
 
-**Meta:** Dominar fundamentos técnicos, ter noção prática das principais tecnologias e estar preparado para qualquer desafio acadêmico ou profissional.
-
-**Filosofia:** Aprender fazendo. 80% prática, 20% teoria.
-
-
----
-
-## 📅 Estrutura de Aprendizado (3 Fases)
-
-### 🗓️ Fase 1: Fundamentos de Elite (4-6 semanas)
-
-**Objetivo:** Base teórica sólida de nível acadêmico.
-
-#### Semana 1-2: Pensamento Computacional
-- [ ] [Algoritmos & Estruturas de Dados: Master Class](/guias/Curso_Algoritmos_Estruturas_Dados)
-- [ ] Prática: Implementar pilha, fila e lista ligada
-- [ ] Exercícios: LeetCode (20 problemas Easy)
-
-#### Semana 3-4: POO e Ciências da Computação
-- [ ] [POO na Prática: Master Class](/guias/Curso_POO_Pratica)
-- [ ] [Fundamentos de Ciência da Computação: Master Class](/guias/Curso_Fundamentos_CS)
-- [ ] Projeto: Sistema de biblioteca (POO)
-
-#### Semana 5-6: Controle de Versão Profissional
-- [ ] [Git e GitHub Profissional: Master Class](/guias/Curso_Git_GitHub)
-- [ ] Prática: Criar repositório e fazer pull requests
-- [ ] Projeto: Subir todos os projetos no GitHub
+1.  **[🌐 Redes de Computadores](/guias/Curso_Redes_Computadores)**
+    - *O que aprender:* Modelo OSI, IPs, Subnetting e Protocolos.
+    - *Meta:* Entender como o dado viaja do ponto A ao ponto B.
+2.  **[🐧 Domínio do Linux](/guias/Curso_Dominio_Linux)**
+    - *O que aprender:* Terminal, Permissões, Arquitetura e Servidores.
+    - *Meta:* Perder o medo da tela preta e dominar a linha de comando.
+3.  **[⚙️ Fundamentos de TI](/guias/Curso_Fundamentos_CS)**
+    - *O que aprender:* Hardware, Processadores e como o PC funciona por dentro.
 
 ---
 
-### 🗓️ Fase 2: Operações e Segurança (6-8 semanas)
+## 🔵 Nível 2: Automação e Dados (Escalabilidade)
+*Agora que você sabe como as coisas funcionam, descubra como fazê-las funcionar sozinhas.*
 
-**Objetivo:** Domínio da infraestrutura e ataques defensivos/ofensivos.
-
-#### Semana 1-2: Infraestrutura de Elite
-- [ ] [Domínio do Linux: Master Class](/guias/Curso_Dominio_Linux)
-- [ ] [Redes de Computadores: Master Class](/guias/Curso_Redes_Computadores)
-- [ ] [Windows Server & AD: Master Class](/guias/Curso_Windows_Server_AD)
-- [ ] Prática: Lab Híbrido Windows/Linux
-
-#### Semana 3-4: Programação e Dados
-- [ ] [Python para Automação: Master Class](/guias/Curso_Python_Automacao)
-- [ ] [Banco de Dados Avançado: Master Class](/guias/Curso_Banco_Dados_Avancado)
-- [ ] Projeto: Script de Backup Automático com Log de Erros
-
-#### Semana 5-6: Web e Segurança
-- [ ] [Desenvolvimento Web: Master Class](/guias/Guia_Desenvolvimento_Web)
-- [ ] [Kali Linux Expert: Master Class](/guias/Curso_Pratico_Kali_Expert)
-- [ ] Projeto: Site pessoal com auditoria de segurança básica
-
-#### Semana 7-8: Cloud e Prática Final
-- [ ] [Cloud Computing: Master Class](/guias/Curso_Cloud_Computing)
-- [ ] [Troubleshooting Profissional: Master Class](/guias/Guia_Troubleshooting_Profissional)
-- [ ] Projeto: Deploy de aplicação escalável na AWS
+1.  **[🐍 Python para Automação](/guias/Curso_Python_Automacao)**
+    - *O que aprender:* Lógica, Scripts, Bibliotecas e APIs.
+    - *Meta:* Criar ferramentas que economizam horas do seu dia.
+2.  **[🗄️ Bancos de Dados Avançado](/guias/Curso_Banco_Dados_Avancado)**
+    - *O que aprender:* SQL, Modelagem, Performance e Segurança de Dados.
+    - *Meta:* Gerenciar a informação de forma profissional.
+3.  **[📂 Git & GitHub Profissional](/guias/Curso_Git_GitHub)**
+    - *O que aprender:* Versionamento, Commits, Branchs e Trabalho em Equipe.
 
 ---
 
-## 📊 Distribuição de Tempo Semanal
+## 🟣 Nível 3: Infraestrutura e Nuvem (Ambiente Corporativo)
+*Prepare-se para o mercado corporativo e grandes servidores.*
 
-**Total recomendado:** 15-20h/semana de estudo efetivo.
-
-**Sugestão de rotina diária (Segunda a Sexta):**
-- 🌅 7h-9h: Teoria (leitura de curso na Wiki) = 2h
-- 🌆 19h-21h: Prática (labs, código, exercícios) = 2h
-- 📅 Sábado: Projeto prático (4-6h)
-- 📅 Domingo: Revisão da semana (2-3h) + descanso
-
-**IMPORTANTE:** Qualidade > Quantidade. 2h focado > 5h distraído.
+1.  **[🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD)**
+    - *O que aprender:* Active Directory, GPOs e Gerenciamento de Usuários.
+2.  **[☁️ Cloud Computing](/guias/Curso_Cloud_Computing)**
+    - *O que aprender:* AWS, Azure e a migração de servidores para a nuvem.
+3.  **[🛠️ Troubleshooting de Elite](/guias/Guia_Troubleshooting_Profissional)**
+    - *O que aprender:* Metodologias para resolver problemas impossíveis.
 
 ---
 
-## 🎯 Metas Mensuráveis
+## 🔴 Nível 4: Cybersecurity Mastery (O Topo)
+*Onde a técnica encontra a estratégia ofensiva e defensiva.*
 
-Ao final de cada mês, você deve conseguir:
-
-### ✅ Fim de Dezembro
-- Instalar e configurar Linux sozinho
-- Explicar como funciona TCP/IP
-- Criar scripts Python que resolvem problemas reais
-- Diagnosticar problemas básicos de rede
-
-### ✅ Fim de Janeiro
-- Montar um PC do zero
-- Usar metodologia de troubleshooting profissional
-- Executar pentest básico com Kali
-- Criar uma VM na AWS
-
-### ✅ Início de Fevereiro (Antes da Faculdade)
-- Ter portfólio no GitHub com 3-5 projetos
-- Dominar pelo menos 1 certificação (estudo completo)
-- Saber se apresentar profissionalmente
-- Ter Wiki pessoal documentada com seu conhecimento
+1.  **[💀 Kali Linux Expert](/guias/Curso_Pratico_Kali_Expert)**
+    - *O que aprender:* Pentest, Invasão Ética, Anonimato e Exploração.
+2.  **[🛂 Roadmap de Certificações](/guias/Guia_Roadmap_Certificacoes)**
+    - *Próximo Passo:* Planeje sua primeira certificação internacional (CompTIA, Cisco, LPI).
 
 ---
 
-## 📚 Recursos Complementares
-
-### Livros (Opcionais)
-- **"Introdução à Ciência da Computação"** - Sedgewick
-- **"Código Limpo"** - Robert C. Martin
-- **"Automate the Boring Stuff with Python"** - Al Sweigart (grátis online)
-
-### YouTube (Assistir 1-2 por semana)
-- Código Fonte TV
-- Programador BR
-- Fabio Akita
-- Curso em Vídeo (Python e Redes)
-
-### Comunidades
-- Reddit: r/learnprogramming, r/ITCareerQuestions
-- Discord: Servidor "Código Fonte TV"
-- Telegram: Grupos de Python/Linux Brasil
-
----
-
-## 🚨 Regras de Ouro
-
-### 1. Consistência é Tudo
-Melhor estudar 1h TODO DIA que 10h no fim de semana.
-
-### 2. Prática > Teoria
-80% do tempo em FAZER (labs, projetos, código)
-20% do tempo em LER (teoria)
-
-### 3. Documente Seu Progresso
-Use a Wiki para anotar:
-- O que você aprendeu
-- Problemas que resolveu
-- Dúvidas que ainda tem
-
-### 4. Projetos > Cursos
-Faculdade quer ver PROJETOS no seu GitHub, não certificados de curso.
-
-### 5. Saúde Mental
-- Durma 7-8h
-- Faça exercício físico
-- Mantenha vida social
-- Se sentir burnout, DESCANSE 1 dia
-
----
-
-## 🏆 Checklist Final (Véspera da Faculdade)
-
-**Você está pronto se conseguir:**
-- [ ] Explicar o que é um endereço IP
-- [ ] Instalar Linux de olhos fechados
-- [ ] Escrever um script Python funcional
-- [ ] Diagnosticar um PC lento
-- [ ] Criar uma VM na nuvem
-- [ ] Fazer um site estático simples
-- [ ] Ter pelo menos 3 projetos no GitHub
-- [ ] Saber sua trajetória de certificações
-- [ ] Ter testado todas as ferramentas do seu pen-drive
-
-**Se marcou 7+ itens:** Você está MUITO BEM preparado! 🚀
-
----
-
-## 💡 Dica Final
-
-**Você não precisa saber TUDO antes da faculdade.**
-
-A faculdade vai ENSINAR a teoria. Você está se preparando para:
-1. Ter BASE prática
-2. Entender conceitos mais rápido que os colegas
-3. Fazer projetos melhores
-4. Conseguir estágio no 1º-2º ano
-
-**Meta real:** Chegue com 60-70% desse roadmap cumprido e você já está MUITO à frente.
-
----
-
-## 📞 Quando Tiver Dúvidas
-
-Use sua Wiki! Ela está aqui exatamente pra isso.
-
-**Passos:**
-1. Revise o curso relacionado à dúvida
-2. Faça um projeto prático
-3. Google/ChatGPT para complementarpesquise
-4. Participe de comunidades (Discord, Reddit)
-5. Continue!
-
----
-
-**Bons estudos, futuro cientista da computação! 🎓💻🚀**
-
----
-
-**Navegação:**
-- [Voltar para Homepage](/)
-- [Ver Todos os Cursos](/guias/Curso_Dominio_Linux)
-- [Galeria de Referências](/referencias/Galeria_Imagens)
+### 💡 Dica de Mestre:
+Não tente ler tudo de uma vez. Escolha **UM** curso, pegue seu caderno, resolva os exercícios e só depois passe para o próximo. O conhecimento é uma escada, não um elevador. 🦾💎🚀

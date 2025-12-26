@@ -1,88 +1,70 @@
-# 📊 Algoritmos e Estruturas de Dados: Master Class Edition
+# 🧮 Algoritmos e Estruturas de Dados: Master Class Edition
+> **Nível:** Iniciante ao Ninja | **Foco:** Lógica, Performance e Eficiência
+---
 
-![Banner Algoritmos](/banner_algoritmos.png)
+## 📖 Introdução: A Receita do Sucesso
 
-Este é o alicerce de toda a computação de alto nível. Se você entende a lógica e como organizar os dados, você domina qualquer linguagem e resolve problemas que parecem impossíveis.
+Um **Algoritmo** nada mais é do que uma receita. Se você quer fazer um bolo, precisa seguir passos logicamente ordenados. Na computação, algoritmos são os passos que o processador segue para resolver um problema. Sem algoritmos, o software não sabe o que fazer. Sem **Estruturas de Dados**, o software não sabe onde guardar os ingredientes.
 
 ---
 
-## 📈 Módulo 1: O Termômetro do Código (Notação Big O)
+## 🏗️ Módulo 1: Complexidade de Algoritmos (O Tempo é Dinheiro)
 
-Como saber se seu código é rápido ou uma bomba de processamento? Usamos a notação Big O para medir a escalabilidade.
+Um código que funciona em 1 segundo é melhor que um que funciona em 1 hora. Para medir isso, usamos a **Notação Big O**.
 
-| Notação | Nome | Eficiência | Exemplo Real |
-| :--- | :--- | :--- | :--- |
-| **O(1)** | Constante | ⭐⭐⭐⭐⭐ | Pegar o primeiro item de uma lista. |
-| **O(log n)**| Logarítmica | ⭐⭐⭐⭐ | Busca Binária (Dividir para conquistar). |
-| **O(n)** | Linear | ⭐⭐⭐ | Percorrer uma lista inteira uma vez. |
-| **O(n log n)**| Linearítmica | ⭐⭐ | Algoritmos de ordenação eficientes (MergeSort). |
-| **O(n²)** | Quadrática | ❌ | Dois loops aninhados (Lento para dados grandes). |
-
-```mermaid
-graph LR
-    O1["O(1) Perfeito"] --- OlogN["O(log n) Excelente"]
-    OlogN --- ON["O(n) Aceitável"]
-    ON --- ON2["O(n²) Perigoso"]
-    
-    style O1 fill:#27ae60,stroke:#fff,color:#fff
-    style ON2 fill:#c0392b,stroke:#fff,color:#fff
-```
+### 📝 No seu Caderno (Anote!):
+*   **O(1):** Tempo constante (Super rápido, não importa o tamanho do dado).
+*   **O(n):** Tempo linear (Aumenta conforme a quantidade de dados aumenta).
+*   **O(n²):** Tempo quadrático (Cuidado! Fica muito lento com muitos dados).
 
 ---
 
-## 🧱 Módulo 2: Estruturas Lineares (O Fluxo de Dados)
+## 📦 Módulo 2: Estruturas de Dados Dinâmicas
 
-### 2.1 Pilhas (LIFO) e Filas (FIFO)
-- **Pilhas (Last-In, First-Out):** O último a entrar é o primeiro a sair.
-    - **Uso:** Função de "Desfazer" (Undo) no Word, Pilha de Chamadas (Call Stack).
-- **Filas (First-In, First-Out):** O primeiro a entrar é o primeiro a sair.
-    - **Uso:** Gerenciamento de processos na CPU, Fila de Impressão.
+Nem tudo cabe em uma lista simples. Às vezes precisamos de estruturas mais inteligentes.
 
-### 2.2 Listas Ligadas (Linked Lists)
-Diferente de um Array (vetor), os itens não estão lado a lado na memória. Cada item (nó) sabe onde o próximo está através de um ponteiro.
-- **Vantagem:** Inserir ou deletar itens no meio é muito rápido.
+### 2.1 Pilhas (Stacks)
+Pense em uma pilha de pratos. O último que você coloca é o primeiro que você tira (**LIFO - Last In, First Out**).
+*   *Exemplo:* O botão "Voltar" do seu navegador.
 
----
-
-## 🔍 Módulo 3: Algoritmos de Busca e Ordenação
-
-### 3.1 Busca Binária (O Poder do Log n)
-Para buscar um número em 1 bilhão de registros:
-- **Busca Linear:** Pode levar 1 bilhão de passos.
-- **Busca Binária:** Leva apenas **30 passos**.
-*A regra: A lista deve estar ordenada.*
-
-### 3.2 Sorting (Ordenação)
-| Algoritmo | Eficiência | Quando usar? |
-| :--- | :--- | :--- |
-| **Bubble Sort** | O(n²) | Apenas para grupos muito pequenos (didático). |
-| **Quick Sort** | O(n log n) | Geralmente o mais rápido na prática. |
-| **Merge Sort** | O(n log n) | Estável e garantido em pior caso. |
+### 2.2 Filas (Queues)
+Como uma fila de banco. O primeiro que chega é o primeiro atendido (**FIFO - First In, First Out**).
+*   *Exemplo:* A fila de documentos para a impressora.
 
 ---
 
-## 🌳 Módulo 4: Estruturas Não-Lineares (Árvores e Grafos)
+## 🌳 Módulo 3: Árvores e Grafos (Conexões Complexas)
 
-### 4.1 Árvores Binárias de Busca (BST)
-Imagine uma árvore onde tudo à esquerda é menor e tudo à direita é maior. Isso permite buscas instantâneas.
-- **Uso:** Indexação de arquivos no Windows/Linux, Bancos de Dados SQL.
-
-### 4.2 Grafos (A Teia de Conexões)
-Conjunto de nós (Vértices) conectados por linhas (Arestas).
-- **Uso:** Google Maps (Achar o caminho mais curto), Redes Sociais (Sugerir amigos), Roteamento de Internet (Protocolo BGP).
+Quando os dados não são lineares, usamos mapas.
+*   **Árvores (Trees):** Como uma árvore genealógica. Útil para pastas de arquivos ou menus de sites.
+*   **Grafos (Graphs):** Como as conexões do Facebook ou o GPS do Google Maps. Tudo está conectado a tudo.
 
 ---
 
-## 🧠 Módulo 5: Resolução de Problemas Profissional
+## 🔍 Módulo 4: Algoritmos de Busca e Ordenação
 
-::: info 🛡️ Caso Real: O Gargalo do Log
-Um sistema de log de uma empresa salvava tudo em um arquivo de texto gigante. Para achar um erro, o script Python percorria o arquivo do início. O tempo de busca era de **15 minutos**. 
-**Solução:** Implementei um **Hash Table (Dicionário)** que mapeia o timestamp para a posição do log. O tempo de busca caiu para **menos de 1 segundo**. **Estrutura de dados correta = Tempo economizado.**
-:::
+Como o computador coloca nomes em ordem alfabética?
+1.  **Bubble Sort:** Compara dois a dois e vai "subindo" os maiores. (Lento!)
+2.  **Quick Sort:** Divide o problema ao meio e resolve cada parte. (Muito rápido!)
+3.  **Busca Binária:** Em uma lista ordenada, você sempre olha o meio. É como achar uma palavra no dicionário físico.
 
 ---
 
-### Links de Referência Master
-- [🎨 POO na Prática](/guias/Curso_POO_Pratica) - Transforme dados em objetos.
-- [🐍 Python para Automação](/guias/Curso_Python_Automacao) - Implemente esses algoritmos.
-- [🧮 Fundamentos CS](/guias/Curso_Fundamentos_CS) - Teoria da computação.
+## 📝 Exercícios de Fixação (Para responder no caderno!)
+
+1.  Explique com suas palavras a diferença entre um algoritmo O(1) e um O(n).
+2.  Dê um exemplo do mundo real para uma estrutura de **Pilha (Stack)** que não foi citado aqui.
+3.  Em uma **Fila (Queue)**, qual elemento sai primeiro? O primeiro a entrar ou o último?
+4.  O que é um **Nó (Node)** em uma estrutura de árvore?
+5.  A Notação Big O mede apenas o tempo de execução? Se não, o que mais ela pode medir?
+6.  Qual a vantagem da **Busca Binária** sobre uma busca comum (item por item)?
+7.  Como funciona o algoritmo **Bubble Sort**?
+8.  Desenhe no seu caderno uma árvore simples com 3 níveis (Raiz, Pai e Filho).
+9.  O que é uma **Tabela Hash** e como ela ajuda na velocidade de busca?
+10. **Desafio:** Se você tem uma lista de 1 milhão de nomes em ordem alfabética, qual técnica de busca você usaria para achar o nome "Matheus" o mais rápido possível?
+
+---
+
+### 🚀 Próximos Passos
+- [🧩 POO na Prática](/guias/Curso_POO_Pratica) - Aprenda a organizar esses algoritmos em objetos.
+- [🐍 Python para Automação](/guias/Curso_Python_Automacao) - Coloque seus algoritmos para rodar.

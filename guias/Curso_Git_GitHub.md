@@ -1,101 +1,63 @@
-# 🔀 Git e GitHub Profissional: Master Class Edition
+# 📂 Git e GitHub Profissional: Master Class Edition
+> **Nível:** Iniciante ao Colaborador | **Foco:** Controle de Versão e Trabalho em Equipe
+---
 
-![Banner Git](/banner_git.png)
+## 📖 Introdução: A Máquina do Tempo do Código
 
-A máquina do tempo do desenvolvedor. Aprenda a controlar versões, colaborar em equipes multinacionais e manter seu código seguro contra desastres. Este guia transforma você de um amador que dá `git add .` em um arquiteto de fluxos de trabalho distribuídos.
+Sabe quando você salva um trabalho como `trabalho_final`, depois `trabalho_final_v2`, depois `trabalho_final_agora_vai`? O **Git** resolve isso. Ele é uma "máquina do tempo" para o seu código. Você pode voltar para qualquer ponto do passado se fizer algo errado, e pode trabalhar com outras 100 pessoas no mesmo arquivo sem que um apague o que o outro fez.
 
 ---
 
-## 📂 Módulo 1: A Anatomia do Git (O que acontece por baixo?)
+## 🏗️ Módulo 1: O Fluxo de Trabalho (Workflow)
 
-O Git não guarda "mudanças", ele guarda **Snapshots** (Fotos).
+O Git trabalha em 3 "estados" principais. Entender isso é a chave para não se perder.
 
-### 1.1 Os Estados do Arquivo
-1.  **Working Directory:** Onde você edita o código. (Unstaged).
-2.  **Staging Area:** O "Carrinho de Compras". Você escolhe o que vai para o commit.
-3.  **Local Repo:** A versão salva no seu PC.
-4.  **Remote Repo:** A versão salva no GitHub.
+### 📝 No seu Caderno (Os 3 Áreas):
+1.  **Working Directory:** Onde você está escrevendo o código agora (arquivos modificados).
+2.  **Staging Area (Index):** Onde você coloca os arquivos que "estão prontos para serem salvos" (`git add`).
+3.  **Local Repository:** Onde o Git salva a versão permanentemente no seu PC (`git commit`).
 
-```mermaid
-graph LR
-    A["Modify"] --> B["Stage (git add)"]
-    B --> C["Commit (git commit)"]
-    C --> D["Push (git push)"]
-    
-    style B fill:#d35400,stroke:#fff,color:#fff
-    style C fill:#27ae60,stroke:#fff,color:#fff
-```
+O **GitHub** é apenas a "casa nas nuvens" onde você sobe esse repositório para o mundo ver (`git push`).
 
 ---
 
-## 🛠️ Módulo 2: Maestria no Terminal (Comandos de Elite)
+## ⚙️ Módulo 2: Comandos de Sobrevivência
 
-### 2.1 Salvando o Trabalho Temporário (`git stash`)
-Você está no meio de um código, mas precisa mudar de branch urgente para corrigir um bug.
-- `git stash`: "Esconde" suas mudanças atuais.
-- `git checkout main`: Muda de branch.
-- `git stash pop`: Recupera seu trabalho de volta após o susto.
+Dominar o Git é dominar estes comandos:
 
-### 2.2 O Resgatista (`git reflog`)
-"Deletei a branch errada e perdi tudo!". O `reflog` guarda o histórico de **todos** os movimentos de cabeçalho do seu PC. Você pode voltar no tempo mesmo se tiver deletado uma branch ou feito um rebase errado.
-
----
-
-## 🔀 Módulo 3: Fluxos de Trabalho (Merge vs Rebase)
-
-### 3.1 O Grande Dilema
-- **Merge:** Cria um "commit de mesclagem". Preserva a história real (incluindo as idas e vindas).
-- **Rebase:** "Reescreve" a história para parecer que tudo foi feito em linha reta. Deixa o gráfico do GitHub lindo, mas deve ser usado com cuidado em branches compartilhadas.
-
-```mermaid
-gitGraph
-    commit id: "Base"
-    branch feature
-    checkout feature
-    commit id: "F1"
-    commit id: "F2"
-    checkout main
-    commit id: "M1"
-    merge feature id: "Merge Commit"
-```
+*   `git init`: Começa o rastreio na pasta.
+*   `git status`: O comando mais importante! Ele te diz o que está acontecendo agora.
+*   `git add .`: Prepara todos os arquivos para o salvamento.
+*   `git commit -m "mensagem"`: Tira uma "foto" do código com um comentário do que você mudou.
+*   `git log`: Vê o histórico de todas as fotos (commits) já tiradas.
 
 ---
 
-## 🆘 Módulo 4: Resolvendo Conflitos de Código
+## 🌳 Módulo 3: Branchs (Caminhos Paralelos)
 
-Conflitos acontecem quando duas pessoas mexem na **mesma linha** do mesmo arquivo.
-1. O Git bloqueia o Merge.
-2. Você abre o arquivo e verá as marcações `<<<< HEAD` e `>>>> [branch]`.
-3. Você escolhe qual versão fica (ou as duas), salva e faz um novo commit.
+A **Branch** (Ramo) permite que você crie uma "cópia segura" do seu código para testar uma ideia nova sem estragar a versão principal (`main`). 
 
-::: tip 💡 Dica de Mestre
-Para evitar conflitos gigantes, faça `git pull` todas as manhãs antes de começar a trabalhar. Pequenos conflitos são fáceis; conflitos de uma semana de trabalho são pesadelos.
-:::
+### 📝 Estratégia de Mestre:
+Nunca faça mudanças diretas na `main`. Crie uma branch chamada `feature-nome-da-ideia`, teste tudo, e depois faça o **Merge** (fusão) com a principal.
 
 ---
 
-## 🚀 Módulo 5: GitHub Profissional (Actions & Pull Requests)
+## 📝 Exercícios de Fixação (Para responder no caderno!)
 
-### 5.1 O Pull Request (PR) de Elite
-Não é apenas um botão. É um processo de qualidade:
-- **Code Review:** Outro desenvolvedor olha seu código antes de entrar no sistema principal.
-- **GitHub Actions:** Robôs que rodam seus testes automaticamente. Se o código quebrar, o robô bloqueia o Merge.
-
-### 5.2 Segurança de Chaves
-NUNCA envie senhas no código. Use variáveis de ambiente e segredos no GitHub (Settings > Secrets).
-
----
-
-## 🧪 Módulo 6: O Caso do Commit Errado
-
-::: info 🛡️ Na Trincheira: Caso Real
-Um colega fez um commit com a senha do banco de dados e deu o push pro GitHub público. Deletar o arquivo e dar push de novo **não resolve**, pois a senha continua no histórico! **Solução:** Tivemos que usar o **BFG Repo-Cleaner** para varrer o histórico inteiro e remover todas as menções àquela senha antes que um bot a capturasse. **Cuidado com o que você commita!**
-:::
+1.  O que é o Git e qual a principal diferença entre ele e o GitHub?
+2.  Explique com uma analogia o que é a **Staging Area**.
+3.  Para que serve o comando `git commit -m "..."` e por que a mensagem deve ser clara?
+4.  O que acontece se você rodar o comando `git push` sem antes ter feito um `git commit`?
+5.  Como você faria para voltar o seu código para uma versão de 3 dias atrás?
+6.  O que é um **Conflito de Merge** e como ele acontece?
+7.  Para que serve o arquivo `.gitignore`? Dê dois exemplos de arquivos que devem estar nele.
+8.  Qual o comando para criar uma nova **Branch** chamada \"teste\"?
+9.  O que é um **Pull Request (PR)** no GitHub?
+10. **Desafio:** No seu caderno, descreva a sequência exata de comandos (do íncio ao fim) para criar uma pasta, iniciar o git, criar um arquivo e subir para o GitHub pela primeira vez.
 
 ---
 
-### Links de Referência Master
-- [💻 Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web) - Use Git para seus deploys na Vercel.
-- [🐧 Domínio do Linux](/guias/Curso_Dominio_Linux) - Git no servidor via SSH.
-- [🐍 Python para Automação](/guias/Curso_Python_Automacao) - Versionando seus scripts de robôs.
-- [📊 Algoritmos e Estruturas de Dados](/guias/Curso_Algoritmos_Estruturas_Dados) - Entenda a estrutura de grafos do Git.
+### 🚀 Próximos Passos
+- [🐍 Python para Automação](/guias/Curso_Python_Automacao) - Salve seus scripts no GitHub.
+- [🌐 Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web) - Publique seu portfólio usando GitHub Pages.
+- [🏢 Windows Server](/guias/Curso_Windows_Server_AD) - O Azure DevOps usa Git por baixo dos panos.

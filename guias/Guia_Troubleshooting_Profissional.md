@@ -1,82 +1,60 @@
-# 🔍 Troubleshooting Profissional: Master Class Edition
+# 🛠️ Troubleshooting Profissional: Master Class Edition
+> **Nível:** Intermediário ao Especialista | **Foco:** Diagnóstico e Resolução de Conflitos
+---
 
-![Banner Troubleshooting](/banner_troubleshooting.png)
+## 📖 Introdução: A Arte de Resolver o Impossível
 
-Diagnosticar é a arte de aplicar a lógica pura sob pressão. Este guia ensina o método científico para resolver qualquer erro de TI, do mais simples travamento ao colapso total de um data center. Aprenda a não apenas "consertar", mas a dominar o sistema.
+O **Troubleshooting** é o que separa um técnico comum de um especialista de elite. Todo mundo sabe formatar um PC, mas poucos sabem descobrir *por que* ele está dando tela azul às 15h de toda quarta-feira. Este guia ensina a **Metodologia Científica** aplicada à TI.
 
 ---
 
-## 📂 Módulo 1: O Ciclo do Diagnóstico Científico
+## 🏗️ Módulo 1: O Método do Funil (Causa Raiz)
 
-Técnicos amadores "chutam" soluções. Profissionais de elite testam hipóteses.
+Quando um problema chega, ele é gigante. Você precisa ir eliminando possibilidades até sobrar a verdade.
 
-```mermaid
-graph TD
-    Identify["1. Identificar o Problema (Perguntas)"] --> Theory["2. Criar Hipóteses (O que pode ser?)"]
-    Theory --> Test["3. Pôr a Teoria à Prova (Testar 1 por 1)"]
-    Test -- Falhou --> Theory
-    Test -- Sucesso --> Plan["4. Plano de Ação e Correção Final"]
-    Plan --> Verify["5. Verificação do Sistema Completo"]
-    Verify --> Doc["6. Documentar a Solução ✅"]
-    
-    style Test fill:#f39c12,stroke:#fff,color:#fff
-    style Doc fill:#27ae60,stroke:#fff,color:#fff
-```
+### 📝 No seu Caderno (O Processo):
+1.  **Identifique o Problema:** O que está acontecendo? Quando começou? O que mudou antes do erro?
+2.  **Crie uma Teoria:** "Pode ser o cabo", "Pode ser o driver".
+3.  **Teste a Teoria:** Troque o cabo. Funcionou? Se não, descarte a teoria e crie outra.
+4.  **Plano de Ação:** Resolva o problema sem criar novos.
+5.  **Verifique Tudo:** Teste novamente e peça para o usuário validar.
+6.  **Documente:** Escreva o que era e como resolveu. Isso salva vidas no futuro.
 
 ---
 
-## 🧠 Módulo 2: Desvendando a Raiz (A Técnica dos 5 Porquês)
+## 🔍 Módulo 2: O Visualizador de Eventos (O Livro Negro)
 
-Nunca aceite o primeiro sintoma como a causa.
-1.  **Problema:** O servidor de arquivos caiu. (Por quê?)
-2.  **Resposta:** O disco está cheio. (Por quê?)
-3.  **Resposta:** Os logs de erro cresceram demais. (Por quê?)
-4.  **Resposta:** O script de limpeza não rodou. (Por quê?)
-5.  **Causa Raiz:** O agendador de tarefas foi desativado por um vírus ou erro humano.
-
-::: info 🛡️ Diferença Vital: Sintoma vs Causa
-Limpar o disco (Sintoma) resolve o problema por 1 dia. Reativar o script (Causa) resolve para sempre.
-:::
+No Windows, tudo o que acontece fica registrado no **Event Viewer**. Se o PC reiniciou sozinho, lá estará escrito o código do erro.
+*   **Crítico:** Erros que derrubam o sistema (Hardware ou Energia).
+*   **Erro:** Falhas em softwares ou drivers.
+*   **Aviso:** Algo não está certo, mas o sistema ainda respira.
 
 ---
 
-## 📜 Módulo 3: Interpretando os Logs (O Diário Secreto)
+## ⚡ Módulo 3: Isolando o Hardware
 
-O computador sempre registra o que está acontecendo. Aprenda a ler os sinais.
-
-### 3.1 Windows Event Viewer (Visualizador de Eventos)
-- **Crítico/Erro:** Algo parou. Foque no **ID do Evento** e pesquise no Google.
-- **Aviso (Warning):** O sistema está "avisando" que algo vai cair em breve.
-
-### 3.2 Linux Journalctl / dmesg
-- `journalctl -u nginx`: Vê apenas os erros do site.
-- `dmesg -T | grep -i "error"`: Vê erros físicos (Discos, USB, Memória).
+O PC liga mas trava? Use a técnica do **Mínimo Necessário**: Desconecte tudo o que não é essencial (HD extra, Placa de vídeo, USBs frontais). Deixe apenas Placa-mãe, Processador, 1 pente de RAM e Fonte.
+*   *Se o erro sumiu:* Uma das peças que você tirou é a culpada.
+*   *Se o erro continua:* O problema está no "Mínimo Necessário".
 
 ---
 
-## 🛠️ Módulo 4: O Caminho da Isolação
+## 📝 Exercícios de Fixação (Para responder no caderno!)
 
-Se o problema é complexo, comece a remover peças do quebra-cabeça.
-- **Isolamento de Hardware:** O PC trava? Dê boot por um **Live Linux no Pendrive**. Se continuar travando, o erro é **físico** (Hardware). Se não travar, o erro é de **software** (Windows/Driver).
-- **Modo de Segurança:** Carrega apenas o mínimo. Se o erro sumir, o culpado é um programa que inicializa junto com o Windows.
-
----
-
-## 🚑 Módulo 5: Gestão de Crise e Atendimento
-
-Como se portar quando o sistema de um cliente inteiro cai:
-1.  **Transparência:** Informe que já identificou o problema.
-2.  **Prazos Reais:** Não prometa "5 minutos" se vai levar 1 hora.
-3.  **Foco:** Resolva primeiro o que é mais crítico (O motor), depois o que é estético (A pintura).
-
-::: info 🛡️ Na Trincheira: Caso Real
-Um escritório de advocacia parou. Todos os PCs davam "Erro de Rede". Em vez de mexer nos PCs, fui direto no **Switch Central**. Notei que todas as luzes piscavam em sincronia (Broadcast Storm). Um estagiário tinha ligado as duas pontas do mesmo cabo no switch, criando um "Loop". Removi o cabo e a rede voltou em 2 segundos. **Visão sistêmica ganha o jogo.**
-:::
+1.  Por que a pergunta \"O que mudou por último no sistema?\" é a mais importante no Troubleshooting?
+2.  Explique a diferença entre um problema intermitente (que vai e vem) e um problema constante. Qual é o mais difícil de resolver?
+3.  Onde você procuraria logs de erro em um servidor Windows?
+4.  O que é a técnica de \"Mínimo Necessário\" no diagnóstico de hardware?
+5.  Cite 3 perguntas que você deve fazer ao usuário antes de mexer no computador dele.
+6.  Como o comando `ping` ajuda no troubleshooting de redes?
+7.  Para que serve o **Modo de Segurança** do Windows?
+8.  O que significa o termo \"Causa Raiz\"?
+9.  Por que documentar a solução é parte do trabalho do técnico?
+10. **Desafio:** Um cliente diz que a internet \"caiu\". Liste 5 coisas que você verificaria, em ordem, antes de condenar o roteador.
 
 ---
 
-### Links de Referência Master
-- [🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD) - Erros de domínio.
-- [🛡️ Atendimento Técnico de Elite](/guias/Guia_Atendimento_Elite) - Como falar com o cliente.
-- [🖥️ Montagem e Manutenção](/guias/Curso_Montagem_Manutencao_PC) - Erros de hardware.
-- [🛠️ Ferramentas Pen-drive](/guias/Curso_Ferramentas_Pendrive) - Kit de sobrevivência.
+### 🚀 Próximos Passos
+- [🖥️ Montagem e Manutenção](/guias/Curso_Montagem_Manutencao_PC) - Conheça as peças a fundo para diagnosticá-las.
+- [🏢 Windows Server](/guias/Curso_Windows_Server_AD) - Resolva erros em ambientes complexos.
+- [🌐 Redes de Computadores](/guias/Curso_Redes_Computadores) - Troubleshooting em camadas.

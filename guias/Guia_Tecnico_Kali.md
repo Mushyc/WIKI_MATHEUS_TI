@@ -1,51 +1,56 @@
-# 🛡️ Kali Linux: Master Cheat Sheet
+# 💀 Guia Técnico Kali Linux: Cheat Sheet de Elite
+> **Nível:** Operacional | **Foco:** Comandos Rápidos e Referência
+---
 
-![Banner Kali Elite](/banner_kali_final.png)
+## 📖 Introdução: O Guia de Bolso
+
+Um especialista não decora tudo, mas sabe onde encontrar a informação rápido. Este guia é o seu "Cheat Sheet" definitivo para quando você estiver no meio de um laboratório ou Pentest real e precisar do comando exato para uma ferramenta específica.
 
 ---
 
-## 📶 Audiência Wi-Fi (Aircrack-ng)
-```bash
-airmon-ng start wlan0    # Coloca placa em modo monitor
-airodump-ng wlan0mon     # Lista redes próximas
-aireplay-ng --deauth 0   # Derruba dispositivos para capturar o Handshake
-```
+## 🕵️ Módulo 1: Comandos de Anonimato
 
-## 🌐 Ataque Web (Burp & SQLmap)
-| Ferramenta | Objetivo | Comando Pro |
-| :--- | :--- | :--- |
-| **SQLmap** | Invasão de DB | `sqlmap -u "url" --batch --dbs` |
-| **Gobuster** | Pastas ocultas | `gobuster dir -u url -w wordlist` |
-| **Burp Suite** | Interceptação | Abrir GUI e configurar Proxy 127.0.0.1:8080 |
-
-## 🔐 Quebra de Senhas (John & Hydra)
-::: tip 💡 Dica do Matheus
-O Kali já vem com a melhor wordlist do mundo: `/usr/share/wordlists/rockyou.txt.gz`. Use `gunzip` para descompactar antes de usar com o John ou Hydra!
-:::
-
-**John the Ripper (Offline):**
-`john --format=nt --wordlist=rockyou.txt minhas_senhas.txt`
-
-**Hydra (Online - Brute Force):**
-`hydra -L usuários.txt -P rockyou.txt [IP] ssh`
+| Objetivo | Comando |
+| :--- | :--- |
+| Trojanizar o MAC | `macchanger -r eth0` |
+| Iniciar Serviço Tor | `service tor start` |
+| Rodar via Proxy | `proxychains [comando]` |
+| Limpar Histórico | `history -c` |
 
 ---
 
-## 🎯 Metodologia Attacker vs Defender
+## 🔍 Módulo 2: Scan e Reconhecimento (Nmap)
 
-```mermaid
-graph LR
-    Red["🔴 Red Team (Atacante)"] -- "Encontra Falhas" --> Blue["🔵 Blue Team (Defensor)"]
-    Blue -- "Bloqueia e Fortalece" --> Red
-    
-    subgraph Lab_Seguro
-    Red
-    Blue
-    end
-```
+### 📝 No seu Caderno (O "Combo" de Scan):
+- `nmap -sS -sV -O -p- [IP]`: O scan mais completo. Tenta ser silencioso (`-sS`), pega versões (`-sV`), descobre o OS (`-O`) e varre TODAS as 65.535 portas (`-p-`).
 
 ---
 
-### Links Relacionados
-- [💀 Kali Linux Mastery](/guias/Curso_Pratico_Kali_Expert)
-- [🔀 Git & GitHub](/guias/Curso_Git_GitHub)
+## 🧨 Módulo 3: Senhas e Password Cracking
+
+1.  **Hydra (Força Bruta):**
+    `hydra -l [usuario] -P [lista_senhas.txt] [IP] ssh` - Tenta adivinhar a senha do SSH.
+2.  **John the Ripper (Quebra de Hash):**
+    `john --wordlist=[lista.txt] [arquivo_hash]` - Tenta quebrar a senha de um arquivo criptografado.
+
+---
+
+## 📝 Exercícios de Fixação (Para responder no caderno!)
+
+1.  Qual comando do Nmap você usaria para descobrir apenas se um host está vivo (Ping Sweep)?
+2.  Como você verifica o seu IP interno no Kali Linux via terminal?
+3.  Qual a função da ferramenta **TheHarvester**?
+4.  O que faz o comando `nmap -T4 -F [IP]`? (Dica: o `-F` é de Fast).
+5.  Como você instalaria uma nova ferramenta no Kali que não veio instalada por padrão?
+6.  Qual a diferença entre usar o Kali como **Live USB** e instalado em uma **Máquina Virtual**?
+7.  Para que serve o comando `ip addr show`?
+8.  O que é um **Dictionary Attack** dentro da quebra de senhas?
+9.  Como o comando `dig` ajuda a coletar informações de um site?
+10. **Desafio:** No seu caderno, escreva o comando completo do Nmap para varrer a rede `192.168.1.0/24` em busca de máquinas Windows ligadas.
+
+---
+
+### 🚀 Próximos Passos
+- [🌐 Redes de Computadores](/guias/Curso_Redes_Computadores) - Domine os protocolos que você está escaneando.
+- [🐧 Domínio Linux](/guias/Curso_Dominio_Linux) - Automatize seus comandos com scripts Bash.
+- [🛠️ Ferramentas Pendrive](/guias/Curso_Ferramentas_Pendrive) - Aprenda a rodar o Kali direto do seu bolso.

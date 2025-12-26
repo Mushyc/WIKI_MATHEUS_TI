@@ -1,108 +1,101 @@
 # 🐧 Domínio do Linux: Master Class Edition
+> **Nível:** Iniciante ao Administrador | **Foco:** Shell, Arquitetura e Servidores
+---
 
-![Banner Linux](/banner_linux.png)
+## 📖 Introdução: O que é o Linux?
 
-Transforme-se em um mestre do terminal. O Linux não é apenas um sistema operacional; é a fundação da infraestrutura tecnológica mundial. No final deste guia, você terá o controle total do kernel.
+O Linux não é apenas um sistema operacional, é um **Kernel** (o coração do sistema). Ele nasceu para ser livre, estável e poderoso. Enquanto no Windows você clica em botões, no Linux você dá ordens diretas através do **Terminal**. Dominar o Linux é como ter a chave mestra de qualquer servidor ou supercomputador do mundo.
 
 ---
 
-## 📂 Módulo 1: O Esqueleto do Pinguim (Estrutura de Diretórios)
+## 🏗️ Módulo 1: A Estrutura de Diretórios (O Mapa)
 
-No Linux, **"Tudo é um arquivo"**. Entender onde cada engrenagem fica é vital para o troubleshooting.
+Diferente do Windows (C:\, D:\), no Linux tudo começa na raiz: `/`.
 
-```mermaid
-graph TD
-    Root["/ (Root)"] --> bin["/bin (Comandos Básicos: ls, cp)"]
-    Root --> sbin["/sbin (Comandos Admin: fdisk, ifconfig)"]
-    Root --> etc["/etc (O Cérebro: Configurações de Rede, Usuários)"]
-    Root --> home["/home (Vida do Usuário: Documentos, Desktop)"]
-    Root --> root_dir["/root (Casa do Superusuário)"]
-    Root --> var["/var (Vida Variável: Logs do Sistema, Bases de Dados)"]
-    Root --> tmp["/tmp (Temporários: Deletados no Reboot)"]
-    Root --> mnt["/mnt /media (Montagem de Discos Externos)"]
-    
-    style Root fill:#1a1a1a,stroke:#00ff00,stroke-width:2px,color:#00ff00
-```
+### 📂 Diretórios Essenciais (Anote no Caderno!):
+*   `/bin` e `/usr/bin`: Onde moram as ferramentas (comandos) que você usa.
+*   `/etc`: Aqui fica o cérebro do sistema. Todos os arquivos de configuração estão aqui.
+*   `/var`: Local onde os dados que mudam ficam (logs de erro, bancos de dados).
+*   `/home`: Onde ficam os usuários comuns (o seu "Meus Documentos").
+*   `/root`: A casa do superusuário. Ninguém entra aqui sem permissão.
+*   `/tmp`: Arquivos temporários que são apagados ao reiniciar.
 
 ---
 
-## 🔐 Módulo 2: Permissões e Segurança de Arquivos
+## 👤 Módulo 2: O Poder do Superusuário (Root vs Sudo)
 
-Muitas falhas em sistemas Linux ocorrem por permissões erradas. Dominar o `chmod` e o `chown` é obrigatório.
+No Linux, existe um deus chamado **Root**. Ele pode apagar todo o sistema com um comando. Por segurança, usamos o **Sudo** (SuperUser Do).
 
-### 2.1 A Matriz das Permissões (Octal)
-| Valor | Letra | Significado |
-| :--- | :--- | :--- |
-| **4** | `r` | Read (Leitura) |
-| **2** | `w` | Write (Escrita) |
-| **1** | `x` | Execute (Execução) |
-
-**Cálculo:** `777` = Tudo liberado (4+2+1 para Dono, Grupo e Outros).
-**Padrão Seguro:** `644` (Dono escreve, outros só leem) ou `755` (Dono faz tudo, outros leem e executam).
-
-### 2.2 Permissões Especiais (O Perigo)
-- **SUID (Set User ID):** Faz um arquivo rodar com as permissões do Dono (ex: o `passwd` tem SUID para poder mexer no arquivo de senhas do sistema).
-- **SGID:** O arquivo roda com permissões do grupo.
-- **Sticky Bit:** Apenas o dono pode deletar um arquivo dentro de uma pasta (usado no `/tmp`).
+### 📝 No seu Caderno:
+- **Usuario Comum ($):** Pode fazer coisas básicas.
+- **Root (#):** Tem poder total sobre o hardware e software.
+- **Sudo:** É como pedir permissão momentânea ao Root para uma tarefa específica.
 
 ---
 
-## 📦 Módulo 3: Gestão de Pacotes e Repositórios
+## 🔐 Módulo 3: Permissões de Arquivos (r-w-x)
 
-Linux é sobre saber onde buscar o seu software com segurança.
+Cada arquivo no Linux tem 3 tipos de donos e 3 tipos de poderes:
 
-### 3.1 O Ecossistema APT (Debian/Ubuntu/Kali)
-| Comando | O que faz? |
-| :--- | :--- |
-| `sudo apt update` | Baixa a lista de versões novas dos programas. |
-| `sudo apt upgrade` | Instala as atualizações de fato. |
-| `sudo apt install [nome]` | Instala um software novo. |
-| `apt search [termo]` | Procura se existe um programa nos repositórios. |
+1.  **Dono (User):** Quem criou.
+2.  **Grupo (Group):** Membros do time.
+3.  **Outros (Other):** O resto do mundo.
 
-::: tip 💡 Dica de Elite: Limpeza
-Use `sudo apt autoremove` e `sudo apt autoclean` regularmente para remover dependências antigas e lixo que sobra de instalações passadas.
-:::
+### 📝 A Linguagem Proibida (Matemática Binária):
+*   **Read (Ler):** 4
+*   **Write (Escrever):** 2
+*   **Execute (Executar):** 1
 
----
-
-## 🔬 Módulo 4: Diagnóstico e Monitoramento de Processos
-
-### 4.1 "O Médico de Plantão"
-| Comando | O que revela? |
-| :--- | :--- |
-| `htop` | Versão visual e interativa dos processos (Memória, CPU, Cores). |
-| `journalctl -xe` | Mostra os logs mais recentes de erro do sistema (Salvador de vidas). |
-| `dmesg -T` | Mostra mensagens do Kernel (Hardware, USB conectada). |
-| `lsof -i :80` | Mostra qual programa está "sentado" na porta 80. |
-
-::: info 🛡️ Caso Real: O Processo Fantasma
-Um site parou de carregar. O Apache parecia ligado, mas o `status` dava erro de porta. Usei o `lsof -i :80` e vi que o Skype tinha subido antes do Apache e "roubado" a porta 80. Matei o Skype, reiniciei o Apache e tudo voltou. **Diagnóstico rápido salva a paz do administrador.**
-:::
+**Exemplo:** Um comando `chmod 755 arquivo` significa:
+- **7** (4+2+1): Dono pode tudo.
+- **5** (4+0+1): Grupo pode ler e executar.
+- **5** (4+0+1): Outros podem ler e executar.
 
 ---
 
-## 🤖 Módulo 5: Automação com Bash Scripting (O Robô)
+## ⚙️ Módulo 4: Manipulação de Texto e Pipes
 
-Um mestre nunca faz a mesma coisa duas vezes manualmente.
+O Linux trata tudo como se fosse um arquivo de texto. Isso permite que você combine comandos usando o caractere "Pipe" (`|`).
 
-### 5.1 O Tridente de Ouro: Grep, Sed e Awk
-- **Grep:** Busca texto em arquivos. `grep "ERROR" /var/log/syslog`
-- **Sed:** Substitui texto na hora. `sed -i 's/antigo/novo/g' arquivo.txt`
-- **Awk:** Manipula colunas. `ls -l | awk '{print $9}'` (mostra só os nomes dos arquivos).
+### 📝 Comandos que você vai usar TODO DIA:
+*   `ls -la`: Lista tudo com detalhes.
+*   `cat [arquivo]`: Lê o que está dentro do arquivo.
+*   `grep "palavra"`: Filtra apenas a linha que tem o que você busca.
+*   `nano` ou `vim`: Editores de texto direto no terminal.
 
-### 5.2 Estrutura de Loop (Exemplo: Backup)
+**O Combo Mestre:**
 ```bash
-#!/bin/bash
-# Backup simples de todos os sites
-for site in /var/www/html/*; do
-    tar -czf backup_$(basename $site).tar.gz $site
-    echo "Backup de $site COMPLETO!"
-done
+cat logs.txt | grep "erro"
+# Lê o arquivo e mostra APENAS as linhas que têm erro.
 ```
 
 ---
 
-### Links de Referência Master
-- [🌐 Redes de Computadores](/guias/Curso_Redes_Computadores) - Configure SSH e Firewalls.
-- [🐍 Python para Automação](/guias/Curso_Python_Automacao) - Leve seus scripts para o próximo nível.
-- [🛠️ Ferramentas Pen-drive](/guias/Curso_Ferramentas_Pendrive) - Linux portáteis.
+## 🛠️ Módulo 5: Monitoramento e Gerenciamento
+
+Um administrador precisa saber se o servidor está "vivo".
+1.  `top` ou `htop`: O "Gerenciador de Tarefas" do Linux.
+2.  `df -h`: Mostra quanto espaço ainda tem no disco.
+3.  `systemctl status [serviço]`: Verifica se um site ou banco de dados está rodando.
+
+---
+
+## 📝 Exercícios de Fixação (Para responder no caderno!)
+
+1.  Qual diretório do Linux armazena os arquivos de configuração do sistema?
+2.  Qual a diferença entre o símbolo `$` e o símbolo `#` no prompt do terminal?
+3.  Se um arquivo tem permissão `chmod 777`, o que isso significa na prática? (E por que isso é perigoso?)
+4.  Para que serve o comando `cd ..` e como ele difere do `cd /`?
+5.  Como você faria para ler um arquivo chamado `config.txt` mas exibindo apenas as linhas que contém a palavra \"senha\"?
+6.  Qual comando usamos para mudar o dono de um arquivo (**Owner**)?
+7.  Como você verifica quanto de memória RAM o sistema está usando no momento?
+8.  O que acontece se você rodar o comando `rm -rf /` como Root? (Não teste!)
+9.  Para que serve o comando `mkdir -p curso/linux/aula1`?
+10. **Desafio:** Imagine que você baixou um script e ele não quer rodar, dizendo \"Permissão negada\". Qual comando de 3 números você usaria para dar poder total de execução para você (dono)?
+
+---
+
+### 🚀 Próximos Passos
+- [🐍 Python e Automação](/guias/Curso_Python_Automacao) - Aprenda a automatizar o Linux com código.
+- [🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD) - Veja como o Linux conversa com o Windows.
+- [💀 Kali Linux Expert](/guias/Curso_Pratico_Kali_Expert) - Use seu domínio do Linux para segurança ofensiva.

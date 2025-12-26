@@ -1,74 +1,55 @@
 # ☁️ Cloud Computing: Master Class Edition
+> **Nível:** Iniciante ao Arquiteto | **Foco:** AWS, Azure e Estratégia Cloud
+---
 
-![Banner Cloud](/banner_cloud.png)
+## 📖 Introdução: O que é a Nuvem?
 
-O céu não é o limite, é o seu novo data center. Aprenda a arquitetura, segurança e economia da computação em nuvem. Este guia transforma você em um arquiteto capaz de provisionar infraestruturas globais de alta disponibilidade.
+A "Nuvem" não é algo mágico no céu. É apenas o **computador de outra pessoa** (geralmente da Amazon, Google ou Microsoft) que você aluga pela internet. Em vez de comprar um servidor de R$ 20.000, você paga R$ 50 por mês para usar um servidor virtual deles.
 
 ---
 
-## 📂 Módulo 1: A Fundação - Virtualização
+## 🏗️ Módulo 1: Os 3 Modelos de Serviço (Anote isso!)
 
-Antes da nuvem, existe a virtualização. Sem ela, a nuvem não existiria.
+Quase tudo na nuvem se resume a essas 3 siglas:
 
-### 1.1 Hypervisors: O Motor
-- **Tipo 1 (Bare Metal):** Instalado direto no hardware. Máxima performance.
-    - *Exemplos:* VMware ESXi, Microsoft Hyper-V, Xen.
-- **Tipo 2 (Hosted):** Roda em cima do Windows/Linux. Bom para laboratórios.
-    - *Exemplos:* VirtualBox, VMware Workstation.
+1.  **IaaS (Infrastructure as a Service):** Você aluga o hardware "limpo" (CPU, RAM, Disco) e instala o que quiser (ex: AWS EC2, Azure VM).
+2.  **PaaS (Platform as a Service):** Você foca só no código. A nuvem cuida do servidor, banco de dados e rede (ex: Heroku, Google App Engine).
+3.  **SaaS (Software as a Service):** Você é apenas o usuário final. Tudo é pronto (ex: Google Drive, Netflix, Microsoft 365).
 
 ---
 
-## 🏗️ Módulo 2: Modelos de Serviço (O que você compra?)
+## ☁️ Módulo 2: Os Gigantes do Mercado
 
-Entender quem manda no quê é vital para o Modelo de Responsabilidade Compartilhada.
-
-| Modelo | Nome | O que a Nuvem entrega? | Exemplo Real |
-| :--- | :--- | :--- | :--- |
-| **IaaS** | Infrastructure | O "Computador" (CPU/RAM/HD) | AWS EC2, Azure VM |
-| **PaaS** | Platform | O ambiente para seu código rodar | Vercel, Heroku |
-| **SaaS** | Software | A ferramenta pronta para uso | Gmail, Office 365 |
-| **FaaS** | Serverless | Execução de uma única função | AWS Lambda |
-
-```mermaid
-graph TD
-    User["Você cuida: Dados, Apps e Sistemas"] --- Provider["A Nuvem cuida: Hardware, Cabos e Fábrica"]
-    
-    style User fill:#e74c3c,stroke:#fff,color:#fff
-    style Provider fill:#3498db,stroke:#fff,color:#fff
-```
+*   **AWS (Amazon Web Services):** A maior e mais antiga. Líder absoluta.
+*   **Microsoft Azure:** Queridinha das empresas que já usam Windows Server.
+*   **Google Cloud (GCP):** Foco total em Inteligência Artificial e análise de dados.
 
 ---
 
-## ⚙️ Módulo 3: Conceitos de Arquitetura de Elite
+## ⚡ Módulo 3: Conceitos da Nuvem de Elite
 
-- **Escalabilidade Vertical (Up):** Aumentar a potência de uma única máquina (Mais RAM).
-- **Escalabilidade Horizontal (Out):** Adicionar MAIS máquinas para dividir a carga. (Padrão Nuvem).
-- **Auto Scaling:** Noite de Black Friday? A nuvem cria 10 servidores sozinha. De madrugada? Ela desliga tudo para você não pagar nada.
-
----
-
-## 📦 Módulo 4: Containers e Modernização (Docker & K8s)
-
-O futuro da nuvem não são máquinas virtuais inteiras, mas sim **Containers**.
-- **Docker:** Empacota sua aplicação com tudo que ela precisa para rodar ("Se funciona na minha máquina, funciona na nuvem").
-- **Kubernetes (K8s):** O maestro que gerencia milhares de containers ao mesmo tempo.
+*   **Escalabilidade:** Seu site recebeu 1 milhão de acessos? A nuvem cria 10 servidores automaticamente. Os acessos diminuíram? Ela desliga 9 para você economizar.
+*   **Alta Disponibilidade:** Se um data center da Amazon pegar fogo, seu site continua no ar em outro país sem você perceber.
+*   **Pay-as-you-go:** Você só paga pelo que usar (por hora ou até por segundo).
 
 ---
 
-## 🔍 Módulo 5: Troubleshooting de Custos (FinOps)
+## 📝 Exercícios de Fixação (Para responder no caderno!)
 
-::: info 🛡️ Na Trincheira: Caso Real
-Uma startup estava gastando **R$ 20.000/mês** com servidores ligados 24h. Usei o conceito de **Instâncias Reservadas** (onde você paga adiantado por 1 ano) e o gasto caiu para **R$ 11.000**. **A nuvem é barata se você souber configurar.**
-:::
-
-### 5.1 Estratégias de Economia
-1.  **Spot Instances:** Máquinas com 90% de desconto que a AWS pode "pedir de volta" a qualquer momento (Ideal para processamento pesado que não é urgente).
-2.  **S3 Lifecycle:** Mova arquivos velhos que ninguém acessa para o "Glacier" (Onde o GB custa centavos).
+1.  Explique com suas palavras a maior vantagem de uma empresa migrar para a nuvem em vez de ter servidores físicos (On-Premise).
+2.  Dê um exemplo de um serviço **SaaS** que você usa no seu dia a dia.
+3.  Qual a principal diferença entre **IaaS** e **PaaS**?
+4.  O que significa "Escalabilidade Elástica"?
+5.  Por que a nuvem é considerada mais segura do que um servidor local em muitos casos?
+6.  O que é uma **Região** e o que é uma **Zona de Disponibilidade (AZ)** na AWS?
+7.  Na nuvem, o que acontece se você deixar um servidor ligado mas ninguém usar? Você continua pagando?
+8.  O que é a **Nuvem Híbrida**?
+9.  Qual o nome do principal serviço de máquinas virtuais (servidores) da AWS?
+10. **Desafio:** Imagine que você quer criar um site que só vai funcionar por 2 dias. Qual o modelo de pagamento e o tipo de serviço da nuvem você escolheria para gastar o menos possível?
 
 ---
 
-### Links de Referência Master
-- [🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD) - Cloud Híbrida com Azure.
-- [🐧 Domínio do Linux](/guias/Curso_Dominio_Linux) - O sistema que roda na nuvem.
-- [💻 Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web) - APIs escaláveis.
-- [🗄️ Banco de Dados Avançado](/guias/Curso_Banco_Dados_Avancado) - Bancos de dados gerenciados (RDS).
+### 🚀 Próximos Passos
+- [🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD) - Aprenda a integrar seu AD local com a nuvem (Azure AD).
+- [🛡️ Cybersecurity](/guias/Curso_Fundamentos_CS) - Entenda a segurança na nuvem.
+- [🌐 Desenvolvimento Web](/guias/Guia_Desenvolvimento_Web) - Publique seu site diretamente na AWS.

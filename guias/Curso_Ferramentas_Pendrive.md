@@ -1,96 +1,66 @@
-# 🛠️ Ferramentas do Pen-drive: Master Class Edition
+# 🛠️ Ferramentas Pendrive: Master Class Edition
+> **Nível:** Técnico de Campo | **Foco:** Diagnóstico, Recuperação e Portabilidade
+---
 
-![Banner Técnico](/banner_pendrive.png)
+## 📖 Introdução: O Canivete Suíço do Técnico
 
-Este guia transforma o seu simples pen-drive em uma arma de diagnóstico e resgate de elite. Aprenda a usar profissionalmente as ferramentas que salvam sistemas condenados e recuperam dados considerados perdidos. No mundo da TI, seu pen-drive é o seu kit de primeiros socorros.
+Um técnico de TI sem um "pendrive de ferramentas" é como um médico sem estetoscópio. Muitas vezes, o sistema do cliente nem liga, e você precisa carregar suas próprias ferramentas de fora para dentro. Este módulo ensina você a transformar um pedaço de plástico de R$ 30 em uma ferramenta que salva empresas.
 
 ---
 
-## 📂 Módulo 1: O Núcleo Multi-boot (Ventoy Avançado)
+## 🏗️ Módulo 1: O Mestre dos Bootáveis (Ventoy)
 
-O **Ventoy** é a base. Ele permite que você arraste ISOs para o pen-drive e dê boot nelas sem precisar formatar a cada novo sistema.
+Esqueça o tempo em que você precisava de 10 pendrives para diferentes versões do Windows e Linux. O **Ventoy** é o rei atual.
 
-### 1.1 Configuração de Elite
-- **Persistence (Persistência):** Crie um arquivo de persistência para o Ubuntu/Kali. Assim, as configurações e arquivos que você salvar dentro do Linux no pen-drive **não sumirão** ao desligar.
-- **Estrutura de Pastas:** Organize por `/Sistemas`, `/Diagnostico`, `/Recovery`. O Ventoy organiza o menu automaticamente.
-
-```mermaid
-graph TD
-    USB["Pen-drive (Ventoy)"] --> ISO_W11["Windows 11 (Oficial)"]
-    USB --> ISO_KALI["Kali Linux (Forense)"]
-    USB --> ISO_WINPE["Sergei Strelec (WinPE Elite)"]
-    USB --> ISO_RESCUE["Kaspersky Rescue Disk (Antivírus)"]
-    
-    style USB fill:#27ae60,stroke:#fff,color:#fff
-```
+### 📝 No seu Caderno (O Segredo do Ventoy):
+1.  Você instala o Ventoy no pendrive apenas uma vez.
+2.  Depois, basta **copiar e colar** as imagens ISO para dentro dele como se fossem um arquivo comum.
+3.  Quando você der o boot, o Ventoy mostra um menu perguntando qual ferramenta você quer rodar.
 
 ---
 
-## 🏗️ Módulo 2: Ambientes de Resgate (WinPE)
+## 🔍 Módulo 2: O Kit de Sobrevivência (O que levar?)
 
-Quando o Windows do cliente não sobe, você entra com um "Sistema Paralelo".
-
-### 2.1 Sergei Strelec vs Hiren's BootCD
-- **Hiren's BootCD PE:** Versão clássica e estável, baseada em Windows 10.
-- **Sergei Strelec (Recomendado):** O canivete suíço definitivo. Contém centenas de ferramentas de rede, discos, senhas e drivers já pré-instalados.
-
----
-
-## 🔎 Módulo 3: Diagnóstico e Manutenção de Discos
-
-### 3.1 Victoria (O Mapeador de Bad Blocks)
-Diferente do CrystalDiskInfo (que só lê a saúde), o **Victoria** testa cada setor do disco.
-- **Remap:** Se achar um setor lento (verde/laranja), ele pode tentar "esconder" esse setor para o Windows não travar mais.
-
-### 3.2 MiniTool Partition Wizard
-O mestre das partições.
-- **Uso:** Aumentar o drive C: pegando espaço do D:, converter MBR para GPT sem formatar, e clonar HD para SSD.
+### 📝 Lista de ISOs Indispensáveis (Anote!):
+1.  **Hiren’s BootCD PE:** Um "Windows portátil" com centenas de ferramentas de diagnóstico.
+2.  **Kali Linux Live:** Para auditoria de rede e segurança.
+3.  **MemTest86:** Para descobrir se a memória RAM está com defeito físico.
+4.  **Clonezilla:** Para clonar HDs inteiros (muito útil em migrações).
+5.  **DART (Microsoft):** Kit oficial para recuperar sistemas Windows corrompidos.
 
 ---
 
-## 🔐 Módulo 4: Senhas e Segurança
+## 🔐 Módulo 3: Ferramentas de Senha e Recuperação
 
-### 4.1 bypass de Senha do Windows (NTPWEdit / Lazesoft)
-O cliente esqueceu a senha e não quer formatar?
-1. Dê boot pelo Pen-drive (WinPE).
-2. Abra o **NTPWEdit**.
-3. Aponte para o arquivo `SAM` do Windows do cliente.
-4. Clique em **Unlock** ou **Change Password**.
-5. Reinicie e entre sem senha.
-
-### 4.2 Kaspersky Rescue Disk
-Se o antivírus dentro do Windows não consegue pegar o vírus (porque o vírus se "esconde" enquanto o sistema roda), o Rescue Disk mata o vírus **por fora**, com o Windows desligado.
+Muitas vezes o cliente esquece a senha do Windows. Ferramentas como o **Chntpw** ou o **Lazesoft Recovery Suite** permitem que você "limpe" a senha do usuário administrador sem precisar formatar o computador. ⚠️ *Use isso apenas de forma ética e profissional!*
 
 ---
 
-## 💾 Módulo 5: Recuperação de Dados Forense
+## ⚙️ Módulo 4: Portabilidade de Software (Apps Portables)
 
-### 5.1 TestDisk & PhotoRec
-- **TestDisk:** Recupera partições inteiras que sumiram (quando o disco vira "RAW").
-- **PhotoRec:** Ignora o sistema de arquivos e busca a "assinatura" dos arquivos direto nos clusters. Recupera fotos mesmo de discos onde a tabela de partição foi destruída.
-
-::: info 🛡️ Caso Real: O Pen-drive da Formatura
-Uma cliente formatou o cartão SD da câmera por engano. O Windows dizia "Disco precisa ser formatado". Usei o **PhotoRec** via Pen-drive de suporte e recuperei **1.200 fotos** de formatura. **A cliente chorou de emoção. Esse é o poder de um técnico de elite.**
-:::
+Além de sistemas bootáveis, você deve ter uma pasta com **Portable Apps** (programas que rodam sem instalar):
+*   **CrystalDiskInfo:** Para ver a "saúde" do HD/SSD.
+*   **CPU-Z:** Para ver os modelos exatos das peças sem abrir o PC.
+*   **Recuva:** Para tentar recuperar fotos e arquivos apagados por engano.
 
 ---
 
-## 📝 Módulo 6: O Ritual de Sobrevivência (Checklist)
+## 📝 Exercícios de Fixação (Para responder no caderno!)
 
-::: details 📋 O que ter no seu Pen-drive HOJE: (Clique para expandir)
-Siga este setup para estar pronto para 99% dos problemas:
-1. [ ] **Ventoy** instalado (GPT/Secure Boot support ON).
-2. [ ] **Windows 10 e 11** (ISOs oficiais da Microsoft).
-3. [ ] **Sergei Strelec WinPE** (O kit mais completo).
-4. [ ] **Dism++** (Para limpeza e backup de drivers).
-5. [ ] **CrystalDiskInfo** (Para diagnóstico inicial).
-6. [ ] **Kaspersky Rescue Disk** (Para desinfecção).
-:::
+1.  Qual a principal vantagem de usar o **Ventoy** em vez de ferramentas como o Rufus?
+2.  O que é uma imagem **ISO**?
+3.  Em qual situação técnica você usaria o **Hiren’s BootCD**?
+4.  O que faz a ferramenta **MemTest86** e por que ela roda fora do Windows?
+5.  O que significa "Dar Boot pelo Pendrive" e como você altera essa ordem no PC?
+6.  Cite duas ferramentas úteis para verificar a saúde de um HD/SSD.
+7.  Por que é importante ter ferramentas portáteis (Portable) no pendrive?
+8.  O que é o **WinPE** (Windows Preinstallation Environment)?
+9.  Como você protegeria seu pendrive de ferramentas contra vírus de computadores de clientes?
+10. **Desafio:** Um cliente trouxe um computador que não inicia o Windows e faz baralhos de \"click-click\". Quais ferramentas do seu pendrive você usaria primeiro e o que você suspeita que seja o problema?
 
 ---
 
-### Links de Referência Master
-- [🖥️ Montagem e Manutenção](/guias/Curso_Montagem_Manutencao_PC) - Teoria dos componentes.
-- [🔍 Troubleshooting Profissional](/guias/Guia_Troubleshooting_Profissional) - Como usar essas ferramentas com lógica.
-- [🐧 Domínio do Linux](/guias/Curso_Dominio_Linux) - Use o terminal no pen-drive.
-- [🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD) - Resgate de servidores.
+### 🚀 Próximos Passos
+- [🖥️ Montagem e Manutenção](/guias/Curso_Montagem_Manutencao_PC) - Aprenda a diagnosticar o hardware que suas ferramentas encontram.
+- [🛠️ Troubleshooting](/guias/Guia_Troubleshooting_Profissional) - Crie uma metodologia usando esses softwares.
+- [🐧 Domínio Linux](/guias/Curso_Dominio_Linux) - Use o terminal do seu pendrive live para consertar o sistema.

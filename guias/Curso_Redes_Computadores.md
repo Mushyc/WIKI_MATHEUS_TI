@@ -1,110 +1,96 @@
 # 🌐 Redes de Computadores: Master Class Edition
+> **Nível:** Iniciante ao Avançado | **Foco:** Infraestrutura e Segurança
+---
 
-![Banner Redes](/banner_redes.png)
+## 📖 Introdução: O que é uma Rede?
 
-Domine a espinha dorsal da internet. Do modelo OSI ao troubleshooting avançado, este é o conhecimento que separa curiosos de profissionais que mantêm o mundo conectado.
+Imagine uma rede de pesca ou uma teia de aranha. Cada nó é um dispositivo (computador, celular, impressora) e as linhas são a conexão (cabos ou Wi-Fi). O objetivo de uma rede é **compartilhar recursos** (arquivos, internet, impressoras). Sem redes, cada computador seria uma ilha isolada.
 
 ---
 
-## 📂 Módulo 1: Arquitetura de Redes (Modelo OSI & TCP/IP)
+## 📂 Módulo 1: O Modelo OSI (O Mapa da Mina)
 
-O conhecimento de redes começa na compreensão de como os dados são empacotados e enviados.
+Para que computadores de marcas diferentes se entendam, existe uma regra universal: o **Modelo OSI**. Ele divide a comunicação em **7 camadas**.
 
-```mermaid
-graph TD
-    Layer7[7. Aplicação: HTTP/DNS/SSH] --> Layer4[4. Transporte: TCP/UDP]
-    Layer4 --> Layer3[3. Rede: IPv4/IPv6/ICMP]
-    Layer3 --> Layer2[2. Enlace: MAC Address/Switch]
-    Layer2 --> Layer1[1. Física: Cabos/Sinais]
-    
-    style Layer4 fill:#2c3e50,stroke:#3498db,color:#fff
-    style Layer3 fill:#2c3e50,stroke:#3498db,color:#fff
-    style Layer7 fill:#4a235a,stroke:#9b59b6,color:#fff
-```
+### 📝 No seu Caderno (Anote isso!):
+A forma mais fácil de decorar é a frase: **"A APresentação de SESSÃO de TRANSPORTE de REDE em ENLACE FÍSICO"**.
 
-### 1.1 O Processo de Encapsulamento
-Imagine o envio de um e-mail:
-1.  **Aplicação:** O dado é gerado.
-2.  **Transporte:** O dado recebe uma "porta" (ex: 443).
-3.  **Rede:** O dado recebe o "IP de destino".
-4.  **Enlace:** O dado recebe o "MAC Address do roteador".
-5.  **Física:** O dado vira pulsos elétricos no cabo.
+| Camada | Nome | Função Simples | Exemplo Real |
+| :--- | :--- | :--- | :--- |
+| **7** | Aplicação | Onde o usuário interage | Chrome, Outlook, WhatsApp |
+| **6** | Apresentação | Tradução e Criptografia | JPEG, MP4, SSL/TLS |
+| **5** | Sessão | Abre e fecha a conexão | Identificação de usuário |
+| **4** | Transporte | Como os dados viajam | **TCP** (Garante entrega) / **UDP** (Rápido) |
+| **3** | Rede | Onde o IP mora | Roteador (Caminho entre cidades) |
+| **2** | Enlace | Onde o MAC mora | Switch (Caminho entre casas) |
+| **1** | Física | Sinais puros | Cabos, Placa de Wi-Fi, Pulsos Elétricos |
 
 ---
 
-## 🔢 Módulo 2: Endereçamento e Subnetting (A Matemática da Rede)
+## ⚡ Módulo 2: TCP vs UDP (Segurança vs Velocidade)
 
-Calcular IPs e máscaras é a habilidade mais técnica de um administrador de redes.
+No transporte de dados (Camada 4), existem dois protocolos principais:
 
-### 2.1 CIDR vs Máscara de Subrede
-| Típico | CIDR | Máscara | IPs Totais | Hosts Usáveis |
-| :--- | :--- | :--- | :--- | :--- |
-| Doméstico | `/24` | `255.255.255.0` | 256 | 254 |
-| Pequeno | `/25` | `255.255.255.128` | 128 | 126 |
-| Provedor | `/30` | `255.255.255.252` | 4 | 2 |
-
-::: tip 💡 Cálculo Rápido de Hosts
-Para saber quantos computadores cabem na rede, use a fórmula: **2^n - 2**. 
-Onde `n` é o número de bits restando no IP (ex: no `/24`, sobram 8 bits. 2^8 = 256. Menos 2 (Rede e Broadcast) = 254).
-:::
-
-### 2.2 IPs Privados (RFC 1918)
-Nunca use IPs públicos na sua rede local.
-- **Classe A:** 10.0.0.0 até 10.255.255.255
-- **Classe B:** 172.16.0.0 até 172.31.255.255
-- **Classe C:** 192.168.0.0 até 192.168.255.255
+1.  **TCP (Transmission Control Protocol):** É como uma carta registrada. Ele envia o dado, espera o destinatário confirmar que recebeu, e se o dado se perder no caminho, ele envia de novo. 
+    *   *Uso:* E-mails, Sites, Transferência de arquivos.
+2.  **UDP (User Datagram Protocol):** É como um canhão de confetes. Ele dispara os dados o mais rápido possível e não se importa se alguns caíram no chão.
+    *   *Uso:* Chamadas de vídeo, Jogos online, Streaming (onde um pequeno "engasgo" é melhor que o vídeo travar esperando confirmação).
 
 ---
 
-## ⚙️ Módulo 3: Protocolos Essenciais (DORA e DNS)
+## 🔢 Módulo 3: Endereçamento IP e Máscaras
 
-### 3.1 DHCP: Como o IP chega no PC? (Processo DORA)
-1.  **Discover:** O PC grita na rede: "Alguém me dá um IP?"
-2.  **Offer:** O Roteador responde: "Eu tenho esse aqui: 192.168.1.10."
-3.  **Request:** O PC diz: "Eu aceito esse IP!"
-4.  **Acknowledge:** O Roteador confirma: "Beleza, agora ele é seu por 24h."
+O IP é o seu **endereço digital**. Sem ele, a internet não sabe para onde mandar a resposta do site que você acessou.
 
-### 3.2 DNS: A Agenda da Internet
-Sem o DNS, você teria que digitar `142.250.217.110` para abrir o Google.
-- **Porta:** 53 (UDP para consultas rápidas, TCP para transferências).
-- **Tipos de Registro:**
-    - `A`: Aponta para um IP.
-    - `CNAME`: Aponta para outro nome (apelido).
-    - `MX`: Servidor de E-mail.
+### 3.1 IPv4 (O formato clássico)
+Exemplo: `192.168.0.1`. São 4 números de 0 a 255.
+
+### 3.2 A Máscara de Subrede (O muro da rede)
+A máscara define **onde termina a sua rede e onde começa a internet**. 
+- A máscara `/24` (255.255.255.0) é a mais comum. Ela diz que os primeiros 3 números são o "nome da rede" e o último é o "número do aparelho".
 
 ---
 
-## 🔍 Módulo 4: Troubleshooting Avançado (Wireshark & Netstat)
+## ⚙️ Módulo 4: Protocolos que Fazem a Mágica
 
-### 4.1 Captura de Pacotes (Wireshark)
-O Wireshark é o "Raio-X" da rede. Use-o para ver se as senhas estão passando sem criptografia (Protocolos HTTP, FTP, Telnet).
+### 4.1 DHCP (O Garçom da Rede)
+Sempre que você conecta no Wi-Fi, o seu celular recebe um IP automaticamente. Isso acontece graças ao processo **DORA**:
+1.  **Discover:** Seu PC grita por um IP.
+2.  **Offer:** O Roteador oferece um IP.
+3.  **Request:** Seu PC pede para ficar com aquele IP.
+4.  **Acknowledge:** O Roteador confirma e entrega o IP.
 
-### 4.2 Comandos Indispensáveis no Terminal
-| Comando | O que revela? |
-| :--- | :--- |
-| `ipconfig /all` | Nome, MAC, DNS, IP - Tudo. |
-| `netstat -ano` | Lista todas as portas abertas e quem está usando. |
-| `tracert [IP]` | Mostra por onde o pacote está passando até o alvo. |
-| `arp -a` | Mostra a tabela de endereços físicos (MAC) conhecidos. |
-
-::: info 🛡️ Caso Real: O Gateway Fantasma
-Um técnico demorou 2 dias para consertar uma rede. O PC pegava IP, mas não navegava. Usei o `tracert 8.8.8.8` e vi que o pacote morria no primeiro salto. O culpado era o **Gateway Padrão** que estava configurado como `.2` mas o roteador real era o `.1`. Matamos o problema em 10 segundos.
-:::
+### 4.2 DNS (A Lista Telefônica)
+Os computadores amam números (IPs), mas humanos amam nomes. O DNS traduz `google.com` para `142.250.217.110`. Sem o DNS, você teria que decorar o IP de todos os sites do mundo.
 
 ---
 
-## 🔐 Módulo 5: Segurança e Infraestrutura de Redes
+## 🧪 Módulo 5: Laboratório Profissional (Troubleshooting)
 
-### 5.1 Switch vs Roteador
-- **Switch (Camada 2):** Une equipamentos na **mesma rede** através do MAC Address.
-- **Roteador (Camada 3):** Une **redes diferentes** através do IP.
+Se o Wi-Fi parou, você precisa saber diagnosticar. Use estes comandos no Terminal (CMD ou PowerShell):
 
-### 5.2 VLANs (Virtual LANs)
-Use VLANs para separar os departamentos. O Wi-fi de visitantes e os Computadores da Diretoria **não devem se enxergar**. Isso impede que um vírus em um computador infecte a empresa toda.
+1.  `ping 8.8.8.8`: Testa se você tem internet. Se responder, a conexão física está OK.
+2.  `ipconfig`: Mostra o SEU IP atual.
+3.  `nslookup google.com`: Testa se o seu DNS está funcionando.
+4.  `tracert google.com`: Mostra todos os roteadores pelos quais seu pacote passa até chegar no Google.
 
 ---
 
-### Links de Referência Master
-- [🐧 Domínio do Linux](/guias/Curso_Dominio_Linux) - Redes no terminal Linux.
-- [💀 Kali Linux Expert](/guias/Curso_Pratico_Kali_Expert) - Ataques a redes.
-- [🏢 Windows Server & AD](/guias/Curso_Windows_Server_AD) - Administração DHCP/DNS.
+## 📝 Exercícios de Fixação (Para responder no caderno!)
+
+1.  Qual a diferença fundamental entre um **Switch** (Camada 2) e um **Roteador** (Camada 3)?
+2.  Se você estiver assistindo uma Live e o vídeo começar a falhar mas não parar, qual protocolo está sendo usado (TCP ou UDP)? Por quê?
+3.  O que significa a sigla **DNS** e qual sua função principal?
+4.  No processo **DORA** do DHCP, o que acontece na fase "Discover"?
+5.  Qual comando você usaria para descobrir o seu endereço físico (**MAC Address**)?
+6.  Calcule: Em uma rede `/24`, quantos hosts (aparelhos) usáveis podemos ter?
+7.  Para que serve o comando `tracert`?
+8.  Explique a Camada 1 do Modelo OSI com suas próprias palavras.
+9.  O que acontece se dois aparelhos tiverem o mesmo IP na mesma rede?
+10. **Desafio:** Se o comando `ping 8.8.8.8` funciona, mas o seu navegador não abre nenhum site, qual é o provável culpado (DNS ou Roteador)?
+
+---
+
+### 🚀 Próximos Passos
+- [🐧 Domínio Linux](/guias/Curso_Dominio_Linux) - Aprenda a configurar redes no terminal Linux.
+- [💀 Kali Linux Expert](/guias/Curso_Pratico_Kali_Expert) - Aprenda como proteger (e atacar) essas redes.
