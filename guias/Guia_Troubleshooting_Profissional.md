@@ -23,11 +23,7 @@ Quando um problema chega, ele é gigante. Você precisa ir eliminando possibilid
 
 ---
 
-## 🗺️ Phase 14: Visual Academy Enrichment [IN PROGRESS]
-- [x] Map new infographics to Wiki modules
-- [x] Migrate assets to public directory
-- [/] Implement visual aids in Markdown files
-- [ ] Verify deployment with new assets
+
 
 ## 🔍 Módulo 2: O Visualizador de Eventos (O Livro Negro)
 
@@ -36,9 +32,7 @@ No Windows, tudo o que acontece fica registrado no **Event Viewer**. Se o PC rei
 *   **Erro:** Falhas em softwares ou drivers.
 *   **Aviso:** Algo não está certo, mas o sistema ainda respira.
 
-### 🛡️ Monitoramento Avançado: Ecossistema pfSense
-![Monitoramento pfSense](/assets/academy/infografico_pfsense_monitoramento.jpg)
-*Exemplo de uma arquitetura de segurança e monitoramento profissional usando pfSense e ferramentas auxiliares (Zabbix, Suricata, OpenVPN).*
+
 
 ---
 

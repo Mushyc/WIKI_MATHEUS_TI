@@ -35,10 +35,7 @@ Este roadmap foi desenhado para ser seguido no seu ritmo, mas com foco total em 
 3.  **[📂 Git & GitHub Profissional](/guias/Curso_Git_GitHub)**
     - *O que aprender:* Versionamento, Commits, Branchs e Trabalho em Equipe.
 
-> [!TIP]
-> **Especialização: O Caminho do Desenvolvedor Back-End**
-> ![Roadmap Back-end](/assets/academy/infografico_roadmap_backend.jpg)
-> *Para quem deseja seguir a trilha de desenvolvimento, este guia mostra as tecnologias essenciais para se tornar um Dev Back-end completo.*
+
 
 ---
 
@@ -64,11 +61,7 @@ Este roadmap foi desenhado para ser seguido no seu ritmo, mas com foco total em 
 
 ---
 
-### ✅ Phase 14: Visual Academy Enrichment (DONE)
-- [x] Map new infographics to Wiki modules
-- [x] Migrate assets to public directory
-- [x] Implement visual aids in Markdown files
-- [x] Verify deployment with new assets
+
 
 ### 💡 Dica de Mestre:
 Não tente ler tudo de uma vez. Escolha **UM** curso, pegue seu caderno, resolva os exercícios e só depois passe para o próximo. O conhecimento é uma escada, não um elevador. 🦾💎🚀

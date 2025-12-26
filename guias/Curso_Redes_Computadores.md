@@ -18,10 +18,7 @@ A forma mais fácil de decorar é a frase: **"A APresentação de SESSÃO de TRA
 
 | **1** | Física | Sinais puros | Cabos, Placa de Wi-Fi, Pulsos Elétricos |
 
-> [!TIP]
-> **Visão Técnica Avançada:**
-> ![Infográfico OSI e Ataques](/assets/academy/infografico_camadas_osi_ataques.jpg)
-> *Este infográfico mostra como cada camada do modelo OSI pode sofrer ataques específicos e quais as defesas recomendadas.*
+
 
 ---
 
@@ -69,11 +66,7 @@ Se o Wi-Fi parou, você precisa saber diagnosticar. Use estes comandos no Termin
 
 4.  `tracert google.com`: Mostra todos os roteadores pelos quais seu pacote passa até chegar no Google.
 
-### 🔌 Extra: Padronização de Cabos (Cat6/Cat6a)
-![Cores de Cabos RJ45](/assets/academy/infografico_cores_cabo_rede.jpg)
 
-### 📋 Guia de Referência Rápida (Cheat Sheet)
-![Cheat Sheet Redes](/assets/academy/infografico_cheatsheet_redes_br.jpg)
 
 ---
 
