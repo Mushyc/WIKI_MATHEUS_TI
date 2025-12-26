@@ -1,5 +1,5 @@
 # 🛠️ Troubleshooting Profissional: Master Class Edition
-![Banner Troubleshoot](/banner_troubleshoot.png)
+![Banner Troubleshoot](/banner_troubleshooting.png)
 > **Nível:** Intermediário ao Especialista | **Foco:** Diagnóstico e Resolução de Conflitos
 ---
 

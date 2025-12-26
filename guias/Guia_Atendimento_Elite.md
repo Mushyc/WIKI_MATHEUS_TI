@@ -1,5 +1,5 @@
 # 👔 Guia de Atendimento de Elite: Master Class Edition
-![Banner Service](/banner_service.png)
+![Banner Service](/banner_atendimento.png)
 > **Nível:** Profissional | **Foco:** Soft Skills, Comunicação e Fidelização de Clientes
 ---
 
