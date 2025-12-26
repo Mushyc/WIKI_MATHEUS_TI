@@ -1,4 +1,5 @@
 # 🐍 Python para Automação: Master Class Edition
+![Banner Python](/banner_python.png)
 > **Nível:** Iniciante ao Desenvolvedor | **Foco:** Lógica, Automação e APIs
 ---
 

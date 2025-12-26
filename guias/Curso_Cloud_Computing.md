@@ -1,4 +1,5 @@
 # ☁️ Cloud Computing: Master Class Edition
+![Banner Cloud](/banner_cloud.png)
 > **Nível:** Iniciante ao Arquiteto | **Foco:** AWS, Azure e Estratégia Cloud
 ---
 

@@ -1,4 +1,5 @@
 # 🛂 Guia de Roadmap de Certificações: Master Class Edition
+![Banner Certificacoes](/banner_certificacoes.png)
 > **Nível:** Profissional ao Especialista | **Foco:** Carreira, Salários e Reconhecimento
 ---
 

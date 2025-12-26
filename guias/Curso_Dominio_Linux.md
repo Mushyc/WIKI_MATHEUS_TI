@@ -1,4 +1,5 @@
 # 🐧 Domínio do Linux: Master Class Edition
+![Banner Linux](/banner_linux.png)
 > **Nível:** Iniciante ao Administrador | **Foco:** Shell, Arquitetura e Servidores
 ---
 

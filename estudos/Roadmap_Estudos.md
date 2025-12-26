@@ -1,4 +1,5 @@
 # 🗺️ Roadmap de Estudos: Elite Tech Career
+![Banner Roadmap](/banner_roadmap.png)
 > **Objetivo:** Transformar você em um especialista em infraestrutura, automação e segurança.
 ---
 

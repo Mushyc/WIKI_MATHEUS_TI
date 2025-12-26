@@ -1,4 +1,5 @@
 # 🧮 Algoritmos e Estruturas de Dados: Master Class Edition
+![Banner Algoritmos](/banner_algoritmos.png)
 > **Nível:** Iniciante ao Ninja | **Foco:** Lógica, Performance e Eficiência
 ---
 

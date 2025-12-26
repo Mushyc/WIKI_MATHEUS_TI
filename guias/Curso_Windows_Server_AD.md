@@ -1,4 +1,5 @@
 # 🏢 Windows Server & Active Directory: Master Class Edition
+![Banner Windows Server](/banner_windows_server.png)
 > **Nível:** Intermediário ao Administrador | **Foco:** Governança e Infraestrutura
 ---
 

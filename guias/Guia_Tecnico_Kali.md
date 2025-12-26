@@ -1,4 +1,5 @@
 # 💀 Guia Técnico Kali Linux: Cheat Sheet de Elite
+![Banner Kali](/banner_kali.png)
 > **Nível:** Operacional | **Foco:** Comandos Rápidos e Referência
 ---
 

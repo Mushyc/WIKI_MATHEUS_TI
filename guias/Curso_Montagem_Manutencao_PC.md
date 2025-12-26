@@ -1,4 +1,5 @@
 # 🖥️ Montagem e Manutenção: Master Class Edition
+![Banner Infra Hardware](/banner_infra_hardware.png)
 > **Nível:** Iniciante ao Técnico de Elite | **Foco:** Hardware e Diagnóstico
 ---
 

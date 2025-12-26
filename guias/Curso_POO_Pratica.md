@@ -1,4 +1,5 @@
 # 🧩 POO na Prática: Master Class Edition
+![Banner POO](/banner_poo.png)
 > **Nível:** Intermediário | **Foco:** Engenharia de Software e Organização
 ---
 

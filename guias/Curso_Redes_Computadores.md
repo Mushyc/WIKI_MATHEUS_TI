@@ -1,4 +1,5 @@
 # 🌐 Redes de Computadores: Master Class Edition
+![Banner Redes](/banner_redes.png)
 > **Nível:** Iniciante ao Avançado | **Foco:** Infraestrutura e Segurança
 ---
 

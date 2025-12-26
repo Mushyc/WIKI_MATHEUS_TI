@@ -1,4 +1,5 @@
 # 🗄️ Bancos de Dados Avançado: Master Class Edition
+![Banner DB](/banner_db.png)
 > **Nível:** Intermediário ao DBA | **Foco:** SQL, Modelagem e Performance
 ---
 

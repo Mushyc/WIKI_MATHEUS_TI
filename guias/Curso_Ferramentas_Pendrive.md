@@ -1,4 +1,5 @@
 # 🛠️ Ferramentas Pendrive: Master Class Edition
+![Banner Pendrive](/banner_pendrive.png)
 > **Nível:** Técnico de Campo | **Foco:** Diagnóstico, Recuperação e Portabilidade
 ---
 

@@ -1,4 +1,5 @@
 # ⚙️ Fundamentos de Ciência da Computação: Master Class Edition
+![Banner CS](/banner_cs.png)
 > **Nível:** Iniciante | **Foco:** Hardware, Lógica e História da Tecnologia
 ---
 

@@ -1,4 +1,5 @@
 # 📂 Git e GitHub Profissional: Master Class Edition
+![Banner Git](/banner_git.png)
 > **Nível:** Iniciante ao Colaborador | **Foco:** Controle de Versão e Trabalho em Equipe
 ---
 

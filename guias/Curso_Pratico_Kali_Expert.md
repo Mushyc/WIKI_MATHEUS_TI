@@ -1,4 +1,5 @@
 # 💀 Curso Prático Kali Linux Expert: Master Class Edition
+![Banner Kali](/banner_kali.png)
 > **Nível:** Intermediário ao Especialista | **Foco:** Pentest, Anonimato e Exploração
 ---
 
