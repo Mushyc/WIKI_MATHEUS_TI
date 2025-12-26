@@ -1,5 +1,5 @@
 # 🌐 Guia de Desenvolvimento Web: Master Class Edition
-![Banner Web](/banner_web.png)
+![Banner Web](/banner_web_final.png)
 > **Nível:** Iniciante ao Full-Stack | **Foco:** HTML, CSS, JS e Performance
 ---
 
