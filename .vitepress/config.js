@@ -1,6 +1,13 @@
 export default {
   title: "Matheus TI",
   description: "Knowledge Base & Technical Study Center",
+  head: [
+    ['meta', { property: 'og:title', content: 'Matheus TI - Academia de Elite' }],
+    ['meta', { property: 'og:description', content: 'Domine TI com cursos práticos, roadmaps e o E-book Kali Linux Expert.' }],
+    ['meta', { property: 'og:image', content: '/banner_kali_master_final.png' }],
+    ['meta', { name: 'theme-color', content: '#bc13fe' }],
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
+  ],
   ignoreDeadLinks: true,
   markdown: {
     mermaid: true

@@ -12,7 +12,11 @@ async def generate_premium_pdf():
     with open(md_file, 'r', encoding='utf-8') as f:
         text = f.read()
 
-    # 2. Converter Markdown para HTML
+    # 2. Converter Markdown para HTML (com suporte a TOC)
+    # Adicionamos [TOC] no início para forçar a geração do sumário
+    if "[TOC]" not in text:
+        text = "[TOC]\n\n" + text
+        
     html_content = markdown.markdown(text, extensions=['extra', 'codehilite', 'toc'])
 
     # 3. HTML & CSS Ultra-Premium (Modern Glassmorphism & Cyberpunk)
@@ -47,6 +51,22 @@ async def generate_premium_pdf():
                 font-family: 'Inter', sans-serif;
                 font-size: 11pt;
                 line-height: 1.7;
+            }}
+
+            /* WATERMARK */
+            .watermark {{
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                font-size: 80pt;
+                color: rgba(255, 255, 255, 0.03);
+                white-space: nowrap;
+                pointer-events: none;
+                z-index: -1;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 15px;
             }}
 
             /* CAPA ULTRA PREMIUM */
@@ -96,6 +116,17 @@ async def generate_premium_pdf():
                 font-weight: 600;
                 color: var(--primary);
             }}
+
+            /* SUMÁRIO (TOC) */
+            .toc {{
+                padding: 1cm 2cm;
+                page-break-after: always;
+            }}
+            .toc h2 {{ color: var(--secondary); border-bottom: 1px solid var(--primary); padding-bottom: 10px; }}
+            .toc ul {{ list-style: none; padding-left: 0; }}
+            .toc li {{ margin-bottom: 8px; border-bottom: 1px dotted var(--text-dim); display: flex; justify-content: space-between; align-items: baseline; }}
+            .toc a {{ color: var(--text-main); text-decoration: none; font-weight: 600; font-size: 11pt; }}
+            .toc a:hover {{ color: var(--primary); }}
 
             /* CONTEÚDO */
             .content-page {{
@@ -223,6 +254,8 @@ async def generate_premium_pdf():
         </style>
     </head>
     <body>
+        <div class="watermark">MATHEUS TI - ELITE EDITION</div>
+        
         <div class="cover">
             <h1>KALI LINUX<br>EXPERT</h1>
             <div class="subtitle">Master Edition</div>
