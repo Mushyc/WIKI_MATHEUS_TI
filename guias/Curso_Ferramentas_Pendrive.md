@@ -13,17 +13,19 @@ Um técnico de TI sem um "pendrive de ferramentas" é como um médico sem esteto
 
 Esqueça o tempo em que você precisava de 10 pendrives para diferentes versões do Windows e Linux. O **Ventoy** é o rei atual.
 
-### 📝 No seu Caderno (O Segredo do Ventoy):
-1.  Você instala o Ventoy no pendrive apenas uma vez.
-2.  Depois, basta **copiar e colar** as imagens ISO para dentro dele como se fossem um arquivo comum.
-3.  Quando você der o boot, o Ventoy mostra um menu perguntando qual ferramenta você quer rodar.
+### 📝 No seu Caderno (O Segredo do Ventoy)
+
+1. Escanteio do Ventoy (Mantenha o foco).
+2. Basta **copiar e colar** as imagens ISO para dentro dele.
+3. No boot, o Ventoy mostra um menu de escolha.
 
 ---
 
 ## 🔍 Módulo 2: O Kit de Sobrevivência (O que levar?)
 
-### 📝 Lista de ISOs Indispensáveis (Anote!):
-1.  **Hiren’s BootCD PE:** Um "Windows portátil" com centenas de ferramentas de diagnóstico.
+### 📝 Lista de ISOs Indispensáveis (Anote!)
+
+1. **Hiren’s BootCD PE:** Um "Windows portátil" com centenas de ferramentas de diagnóstico.
 2.  **Kali Linux Live:** Para auditoria de rede e segurança.
 3.  **MemTest86:** Para descobrir se a memória RAM está com defeito físico.
 4.  **Clonezilla:** Para clonar HDs inteiros (muito útil em migrações).
@@ -46,6 +48,29 @@ Além de sistemas bootáveis, você deve ter uma pasta com **Portable Apps** (pr
 
 ---
 
+## 🚀 Módulo 5: Automação Técnica Pro (Arsenal Elite)
+
+O técnico de elite não perde tempo abrindo 50 janelas. Ele usa **scripts de automação** para fazer o trabalho pesado enquanto toma um café.
+
+### 🤖 O Scanner Inteligente
+
+Antes de qualquer conserto, você roda o **Scanner**. Ele faz um "Raio-X" do PC do cliente em segundos:
+
+* Detecta drivers faltando.
+* Verifica se o Windows está original/ativado.
+* Checa se os programas essenciais (Chrome, Office, WinRAR) já estão lá.
+
+### 🛫 O Modo Auto-Pilot
+
+Esta é a "Magia Negra" do TI de campo. Com um único comando, o script executa:
+
+1. **Diagnóstico:** Identifica os problemas.
+2. **Reparo:** Roda comandos de integridade (SFC/DISM).
+3. **Otimização:** Ajusta o Windows para velocidade máxima.
+4. **Instalação/Ativação:** Instala os apps e já deixa o Office ativado de fábrica.
+
+---
+
 ## 📝 Exercícios de Fixação (Para responder no caderno!)
 
 1.  Qual a principal vantagem de usar o **Ventoy** em vez de ferramentas como o Rufus?
@@ -56,12 +81,13 @@ Além de sistemas bootáveis, você deve ter uma pasta com **Portable Apps** (pr
 6.  Cite duas ferramentas úteis para verificar a saúde de um HD/SSD.
 7.  Por que é importante ter ferramentas portáteis (Portable) no pendrive?
 8.  O que é o **WinPE** (Windows Preinstallation Environment)?
-9.  Como você protegeria seu pendrive de ferramentas contra vírus de computadores de clientes?
-10. **Desafio:** Um cliente trouxe um computador que não inicia o Windows e faz baralhos de \"click-click\". Quais ferramentas do seu pendrive você usaria primeiro e o que você suspeita que seja o problema?
+9.  Para que serve o **Scanner Inteligente** no início de um atendimento?
+10. **Desafio:** Explique como o **Modo Auto-Pilot** aumenta o lucro de um técnico de TI (Pense no tempo economizado por PC).
 
 ---
 
 ### 🚀 Próximos Passos
-- [🖥️ Montagem e Manutenção](/guias/Curso_Montagem_Manutencao_PC) - Aprenda a diagnosticar o hardware que suas ferramentas encontram.
-- [🛠️ Troubleshooting](/guias/Guia_Troubleshooting_Profissional) - Crie uma metodologia usando esses softwares.
-- [🐧 Domínio Linux](/guias/Curso_Dominio_Linux) - Use o terminal do seu pendrive live para consertar o sistema.
+
+* [🖥️ Montagem e Manutenção](/guias/Curso_Montagem_Manutencao_PC) - Aprenda a diagnosticar o hardware que suas ferramentas encontram.
+* [🛠️ Troubleshooting](/guias/Guia_Troubleshooting_Profissional) - Crie uma metodologia usando esses softwares.
+* [🐧 Domínio Linux](/guias/Curso_Dominio_Linux) - Use o terminal do seu pendrive live para consertar o sistema.
